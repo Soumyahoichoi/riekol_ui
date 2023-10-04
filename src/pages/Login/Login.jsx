@@ -1,16 +1,46 @@
 import { Button, Card, CardBody, CardFooter, Image, Input } from '@nextui-org/react';
 import { Navigate } from 'react-router-dom';
 import CommunityImage from '../../assets/community_banner.jpeg';
+import { login } from '../../api/login';
+import { toast } from 'sonner';
+import { useState } from 'react';
+import { getResultFromData } from '../../helper';
 
 const Login = () => {
 	const isLoggedIn = localStorage.getItem('isLoggedIn');
+	const [email, setEmail] = useState('');
+	const [invalid, setInvalid] = useState(false);
+	const [valid, setValid] = useState(false);
 
 	if (isLoggedIn) {
 		return <Navigate to="/" />;
 	}
 
-	const handleLogin = () => {
-		localStorage.setItem('isLoggedIn', 'true');
+	const validateEmail = (value) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+
+	const handleLogin = async () => {
+		const isValidEmail = validateEmail(email);
+		if (isValidEmail) {
+			setInvalid(false);
+			const loginDataResponse = await login({ email });
+			const result = getResultFromData(loginDataResponse);
+			if (result) {
+				console.log(result);
+				localStorage.setItem('isLoggedIn', 'true');
+				setValid(true);
+				toast.success('Login Successful');
+			} else {
+				toast.error('Login Failed');
+			}
+		} else {
+			setInvalid(!isValidEmail);
+		}
+	};
+
+	const handleEmailChange = (e) => {
+		setValid(false);
+		setInvalid(false);
+		setEmail(e.target.value);
 	};
 
 	return (
@@ -34,7 +64,16 @@ const Login = () => {
 					<p className="text-center text-sm pb-5">
 						Please enter the email address you provided during event registration.
 					</p>
-					<Input type="email" label="Email" placeholder="Enter your email" isRequired />
+					<Input
+						type="email"
+						label="Email"
+						placeholder="Enter your email"
+						isInvalid={invalid}
+						errorMessage={invalid && 'We can’t find any registration linked to email'}
+						color={(invalid && 'danger') || (valid && 'success')}
+						isRequired
+						onChange={handleEmailChange}
+					/>
 				</div>
 				<div className="flex ">
 					<Button onClick={handleLogin} radius="full">
