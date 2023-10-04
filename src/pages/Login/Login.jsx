@@ -4,25 +4,43 @@ import CommunityImage from '../../assets/community_banner.jpeg';
 import { login } from '../../api/login';
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { getResultFromData } from '../../helper';
 
 const Login = () => {
 	const isLoggedIn = localStorage.getItem('isLoggedIn');
 	const [email, setEmail] = useState('');
+	const [invalid, setInvalid] = useState(false);
+	const [valid, setValid] = useState(false);
 
 	if (isLoggedIn) {
 		return <Navigate to="/" />;
 	}
 
-	const handleLogin = async () => {
-		const loginData = await login({ email });
-		console.log(loginData);
+	const validateEmail = (value) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
 
-		if (loginData) {
-			localStorage.setItem('isLoggedIn', 'true');
-			toast.success('Login Successful');
+	const handleLogin = async () => {
+		const isValidEmail = validateEmail(email);
+		if (isValidEmail) {
+			setInvalid(false);
+			const loginDataResponse = await login({ email });
+			const result = getResultFromData(loginDataResponse);
+			if (result) {
+				console.log(result);
+				localStorage.setItem('isLoggedIn', 'true');
+				setValid(true);
+				toast.success('Login Successful');
+			} else {
+				toast.error('Login Failed');
+			}
 		} else {
-			toast.error('Login Failed');
+			setInvalid(!isValidEmail);
 		}
+	};
+
+	const handleEmailChange = (e) => {
+		setValid(false);
+		setInvalid(false);
+		setEmail(e.target.value);
 	};
 
 	return (
@@ -50,8 +68,11 @@ const Login = () => {
 						type="email"
 						label="Email"
 						placeholder="Enter your email"
+						isInvalid={invalid}
+						errorMessage={invalid && 'We can’t find any registration linked to email'}
+						color={(invalid && 'danger') || (valid && 'success')}
 						isRequired
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={handleEmailChange}
 					/>
 				</div>
 				<div className="flex ">
