@@ -1,0 +1,19 @@
+.tabs-container {
+  border-color: rgb(203 213 225);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.dimension {
+  min-width: 50rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.card--content {
+  height: 47rem;
+  overflow-y: scroll;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

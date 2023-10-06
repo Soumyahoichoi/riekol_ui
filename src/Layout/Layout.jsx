@@ -1,11 +1,23 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import "./styles.css";
+import NavBar from "../components/Navbar/Navbar";
+import { Divider } from "@nextui-org/react";
 
 const Layout = () => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />;
+  }
   return (
-    <div>
-      <Outlet />
-    </div>
+    <main className="layout">
+      <NavBar />
+      <Divider />
+      <div style={{ padding: "0 27rem" }}>
+        <Outlet />
+      </div>
+    </main>
   );
 };
 
