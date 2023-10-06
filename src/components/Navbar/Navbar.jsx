@@ -66,8 +66,10 @@ const NavBar = () => {
         </NavbarContent>
 
         <NavbarContent as="div" justify="end">
-          <Button onClick={handleCheckout}>Checkout</Button>
-          <Dropdown placement="bottom-end">
+          <Button color="danger" onClick={handleCheckout}>
+            Checkout
+          </Button>
+          {/* <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
                 isBordered
@@ -96,7 +98,7 @@ const NavBar = () => {
                 Log Out
               </DropdownItem>
             </DropdownMenu>
-          </Dropdown>
+          </Dropdown> */}
         </NavbarContent>
       </Navbar>
     </div>
