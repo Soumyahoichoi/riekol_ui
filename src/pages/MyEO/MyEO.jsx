@@ -99,6 +99,7 @@ const MyEO = () => {
                 (_item) => _item.name.trim() === item.name.trim()
               )[0]
             }
+            priceId={item.priceId}
           />
         ))}
       </section>
