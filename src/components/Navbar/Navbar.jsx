@@ -9,12 +9,22 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
+  Button,
 } from "@nextui-org/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useStore } from "../../store/store";
+import { createSession } from "../../api/checkout";
 
 const NavBar = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const cart = useStore((state) => state.cart);
+
+  const handleCheckout = async () => {
+    const session = await createSession(cart);
+
+    console.log(session);
+  };
   return (
     <div>
       {" "}
@@ -43,6 +53,7 @@ const NavBar = () => {
         </NavbarContent>
 
         <NavbarContent as="div" justify="end">
+          <Button onClick={handleCheckout}>Checkout</Button>
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar

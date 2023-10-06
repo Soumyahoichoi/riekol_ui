@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { Cards } from "../../constants";
 import { EoCard } from "../../components/EoCard/EoCard";
+import { useStore } from "../../store/store";
 
 const MyEO = () => {
   const [cartValues, setCartValues] = useState([]);
   const [bill, setBill] = useState(0);
+
+  const setCart = useStore((state) => state.setCart);
   const onSelect = (cardDetails) => {
     switch (cardDetails.intent) {
       case "+": {
@@ -61,12 +64,14 @@ const MyEO = () => {
           0
         )
       );
+      setCart({ cartValues, bill });
     } else {
       setBill(0);
+      setCart(null);
     }
   }, [cartValues]);
 
-  console.log(bill);
+  console.log(cartValues, bill);
 
   return (
     <div className="flex justify-center flex-col">
@@ -89,6 +94,11 @@ const MyEO = () => {
             name={item.name.trim()}
             select={onSelect}
             registrationFee={item.registrationfee}
+            quant={
+              cartValues.filter(
+                (_item) => _item.name.trim() === item.name.trim()
+              )[0]
+            }
           />
         ))}
       </section>

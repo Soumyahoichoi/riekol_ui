@@ -17,6 +17,7 @@ export const EoCard = ({
   date,
   registrationFee,
   select = () => {},
+  quant,
 }) => {
   const dateFormatted = dayjs(date).format("LL");
   const startTimeFormatted = dayjs(startTime).format("LT");
@@ -30,32 +31,17 @@ export const EoCard = ({
           style={{ width: "18rem", height: "10rem" }}
         />
       </section>
-      <section className="flex items-start flex-col second text-sm">
+      <section className="flex items-start flex-col second text-sm p-2 gap-2">
         <p className="font-semibold text-rose-700">{name}</p>
 
-        <div className="text-green-700 flex gap-2">
+        <div className="text-green-700 flex gap-2 items-center">
           <SeatsLeft />
           99 seats left
-          <span>
+          <span className="flex items-center">
             <Button
+              disabled={!quant}
               isIconOnly
-              color="warning"
-              variant="light"
-              aria-label="Take a photo"
-              size="sm"
-              onClick={() =>
-                select({
-                  intent: "+",
-                  payLoad: { name, startTime, endTime, date, registrationFee },
-                })
-              }
-            >
-              <AddToCart />
-            </Button>
-            &nbsp;
-            <Button
-              isIconOnly
-              color="warning"
+              color="danger"
               variant="light"
               aria-label="Take a photo"
               size="sm"
@@ -67,6 +53,23 @@ export const EoCard = ({
               }
             >
               <RemoveFromCart />
+            </Button>
+            {quant?.count || 0}
+            <Button
+              disabled={quant?.count === 2}
+              isIconOnly
+              color={quant?.count === 2 ? undefined : "success"}
+              variant="light"
+              aria-label="Take a photo"
+              size="sm"
+              onClick={() =>
+                select({
+                  intent: "+",
+                  payLoad: { name, startTime, endTime, date, registrationFee },
+                })
+              }
+            >
+              <AddToCart />
             </Button>
           </span>
         </div>

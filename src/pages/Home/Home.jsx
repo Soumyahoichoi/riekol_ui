@@ -1,11 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 const Home = () => {
-  return (
-    <div className="bg-black">
-      <h1>Home</h1>
-    </div>
-  );
+  return <Navigate to="/myeo" />;
 };
 
 export default Home;
