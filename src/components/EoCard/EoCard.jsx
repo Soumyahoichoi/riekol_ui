@@ -18,6 +18,7 @@ export const EoCard = ({
   registrationFee,
   select = () => {},
   quant,
+  priceId,
 }) => {
   const dateFormatted = dayjs(date).format("LL");
   const startTimeFormatted = dayjs(startTime).format("LT");
@@ -48,7 +49,14 @@ export const EoCard = ({
               onClick={() =>
                 select({
                   intent: "-",
-                  payLoad: { name, startTime, endTime, date, registrationFee },
+                  payLoad: {
+                    name,
+                    startTime,
+                    endTime,
+                    date,
+                    registrationFee,
+                    priceId,
+                  },
                 })
               }
             >
@@ -65,7 +73,14 @@ export const EoCard = ({
               onClick={() =>
                 select({
                   intent: "+",
-                  payLoad: { name, startTime, endTime, date, registrationFee },
+                  payLoad: {
+                    name,
+                    startTime,
+                    endTime,
+                    date,
+                    registrationFee,
+                    priceId,
+                  },
                 })
               }
             >

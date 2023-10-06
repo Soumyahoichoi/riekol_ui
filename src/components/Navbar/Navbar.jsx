@@ -15,15 +15,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../../store/store";
 import { createSession } from "../../api/checkout";
+import { getResultFromData } from "../../helper";
+import { toast } from "sonner";
+
+const isBrowser = typeof window !== "undefined";
 
 const NavBar = () => {
   const [activeTab, setActiveTab] = useState(0);
   const cart = useStore((state) => state.cart);
 
   const handleCheckout = async () => {
-    const session = await createSession(cart);
+    if (cart) {
+      const session = await createSession(cart);
+      const result = getResultFromData(session);
 
-    console.log(session);
+      if (isBrowser && result) {
+        window.open(result, "_blank", "noopener,noreferrer");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } else {
+      toast.error("Please add something to the cart");
+    }
   };
   return (
     <div>
