@@ -74,7 +74,7 @@ const MyEO = () => {
   console.log(cartValues, bill);
 
   return (
-    <div className="flex justify-center flex-col">
+    <div className="flex justify-center flex-col container-box">
       <section className="border-1 border-slate-300 rounded-md dimension">
         <Tabs key="underlined" variant="underlined" aria-label="Tabs variants">
           <Tab key="a" title="A" />
