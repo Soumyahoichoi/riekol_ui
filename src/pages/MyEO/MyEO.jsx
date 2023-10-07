@@ -4,6 +4,7 @@ import "./styles.css";
 import { Cards } from "../../constants";
 import { EoCard } from "../../components/EoCard/EoCard";
 import { useStore } from "../../store/store";
+import Cart from "../../components/Cart/Cart";
 
 const MyEO = () => {
   const [cartValues, setCartValues] = useState([]);
@@ -103,6 +104,8 @@ const MyEO = () => {
           />
         ))}
       </section>
+
+      <Cart />
     </div>
   );
 };

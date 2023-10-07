@@ -36,6 +36,7 @@ module.exports = {
     "text-gray-500",
     "text-green-700",
     "text-sm",
+    "w-100",
   ],
   darkMode: "class",
   plugins: [nextui()],

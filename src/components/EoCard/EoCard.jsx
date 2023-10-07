@@ -24,12 +24,13 @@ export const EoCard = ({
   const startTimeFormatted = dayjs(startTime).format("LT");
   const endTimeFormatted = dayjs(endTime).format("LT");
   return (
-    <main className="border-1 border-slate-300 rounded-md  cursor-pointer">
-      <section className="p-2 py-4">
+    <main className="border-1 border-slate-300 w-full rounded-md  cursor-pointer">
+      <section className="rounded-md">
         <img
           src={image}
           alt="name"
-          style={{ width: "18rem", height: "10rem" }}
+          className="rounded-md"
+          style={{ width: "100%", height: "10rem" }}
         />
       </section>
       <section className="flex items-start flex-col second text-sm p-2 gap-2">
