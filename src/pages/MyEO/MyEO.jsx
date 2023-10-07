@@ -4,7 +4,7 @@ import './styles.css';
 import { Cards } from '../../constants';
 import { EoCard } from '../../components/EoCard/EoCard';
 import { useStore } from '../../store/store';
-import Cart from '../../components/Cart/Cart';
+// import Cart from "../../components/Cart/Cart";
 
 const MyEO = () => {
 	const [cartValues, setCartValues] = useState([]);
@@ -80,13 +80,14 @@ const MyEO = () => {
 						name={item.name.trim()}
 						select={onSelect}
 						registrationFee={item.registrationfee}
+						id={item._id}
 						quant={cartValues.filter((_item) => _item.name.trim() === item.name.trim())[0]}
 						priceId={item.priceId}
 					/>
 				))}
 			</section>
 
-			<Cart />
+			{/* <Cart /> */}
 		</div>
 	);
 };
