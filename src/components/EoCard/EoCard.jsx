@@ -16,10 +16,10 @@ export const EoCard = ({
   startTime,
   endTime,
   date,
-  registrationFee,
-  select = () => {},
-  quant,
-  priceId,
+  // registrationFee,
+  // select = () => {},
+  // quant,
+  // priceId,
   id,
 }) => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export const EoCard = ({
         <div className="text-green-700 flex gap-2 items-center">
           <SeatsLeft />
           99 seats left
-          <span className="flex items-center">
+          {/* <span className="flex items-center">
             <Button
               disabled={!quant}
               isIconOnly
@@ -93,7 +93,7 @@ export const EoCard = ({
             >
               <AddToCart />
             </Button>
-          </span>
+          </span> */}
         </div>
         {/* <img src={seats_left} alt="" /> */}
 
