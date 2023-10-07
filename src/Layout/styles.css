@@ -3,6 +3,11 @@
 	background-size: cover;
 }
 
-.container {
-	padding: 0 20px;
+@media screen and (min-width: 597px) {
+	.outletContainer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 5rem;
+	}
 }
