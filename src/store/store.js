@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
 export const useStore = create((set) => ({
-  cart: null,
+  cart: [],
   setCart: (cartData) => set(() => ({ cart: cartData })),
 }));
