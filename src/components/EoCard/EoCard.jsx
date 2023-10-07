@@ -7,6 +7,7 @@ import Time from "../../assets/time";
 import AddToCart from "../../assets/addToCart";
 import RemoveFromCart from "../../assets/removeFromCart";
 import { Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 dayjs.extend(LocalizedFormat);
 
 export const EoCard = ({
@@ -19,18 +20,23 @@ export const EoCard = ({
   select = () => {},
   quant,
   priceId,
+  id,
 }) => {
+  const navigate = useNavigate();
   const dateFormatted = dayjs(date).format("LL");
   const startTimeFormatted = dayjs(startTime).format("LT");
   const endTimeFormatted = dayjs(endTime).format("LT");
   return (
-    <main className="border-1 border-slate-300 w-full rounded-md  cursor-pointer">
+    <main
+      className="border-1 border-slate-300 w-full rounded-md  cursor-pointer"
+      onClick={() => navigate(`/myeo/${id}`)}
+    >
       <section className="rounded-md">
         <img
           src={image}
           alt="name"
           className="rounded-md"
-          style={{ width: "100%", height: "10rem" }}
+          // style={{ width: "100%", height: "10rem" }}
         />
       </section>
       <section className="flex items-start flex-col second text-sm p-2 gap-2">

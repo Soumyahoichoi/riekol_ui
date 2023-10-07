@@ -13,8 +13,8 @@ const RemoveFromCart = () => {
       <path
         d="M15 12H9"
         stroke="#1C274C"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecapp="round"
       />
     </svg>
   );
