@@ -10,33 +10,22 @@ import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 dayjs.extend(LocalizedFormat);
 
-export const EoCard = ({
-  name,
-  image,
-  startTime,
-  endTime,
-  date,
-  // registrationFee,
-  // select = () => {},
-  // quant,
-  // priceId,
-  id,
-}) => {
+export const EoCard = ({ name, image, startTime, endTime, date, id }) => {
   const navigate = useNavigate();
   const dateFormatted = dayjs(date).format("LL");
   const startTimeFormatted = dayjs(startTime).format("LT");
   const endTimeFormatted = dayjs(endTime).format("LT");
   return (
     <main
-      className="border-1 border-slate-300 w-full rounded-md  cursor-pointer"
+      className="border-1 border-slate-300 rounded-md  cursor-pointer"
       onClick={() => navigate(`/myeo/${id}`)}
     >
-      <section className="rounded-md">
+      <section className="mainContainer">
         <img
           src={image}
           alt="name"
-          className="rounded-md"
-          // style={{ width: "100%", height: "10rem" }}
+          className="imageContainer"
+          style={{ width: "100%", height: "12rem" }}
         />
       </section>
       <section className="flex items-start flex-col second text-sm p-2 gap-2">
@@ -45,57 +34,7 @@ export const EoCard = ({
         <div className="text-green-700 flex gap-2 items-center">
           <SeatsLeft />
           99 seats left
-          {/* <span className="flex items-center">
-            <Button
-              disabled={!quant}
-              isIconOnly
-              color="danger"
-              variant="light"
-              aria-label="Take a photo"
-              size="sm"
-              onClick={() =>
-                select({
-                  intent: "-",
-                  payLoad: {
-                    name,
-                    startTime,
-                    endTime,
-                    date,
-                    registrationFee,
-                    priceId,
-                  },
-                })
-              }
-            >
-              <RemoveFromCart />
-            </Button>
-            {quant?.count || 0}
-            <Button
-              disabled={quant?.count === 2}
-              isIconOnly
-              color={quant?.count === 2 ? undefined : "success"}
-              variant="light"
-              aria-label="Take a photo"
-              size="sm"
-              onClick={() =>
-                select({
-                  intent: "+",
-                  payLoad: {
-                    name,
-                    startTime,
-                    endTime,
-                    date,
-                    registrationFee,
-                    priceId,
-                  },
-                })
-              }
-            >
-              <AddToCart />
-            </Button>
-          </span> */}
         </div>
-        {/* <img src={seats_left} alt="" /> */}
 
         <div className="text-gray-500 flex gap-2">
           <Time />
