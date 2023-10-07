@@ -28,7 +28,7 @@ export const EoCard = ({
 	const endTimeFormatted = dayjs(endTime).format('LT');
 	return (
 		<main
-			className="border-1 border-slate-300 w-full rounded-md  cursor-pointer"
+			className="border-1 border-slate-300 rounded-md  cursor-pointer"
 			onClick={() => navigate(`/myeo/${id}`)}
 		>
 			<section className="mainContainer">
