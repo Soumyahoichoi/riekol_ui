@@ -61,7 +61,7 @@ const MyEO = () => {
 
 	return (
 		<div className="flex justify-center flex-col container-box">
-			<section className="border-1 border-slate-300 rounded-md dimension">
+			<section className="primaryBox">
 				<Tabs key="underlined" variant="underlined" aria-label="Tabs variants">
 					<Tab key="a" title="A" />
 					<Tab key="b" title="B" />
