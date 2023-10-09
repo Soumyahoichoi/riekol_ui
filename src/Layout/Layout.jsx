@@ -14,7 +14,7 @@ const Layout = () => {
     <main className="layout">
       <NavBar />
       <Divider />
-      <div className="container">
+      <div className="outletContainer">
         <Outlet />
       </div>
     </main>
