@@ -25,7 +25,7 @@
 	border-color: rgb(203 213 225 / var(--tw-border-opacity));
 	border-radius: 0.375rem;
 	cursor: pointer;
-	width: 100%;
+	/* width: 100%; */
 }
 
 @media screen and (max-width: 596px) {

@@ -37,7 +37,10 @@ module.exports = {
 		'text-green-700',
 		'text-sm',
 		'w-100',
-		'rounded-md'
+		'rounded-md',
+		'mt-20',
+		'text-lg',
+		'mt-12'
 	],
 	darkMode: 'class',
 	plugins: [nextui()]
