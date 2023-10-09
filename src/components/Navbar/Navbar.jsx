@@ -30,7 +30,7 @@ const NavBar = () => {
       const result = getResultFromData(session);
 
       if (isBrowser && result) {
-        window.open(result, "_blank", "noopener,noreferrer");
+        window.open(result, "_self", "noopener,noreferrer");
       } else {
         toast.error("Something went wrong!");
       }
