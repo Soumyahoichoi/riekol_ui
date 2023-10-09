@@ -18,8 +18,6 @@ import { createSession } from "../../api/checkout";
 import { getResultFromData } from "../../helper";
 import { toast } from "sonner";
 
-const isBrowser = typeof window !== "undefined";
-
 const NavBar = () => {
   const [activeTab, setActiveTab] = useState(0);
   const cart = useStore((state) => state.cart);

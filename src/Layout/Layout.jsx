@@ -12,7 +12,7 @@ const Layout = () => {
   // }
   return (
     <main className="layout">
-      <NavBar />
+      {/* <NavBar /> */}
       <Divider />
       <div className="outletContainer">
         <Outlet />
