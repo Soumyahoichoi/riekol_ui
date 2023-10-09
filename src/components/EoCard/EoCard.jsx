@@ -62,27 +62,9 @@ export const EoCard = ({
     setButtonDisplay(true);
   };
 
-  // return (
-  // 	<main
-  // 		className="border-1 border-slate-300 rounded-md  cursor-pointer"
-  // 		// 	onClick={() => navigate(`/myeo/${id}`)
-  // 		// }
-  // 		style={{ display }}
-  // 	>
-  // 		<section className="mainContainer">
-  // 			<img
-  // 				src={image}
-  // 				alt="name"
-  // 				className="imageContainer"
-  // 				style={{ width: '100%', height: '12rem' }}
-  // 			/>
-  // 		</section>
-  // 		<section className="flex items-start flex-col second text-sm p-2 gap-2">
-  // 			<p className="font-semibold text-rose-700 text-lg">{name}</p>
-
   return (
     <main
-      className="border-1 border-slate-300 rounded-md  cursor-pointer"
+      className="divContainer"
       // 	onClick={() => navigate(`/myeo/${id}`)
       // }
       style={{ display }}
@@ -111,6 +93,19 @@ export const EoCard = ({
           </p>
         </div>
         <div className="text-gray-500 flex gap-2">
+          <p className="font-semibold">Registration Fees</p>
+          <p>{regFee}</p>
+        </div>
+
+        <div className="text-gray-500 flex gap-2">
+          <Time />
+          <p>
+            {/* {dateFormatted} */}
+            {startDateFormatted + " " + startTime + " "} -{" "}
+            {" " + endDateFormatted + " " + endTime}
+          </p>
+        </div>
+        <div className="text-gray-500 flex gap-2">
           <p>₹{regFee}</p>
           <p className="font-semibold">Registration Fees</p>
         </div>
@@ -128,7 +123,7 @@ export const EoCard = ({
         )}
 
         <div className="text-gray-500 flex gap-2">
-          <p className="font-semibold " onClick={onClickHandler}>
+          <p className="font-semibold cursor-pointer" onClick={onClickHandler}>
             {data ? "Read Less..." : "Read More..."}
           </p>
         </div>
