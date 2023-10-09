@@ -11,7 +11,7 @@
 }
 
 .card--content {
-	height: 47rem;
+	/* height: 47rem; */
 	/* overflow-y: scroll; */
 	display: flex;
 	gap: 1rem;
@@ -21,7 +21,7 @@
 }
 
 .container-box {
-	padding: 0 15rem;
+	padding: 0px;
 }
 .primaryBox {
 	--tw-border-opacity: 1;
@@ -34,9 +34,15 @@
 	z-index: 2;
 }
 
-@media screen and (max-width: 1152px) {
+/* @media screen and (max-width: 1152px) {
 	.container-box {
 		padding: 0rem;
+	}
+} */
+
+@media screen and (max-width: 597px) {
+	.card--content {
+		margin-top: 4rem;
 	}
 }
 
@@ -58,10 +64,11 @@
 	width: 100vw;
 	margin: auto;
 	bottom: 0;
-	background: white;
+	/* background: white; */
 	border-radius: 0.5rem;
 }
 
 .floating-container > button {
 	margin: 0.5rem;
+	width: 20rem;
 }

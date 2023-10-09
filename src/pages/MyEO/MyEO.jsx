@@ -34,12 +34,12 @@ const MyEO = () => {
 	};
 
 	const handleTabChange = (value) => {
-		console.log(value);
+		// console.log(value);
 		setTab(value);
 		//Call setTab here
 	};
 
-	console.log(cart.length, 'data', cart);
+	// console.log(cart.length, 'data', cart);
 
 	return (
 		<div className="flex justify-center flex-col container-box">
@@ -60,7 +60,7 @@ const MyEO = () => {
 				</Tabs>
 			</section>
 
-			<section className="card--content mt-12">
+			<section className="card--content">
 				{Cards.map((item) => (
 					<EoCard
 						key={item._id}
@@ -82,7 +82,7 @@ const MyEO = () => {
 			</section>
 			{cart.length > 0 && (
 				<div className="floating-container">
-					<Button color="danger" disabled={cart.length === 0} onClick={handleCheckout} size="lg">
+					<Button color="danger" onClick={handleCheckout} size="lg">
 						Checkout
 					</Button>
 					{/* <button class="button">Floating Button</button> */}

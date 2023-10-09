@@ -63,12 +63,7 @@ export const EoCard = ({
 	};
 
 	return (
-		<main
-			className="border-1 border-slate-300 rounded-md  cursor-pointer"
-			// 	onClick={() => navigate(`/myeo/${id}`)
-			// }
-			style={{ display }}
-		>
+		<main className="divContainer">
 			<section className="mainContainer">
 				<img
 					src={image}
@@ -110,7 +105,7 @@ export const EoCard = ({
 				)}
 
 				<div className="text-gray-500 flex gap-2">
-					<p className="font-semibold " onClick={onClickHandler}>
+					<p className="font-semibold cursor-pointer" onClick={onClickHandler}>
 						{data ? 'Read Less...' : 'Read More...'}
 					</p>
 				</div>
