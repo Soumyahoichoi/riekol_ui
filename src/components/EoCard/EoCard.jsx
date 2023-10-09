@@ -111,8 +111,8 @@ export const EoCard = ({
           </p>
         </div>
         <div className="text-gray-500 flex gap-2">
+          <p>₹{regFee}</p>
           <p className="font-semibold">Registration Fees</p>
-          <p>{regFee}</p>
         </div>
 
         {/* {data && (
