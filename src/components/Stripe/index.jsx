@@ -4,10 +4,14 @@ import {
   useElements,
   PaymentElement,
 } from "@stripe/react-stripe-js";
+import { Button } from "@nextui-org/react";
+import { useStore } from "../../store/store";
+import "./styles.css";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ bill }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const { cart } = useStore((store) => ({ cart: store.cart }));
 
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -42,12 +46,84 @@ const CheckoutForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
+    <div className="checkout">
+      <CheckoutSummary cart={cart} total={bill} />
+
+      <form onSubmit={handleSubmit}>
+        <PaymentElement />
+        <Button disabled={!stripe} color="success" className="mt-2">
+          Submit
+        </Button>
+        {/* Show error message to your customers */}
+        {errorMessage && <div>{errorMessage}</div>}
+      </form>
+    </div>
+  );
+};
+
+const CheckoutSummary = ({ cart, total }) => {
+  console.log(cart);
+  return (
+    <>
+      <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+        <div class="px-4 pt-8">
+          <p class="text-xl font-medium">Order Summary</p>
+
+          <div
+            class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6"
+            style={{ minWidth: "34rem" }}
+          >
+            {cart?.map((item) => (
+              <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+                <div
+                  class="flex w-full px-4 py-4 justify-content-between"
+                  style={{ justifyContent: "space-between" }}
+                >
+                  <span class="font-semibold">{item.name}</span>
+                  <section>
+                    <span class="float-right text-gray-400">
+                      {item.registration_fee}x{item.count}
+                    </span>
+                    <p class="text-lg font-bold">
+                      {item.registration_fee * item.count}
+                    </p>
+                  </section>
+                </div>
+              </div>
+            ))}
+            {/* <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+              <div class="flex w-full flex-col px-4 py-4">
+                <span class="font-semibold">
+                  Nike Air Max Pro 8888 - Super Light
+                </span>
+                <span class="float-right text-gray-400">42EU - 8.5US</span>
+                <p class="text-lg font-bold">$138.99</p>
+              </div>
+            </div>
+            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+              <div class="flex w-full flex-col px-4 py-4">
+                <span class="font-semibold">
+                  Nike Air Max Pro 8888 - Super Light
+                </span>
+                <span class="float-right text-gray-400">42EU - 8.5US</span>
+                <p class="mt-auto text-lg font-bold">$238.99</p>
+              </div>
+            </div> */}
+          </div>
+        </div>
+        <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+          <div class="">
+            <div class="mt-6 flex items-center justify-between">
+              <p class="text-sm font-medium text-gray-900">Total</p>
+              <p class="text-2xl font-semibold text-gray-900">INR {total}</p>
+            </div>
+          </div>
+          {/* <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+            Place Order
+          </button> */}
+        </div>
+      </div>
+    </>
   );
 };
 

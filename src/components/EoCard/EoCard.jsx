@@ -63,7 +63,12 @@ export const EoCard = ({
 	};
 
 	return (
-		<main className="divContainer">
+		<main
+			className="divContainer"
+			// 	onClick={() => navigate(`/myeo/${id}`)
+			// }
+			style={{ display }}
+		>
 			<section className="mainContainer">
 				<img
 					src={image}
@@ -74,7 +79,6 @@ export const EoCard = ({
 			</section>
 			<section className="flex items-start flex-col second text-sm p-2 gap-2">
 				<p className="font-semibold text-rose-700 text-lg">{name}</p>
-
 				<div className="text-green-700 flex gap-2 items-center">
 					<SeatsLeft />
 					99 seats left

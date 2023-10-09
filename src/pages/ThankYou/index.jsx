@@ -48,7 +48,7 @@ const PaymentStatus = () => {
       }
     });
   }, [stripe]);
-
+  console.log(message);
   return message;
 };
 
