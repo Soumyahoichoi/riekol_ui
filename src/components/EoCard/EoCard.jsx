@@ -22,14 +22,18 @@ export const EoCard = ({
   description,
   regFee,
   priceId,
+  startDate,
+  endDate,
+  display,
 }) => {
   const navigate = useNavigate();
-  const dateFormatted = dayjs(date).format("LL");
-  const startTimeFormatted = dayjs(startTime).format("LT");
-  const endTimeFormatted = dayjs(endTime).format("LT");
+  const startDateFormatted = dayjs(startDate).format("DD MMM");
+  const endDateFormatted = dayjs(endDate).format("DD MMM");
+  // const startTimeFormatted = dayjs(startTime).format('LT');
+  // const endTimeFormatted = dayjs(endTime).format('LT');
   const [data, setData] = useState(false);
   const [count, setCount] = useState(1);
-
+  const [buttonDisplay, setButtonDisplay] = useState(false);
   const { cart, setCart } = useStore((state) => state);
 
   const onClickHandler = () => {
@@ -55,7 +59,26 @@ export const EoCard = ({
     });
 
     setCart(newCart);
+    setButtonDisplay(true);
   };
+
+  // return (
+  // 	<main
+  // 		className="border-1 border-slate-300 rounded-md  cursor-pointer"
+  // 		// 	onClick={() => navigate(`/myeo/${id}`)
+  // 		// }
+  // 		style={{ display }}
+  // 	>
+  // 		<section className="mainContainer">
+  // 			<img
+  // 				src={image}
+  // 				alt="name"
+  // 				className="imageContainer"
+  // 				style={{ width: '100%', height: '12rem' }}
+  // 			/>
+  // 		</section>
+  // 		<section className="flex items-start flex-col second text-sm p-2 gap-2">
+  // 			<p className="font-semibold text-rose-700 text-lg">{name}</p>
 
   return (
     <main
@@ -73,7 +96,6 @@ export const EoCard = ({
       </section>
       <section className="flex items-start flex-col second text-sm p-2 gap-2">
         <p className="font-semibold text-rose-700 text-lg">{name}</p>
-
         <div className="text-green-700 flex gap-2 items-center">
           <SeatsLeft />
           99 seats left
@@ -82,8 +104,9 @@ export const EoCard = ({
         <div className="text-gray-500 flex gap-2">
           <Time />
           <p>
-            {dateFormatted} {startTimeFormatted + " "} -{" "}
-            {" " + endTimeFormatted}
+            {/* {dateFormatted} */}
+            {startDateFormatted + " " + startTime + " "} -{" "}
+            {" " + endDateFormatted + " " + endTime}
           </p>
         </div>
         <div className="text-gray-500 flex gap-2">
@@ -93,11 +116,11 @@ export const EoCard = ({
 
         {/* {data && (
 					<> */}
-        {description?.length >= 120 && (
+        {description?.length >= 160 && (
           <div className="text-gray-500 flex gap-2 flex">
-            <p>
+            <p className="description">
               {!data
-                ? stringTruncate(description, 120)
+                ? stringTruncate(description, 160)
                 : stringTruncate(description, description.length)}
             </p>
           </div>
@@ -113,14 +136,14 @@ export const EoCard = ({
           className="flex items-center w-full justify-center"
           //   style={{ zIndex: "-1" }}
         >
-          <span className="flex items-center">
+          <span className="flex items-center text-lg">
             <Button
               disabled={count === 1}
               isIconOnly
               color={count === 1 ? undefined : "danger"}
               variant="light"
               aria-label="Take a photo"
-              size="sm"
+              size="md"
               onClick={() =>
                 setCount((count) => (count < 1 ? count : count - 1))
               }
@@ -134,7 +157,7 @@ export const EoCard = ({
               color={count === 2 ? undefined : "success"}
               variant="light"
               aria-label="Take a photo"
-              size="sm"
+              size="md"
               onClick={() =>
                 setCount((count) => (count === 2 ? count : count + 1))
               }
@@ -143,11 +166,11 @@ export const EoCard = ({
             </Button>
             <Button
               onClick={onAddToCart}
-              color="danger"
-              size="sm"
+              color={buttonDisplay ? "success" : "danger"}
+              size="md"
               className="buttonContainer"
             >
-              <span>Add to Cart</span>
+              <span>{buttonDisplay ? "Added to Cart" : "Add to Cart"}</span>
             </Button>
           </span>
         </div>
