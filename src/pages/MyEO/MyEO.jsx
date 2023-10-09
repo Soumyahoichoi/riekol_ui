@@ -15,6 +15,7 @@ const isBrowser = typeof window !== 'undefined';
 const MyEO = () => {
 	const cart = useStore((state) => state.cart);
 	const navigate = useNavigate();
+	const [tab, setTab] = useState('all');
 
 	const handleCheckout = async () => {
 		navigate('/checkout');
