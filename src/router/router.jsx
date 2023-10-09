@@ -6,6 +6,8 @@ import Home from "../pages/Home/Home";
 import MyEO from "../pages/MyEO/MyEO";
 import DeepDive from "../pages/DeepDive/DeepDive";
 import EoDetails from "../pages/EoDetails/EoDetails";
+import StripeForm from "../components/Stripe/prepare";
+import ThankYou from "../pages/ThankYou";
 
 const Router = () => {
   return (
@@ -17,6 +19,8 @@ const Router = () => {
           <Route path=":id" element={<EoDetails />} />
         </Route>
         <Route path="/deepdive" element={<DeepDive />} />
+        <Route path="/checkout" element={<StripeForm />} />
+        <Route path="/thankyou" element={<ThankYou />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
