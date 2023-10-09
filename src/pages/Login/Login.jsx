@@ -34,7 +34,6 @@ const Login = () => {
       const loginDataResponse = await login({ email });
       const result = getResultFromData(loginDataResponse);
       if (result) {
-        console.log(result);
         localStorage.setItem("isLoggedIn", "true");
         setValid(true);
         toast.success("Login Successful");

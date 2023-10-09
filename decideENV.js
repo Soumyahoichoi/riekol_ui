@@ -1,5 +1,4 @@
 export const decideEnv = () => {
-  console.log(import.meta.env);
   if (import.meta.env.PROD) {
     return "https://riekol-server.onrender.com";
   } else {

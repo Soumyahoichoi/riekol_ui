@@ -57,7 +57,6 @@ export const EoCard = ({
     setCart(newCart);
   };
 
-  console.log(cart);
   return (
     <main
       className="border-1 border-slate-300 rounded-md  cursor-pointer"
