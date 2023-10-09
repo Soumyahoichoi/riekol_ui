@@ -85,6 +85,7 @@ export const EoCard = ({
       className="border-1 border-slate-300 rounded-md  cursor-pointer"
       // 	onClick={() => navigate(`/myeo/${id}`)
       // }
+      style={{ display }}
     >
       <section className="mainContainer">
         <img
