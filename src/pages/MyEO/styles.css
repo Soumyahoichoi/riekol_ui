@@ -42,5 +42,11 @@
 @media screen and (max-width: 960px) {
 	.primaryBox {
 		border: none;
+		overflow-x: auto;
+		position: fixed;
+		top: 0;
+		margin: 0px;
+		background-color: #fff;
+		padding: 8px;
 	}
 }

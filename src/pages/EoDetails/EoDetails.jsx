@@ -48,7 +48,7 @@ const EoDetails = () => {
 						src={details?.thumb_image}
 						alt="image"
 						className="rounded-md containerImage"
-						style={{ width: '100%', height: '20rem' }}
+						style={{ width: '100%', height: '15rem' }}
 					/>
 				</section>
 				<section className="sectionContainer">
@@ -90,7 +90,7 @@ const EoDetails = () => {
 							{dateFormatted} {startTimeFormatted + ' '} - {' ' + endTimeFormatted}
 						</p>
 					</div>
-					<div className="flex items-center w-full">
+					<div className="flex items-center w-full mt-4">
 						<Button onClick={onAddToCart} className="buttonContainer">
 							<span>Add to Cart</span>
 						</Button>

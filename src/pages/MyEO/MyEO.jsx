@@ -11,13 +11,17 @@ const MyEO = () => {
 		<div className="flex justify-center flex-col container-box">
 			<section className="primaryBox">
 				<Tabs key="underlined" variant="underlined" aria-label="Tabs variants">
-					<Tab key="a" title="A" />
-					<Tab key="b" title="B" />
-					<Tab key="c" title="C" />
+					<Tab key="a" title="All" />
+					<Tab key="b" title="Sports" />
+					<Tab key="c" title="Spirituality" />
+					<Tab key="d" title="Experiential" />
+					<Tab key="e" title="Interaction" />
+					<Tab key="f" title="F&B" />
+					<Tab key="g" title="Health & Wellness" />
 				</Tabs>
 			</section>
 
-			<section className="card--content mt-4">
+			<section className="card--content mt-12">
 				{Cards.map((item) => (
 					<EoCard
 						key={item._id}
@@ -27,6 +31,9 @@ const MyEO = () => {
 						date={item.eoDate?.trim()}
 						name={item.name.trim()}
 						id={item._id}
+						description={item.description}
+						champion={item.eventChampion}
+						regFee={item.registrationfee}
 					/>
 				))}
 			</section>
