@@ -2,9 +2,11 @@ export const Cards = [
 	{
 		_id: '64de5113a05102006c172309',
 		eoDate: '2024-01-12T18:30:00.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 15000,
-		startTime: '2024-01-13T12:35:00.000Z',
-		endTime: '2024-01-13T12:35:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [],
 		thumb_image:
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695978005516.jpeg',
@@ -27,14 +29,17 @@ export const Cards = [
 		mystatus: 1,
 		mywaitstatus: 0,
 		eventChampion: 'Ayush Marodia- 9831048211',
-		priceId: 'price_1Ny9dSSCdrsL4rvt5KfCvEUV'
+		priceId: 'price_1Ny9dSSCdrsL4rvt5KfCvEUV',
+		category: 'Iconic Kolkata'
 	},
 	{
 		_id: '6513ee35efb2e37b6aa9e862',
 		eoDate: '2024-01-12T18:30:00.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 200,
-		startTime: '2024-01-13T12:35:00.000Z',
-		endTime: '2024-01-13T12:35:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695727526452.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695727527358.jpeg',
@@ -58,17 +63,20 @@ export const Cards = [
 		addInfo:
 			' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		description:
-			"The Victoria Memorial is a large marble building on the Maidan in Central Kolkata, having its entrance on the Queen's Way",
+			'Go on an overnight journey in an exclusive train compartment to the birthplace of the Iskon movement. Meet the leader of the movement and learn about his journey. See the new Iskon temple and chant the holy name together. The evening Aarti is unmissable!',
 		mystatus: 0,
 		mywaitstatus: 1,
-		priceId: 'price_1Ny9eCSCdrsL4rvt015V6IWq'
+		priceId: 'price_1Ny9eCSCdrsL4rvt015V6IWq',
+		category: 'Off the beaten path'
 	},
 	{
 		_id: '65080fa538524300679ef4d1',
 		eoDate: '2024-01-11T08:27:58.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 1500,
-		startTime: '2024-01-11T08:27:00.000Z',
-		endTime: '2024-01-11T09:27:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982948579.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982950497.jpeg',
@@ -85,17 +93,21 @@ export const Cards = [
 		meetingPoint: 'Eden Gardens',
 		cancPolicy: 'Eden Gardens',
 		addInfo: 'Eden Gardens',
-		description: 'Eden Gardens',
+		description:
+			"Come aboard the famous shikharas that dot the Kolkata's Hooghly river, take in the historic sights that made shaped the city's heritage, and immerse yourself in the spiritual Ganga Aarti and soulful live folk music. The mouthwatering snacks and classic Kolkata chai in clay khullars are a pure bonus!",
 		mystatus: 1,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9ewSCdrsL4rvtfLUKvR9o'
+		priceId: 'price_1Ny9ewSCdrsL4rvtfLUKvR9o',
+		category: 'Iconic Kolkata'
 	},
 	{
 		_id: '6516a62634c0c64c5214e8fa',
 		eoDate: '2024-01-11T08:27:58.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 1500,
-		startTime: '2024-01-11T08:30:00.000Z',
-		endTime: '2024-01-11T10:30:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982948579.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982950497.jpeg',
@@ -112,17 +124,21 @@ export const Cards = [
 		meetingPoint: 'Eden Gardens',
 		cancPolicy: 'Eden Gardens',
 		addInfo: 'Eden Gardens',
-		description: 'Eden Gardens',
+		description:
+			"The oldest Tea Auctioneer in the world opens it's doors for an EO Kolkata exclusive! Participate in a private tea tasting and tea auction!",
 		mystatus: 0,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9ftSCdrsL4rvt2b3wL2ZW'
+		priceId: 'price_1Ny9ftSCdrsL4rvt2b3wL2ZW',
+		category: 'Off the beaten path'
 	},
 	{
 		_id: '6516822a8a8af60069cb7de8',
 		eoDate: '2024-01-11T00:00:00.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 2000,
-		startTime: '2024-01-11T04:49:00.000Z',
-		endTime: '2024-01-11T05:49:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695973930465.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695973931379.jpeg'
@@ -137,17 +153,21 @@ export const Cards = [
 		meetingPoint: 'Consequatur est quia',
 		cancPolicy: 'Voluptate vitae ut p',
 		addInfo: 'Soluta cupiditate cu',
-		description: 'Ex facere quod et sa',
+		description:
+			'Come uncover the back lanes and the dark spaces of the city. Let us take you to the hidden part of town for an experience of a lifetime. See how life and art thrives in those streets of Kolkata.',
 		mystatus: 1,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9ftSCdrsL4rvt2b3wL2ZW'
+		priceId: 'price_1Ny9ftSCdrsL4rvt2b3wL2ZW',
+		category: 'Off the beaten path'
 	},
 	{
 		_id: '651a7f85b259f7006e9da198',
 		eoDate: '2024-01-11T00:00:00.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 7000,
-		startTime: '2024-01-11T07:21:00.000Z',
-		endTime: '2024-01-11T09:21:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696235397984.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696235398071.jpeg',
@@ -163,17 +183,21 @@ export const Cards = [
 		meetingPoint: 'Demo Text Goes Here',
 		cancPolicy: 'Demo Text Goes Here',
 		addInfo: 'Demo Text Goes Here',
-		description: 'Demo Text Goes Here',
+		description:
+			"If you know cricket, you know Eden Gardens, India's very own Theatre of Dreams! Another EO Kolkata exclusive! Put on your cricketing best and get ready to pad up! Join us for an unforgettable day of cricket action and an exclusive behind-the-scenes tour of the historic Eden Gardens stadium in Kolkata.",
 		mystatus: 0,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9hRSCdrsL4rvt1oASLyDx'
+		priceId: 'price_1Ny9hRSCdrsL4rvt1oASLyDx',
+		category: 'Off the beaten path'
 	},
 	{
 		_id: '651a9e0e2cb18100681d860f',
 		eoDate: '2024-01-10T18:30:00.000Z',
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-11T10:00:00.000Z',
-		endTime: '2024-01-11T13:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: ['https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696243214026.jpeg'],
 		thumb_image:
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696243214770.jpeg',
@@ -189,14 +213,17 @@ export const Cards = [
 			'"Immerse yourself in the spiritual Ganga Aarti and soulful live folk music on the sacred Ganges over an unforgettable two-hour cruise tour simultaneously, experiencing mouth watering live snacks and sipping tea in kullars, to relish the true flavour of the region and the essence of local culture along with viewing numerous facets, historical and religious sights of THE CITY OF JOY! \nTake in historic sights on the banks of the River Hooghly and see how the river has played a pivotal role in shaping the culture and heritage of our City."\n',
 		mystatus: 1,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9hzSCdrsL4rvtkrfIfKXS'
+		priceId: 'price_1Ny9hzSCdrsL4rvtkrfIfKXS',
+		category: 'Iconic Kolkata'
 	},
 	{
 		_id: '651bb55057764a31ec6cee2e',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 6000,
-		startTime: '2024-01-10T01:00:00.000Z',
-		endTime: '2024-01-10T02:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696314704145.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696314704864.jpeg',
@@ -215,14 +242,17 @@ export const Cards = [
 		description: 'Et vero id obcaecati',
 		mystatus: 0,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9iNSCdrsL4rvtBYflqgn5'
+		priceId: 'price_1Ny9iNSCdrsL4rvtBYflqgn5',
+		category: 'Iconic Kolkata'
 	},
 	{
 		_id: '651bb953106ac7006c32de9d',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 6000,
-		startTime: '2024-01-10T06:00:00.000Z',
-		endTime: '2024-01-12T07:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696315731931.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696315732736.jpeg',
@@ -242,14 +272,47 @@ export const Cards = [
 		description: '',
 		mystatus: 0,
 		mywaitstatus: 0,
-		priceId: 'price_1Ny9j3SCdrsL4rvtlWwseLig'
+		priceId: 'price_1Ny9j3SCdrsL4rvtlWwseLig',
+		category: 'Off the beaten path'
 	},
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
+		Image: [
+			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
+			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
+			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159360.jpeg',
+			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159424.jpeg'
+		],
+		thumb_image:
+			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159468.jpeg',
+		totalslot: 20,
+		name: 'MyEO Jute mill visit & Zamindari Lunch',
+		whatInclude: '',
+		whattoBring: '',
+		whattoExpect: '',
+		meetingPoint: '',
+		cancPolicy: '',
+		addInfo: '',
+		description: '',
+		mystatus: 0,
+		mywaitstatus: 0,
+		priceId: 'price_1Ny9kjSCdrsL4rvtNVPqfXVv',
+		category: 'Iconic Kolkata'
+	},
+	{
+		_id: '651bbaf8106ac7006c32ec37',
+		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
+		registrationfee: 3000,
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -274,9 +337,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -301,36 +366,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
-		Image: [
-			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
-			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
-			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159360.jpeg',
-			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159424.jpeg'
-		],
-		thumb_image:
-			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316159468.jpeg',
-		totalslot: 20,
-		name: 'MyEO Jute mill visit & Zamindari Lunch',
-		whatInclude: '',
-		whattoBring: '',
-		whattoExpect: '',
-		meetingPoint: '',
-		cancPolicy: '',
-		addInfo: '',
-		description: '',
-		mystatus: 0,
-		mywaitstatus: 0,
-		priceId: 'price_1Ny9kjSCdrsL4rvtNVPqfXVv'
-	},
-	{
-		_id: '651bbaf8106ac7006c32ec37',
-		eoDate: null,
-		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -355,9 +395,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -382,9 +424,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -409,9 +453,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -436,9 +482,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -463,9 +511,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
@@ -490,9 +540,11 @@ export const Cards = [
 	{
 		_id: '651bbaf8106ac7006c32ec37',
 		eoDate: null,
+		eoStartDate: '10/1/2024',
+		eoEndDate: '11/1/2024',
 		registrationfee: 3000,
-		startTime: '2024-01-12T05:00:00.000Z',
-		endTime: '2024-01-13T19:00:00.000Z',
+		startTime: '7:00 AM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',

@@ -13,6 +13,12 @@
 	border-radius: 15px;
 	padding: 0.5rem;
 }
+.description {
+	text-align: left;
+}
+.buttonContainer {
+	width: 100%;
+}
 
 @media screen and (max-width: 596px) {
 	.imageContainer {

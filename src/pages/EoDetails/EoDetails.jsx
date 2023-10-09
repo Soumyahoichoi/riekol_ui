@@ -39,7 +39,6 @@ const EoDetails = () => {
 		setCart(newCart);
 	};
 
-	console.log(cart);
 	return (
 		<div className="parentContainer">
 			<main className="eoContainer">
