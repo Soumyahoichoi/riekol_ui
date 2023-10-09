@@ -18,8 +18,6 @@ import { createSession } from "../../api/checkout";
 import { getResultFromData } from "../../helper";
 import { toast } from "sonner";
 
-const isBrowser = typeof window !== "undefined";
-
 const NavBar = () => {
   const [activeTab, setActiveTab] = useState(0);
   const cart = useStore((state) => state.cart);
@@ -30,7 +28,7 @@ const NavBar = () => {
       const result = getResultFromData(session);
 
       if (isBrowser && result) {
-        window.open(result, "_blank", "noopener,noreferrer");
+        window.open(result, "_self", "noopener,noreferrer");
       } else {
         toast.error("Something went wrong!");
       }
