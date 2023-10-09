@@ -7,26 +7,29 @@ import { useStore } from "../../store/store";
 import { createSession } from "../../api/checkout";
 import { getResultFromData } from "../../helper";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 // import Cart from "../../components/Cart/Cart";
 
 const isBrowser = typeof window !== "undefined";
 
 const MyEO = () => {
   const cart = useStore((state) => state.cart);
+  const navigate = useNavigate();
 
   const handleCheckout = async () => {
-    if (cart) {
-      const session = await createSession(cart);
-      const result = getResultFromData(session);
+    navigate("/checkout");
+    // if (cart) {
+    //   const session = await createSession(cart);
+    //   const result = getResultFromData(session);
 
-      if (isBrowser && result) {
-        window.open(result, "_self", "noopener,noreferrer");
-      } else {
-        toast.error("Something went wrong!");
-      }
-    } else {
-      toast.error("Please add something to the cart");
-    }
+    //   if (isBrowser && result) {
+    //     window.open(result, "_self", "noopener,noreferrer");
+    //   } else {
+    //     toast.error("Something went wrong!");
+    //   }
+    // } else {
+    //   toast.error("Please add something to the cart");
+    // }
   };
 
   return (
