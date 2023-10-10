@@ -75,7 +75,6 @@ const CheckoutForm = ({ bill }) => {
 };
 
 const CheckoutSummary = ({ cart, total }) => {
-  console.log(cart, total);
   return (
     <>
       <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">

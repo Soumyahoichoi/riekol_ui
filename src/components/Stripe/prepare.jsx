@@ -25,8 +25,6 @@ export const StripeForm = () => {
 
   useEffect(() => {
     async function fetchClientSecret() {
-      //   console.log("hello");
-
       const billing = +new URLSearchParams(locaton.search).get("billing");
       if (billing) {
         let secret = await getClientSecret(+billing * 100);
