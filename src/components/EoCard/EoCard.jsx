@@ -4,8 +4,7 @@ import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import SeatsLeft from '../../assets/seats_left.jsx';
 import Time from '../../assets/time';
-import AddToCart from '../../assets/addToCart';
-import RemoveFromCart from '../../assets/removeFromCart';
+import Dustbin from '../../assets/dustbin';
 import { Button } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
@@ -24,7 +23,8 @@ export const EoCard = ({
 	priceId,
 	startDate,
 	endDate,
-	display
+	display,
+	slots
 }) => {
 	const navigate = useNavigate();
 	const startDateFormatted = dayjs(startDate).format('DD MMM');
@@ -62,6 +62,12 @@ export const EoCard = ({
 		setButtonDisplay(true);
 	};
 
+	const removeFromCart = () => {
+		const newCart = cart.filter((item) => item.name !== name);
+		setCart(newCart);
+		setButtonDisplay(false);
+	};
+
 	return (
 		<main
 			className="divContainer"
@@ -81,14 +87,23 @@ export const EoCard = ({
 				<p className="font-semibold text-rose-700 text-lg">{name}</p>
 				<div className="text-green-700 flex gap-2 items-center">
 					<SeatsLeft />
-					99 seats left
+					{slots} seats left
 				</div>
 
 				<div className="text-gray-500 flex gap-2">
 					<Time />
 					<p>
 						{/* {dateFormatted} */}
-						{startDateFormatted + ' ' + startTime + ' '} - {' ' + endDateFormatted + ' ' + endTime}
+						{startDateFormatted === endDateFormatted ? (
+							<>
+								{startDateFormatted + ' ' + startTime + ' '} - {' ' + endTime}
+							</>
+						) : (
+							<>
+								{startDateFormatted + ' ' + startTime + ' '} -{' '}
+								{' ' + endDateFormatted + ' ' + endTime}
+							</>
+						)}
 					</p>
 				</div>
 				<div className="text-gray-500 flex gap-2">
@@ -104,19 +119,21 @@ export const EoCard = ({
 						{!data
 							? stringTruncate(description, 160)
 							: stringTruncate(description, description.length)}
+						{description?.length >= 160 && (
+							<span className="font-semibold cursor-pointer" onClick={onClickHandler}>
+								{data ? '  Read Less...' : '  Read More...'}
+							</span>
+						)}
 					</p>
+					{/* {description?.length >= 160 && (
+						
+							{data ? 'Read Less...' : 'Read More...'}
+						
+					)} */}
 				</div>
 
-				{description?.length >= 160 && (
-					<div className="text-gray-500 flex gap-2">
-						<p className="font-semibold cursor-pointer" onClick={onClickHandler}>
-							{data ? 'Read Less...' : 'Read More...'}
-						</p>
-					</div>
-				)}
-
 				<div
-					className="flex items-center w-full justify-center"
+					className="flex items-center w-full justify-left"
 					//   style={{ zIndex: "-1" }}
 				>
 					<span className="flex items-center text-lg">
@@ -131,7 +148,7 @@ export const EoCard = ({
 							onClick={() => setCount((count) => (count < 1 ? count : count - 1))}
 						>
 							{/* <RemoveFromCart /> */}
-							<span className="text-2xl">{' - '}</span>
+							<span className="text-2xl px-2">{' - '}</span>
 						</Button>
 						<p className="px-2">{count}</p>
 						<Button
@@ -145,15 +162,28 @@ export const EoCard = ({
 							onClick={() => setCount((count) => (count === 2 ? count : count + 1))}
 						>
 							{/* <AddToCart /> */}
-							<span className="text-2xl">{' + '}</span>
+							<span className="text-2xl px-2">{' + '}</span>
 						</Button>
 						<Button
 							onClick={onAddToCart}
 							color={buttonDisplay ? 'success' : 'danger'}
-							size="md"
+							size="lg"
+							variant="solid"
 							className="buttonContainer"
 						>
-							<span>{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
+							<span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
+						</Button>
+						<Button
+							isIconOnly
+							// color={count === 1 ? undefined : 'danger'}
+							variant="light"
+							// aria-label="Take a photo"
+							size="sm"
+							radius="md"
+							className="ml-12"
+							onClick={removeFromCart}
+						>
+							<Dustbin />
 						</Button>
 					</span>
 				</div>

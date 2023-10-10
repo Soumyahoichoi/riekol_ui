@@ -27,10 +27,3 @@
 	border-color: rgb(203 213 225 / var(--tw-border-opacity));
 	border-width: 1px;
 }
-
-@media screen and (max-width: 596px) {
-	.imageContainer {
-		width: auto !important;
-		height: auto !important;
-	}
-}
