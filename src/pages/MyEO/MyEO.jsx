@@ -78,13 +78,18 @@ const MyEO = () => {
             champion={item.eventChampion}
             regFee={item.registrationfee}
             priceId={item.priceId}
+            slots={item.totalslot}
             display={item.category === tab || tab === "all" ? "block" : "none"}
           />
         ))}
       </section>
       {cart.length > 0 && (
         <div className="floating-container">
-          <Button color="danger" onClick={handleCheckout} size="lg">
+          <Button
+            onClick={handleCheckout}
+            size="lg"
+            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+          >
             Checkout
           </Button>
           {/* <button class="button">Floating Button</button> */}
