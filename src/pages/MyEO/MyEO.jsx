@@ -19,7 +19,7 @@ const MyEO = () => {
 
   const handleCheckout = async () => {
     window.open(
-      "https://riekol-ui-git-master-riekol.vercel.app",
+      "https://riekol-ui-git-master-riekol.vercel.app/checkout",
       "__blank",
       "noopener,noreferrer"
     );
