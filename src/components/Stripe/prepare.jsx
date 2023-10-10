@@ -8,7 +8,7 @@ import { useStore } from "../../store/store.js";
 import { Spinner } from "@nextui-org/react";
 import "./styles.css";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const StripeForm = () => {
   const [options, setOptions] = useState();
@@ -16,7 +16,9 @@ export const StripeForm = () => {
   const navigate = useNavigate();
 
   const { cart } = useStore((store) => ({ cart: store.cart }));
-  const billingamount = cart.reduce(
+  const locaton = useLocation();
+
+  const billingamount = cart?.reduce(
     (acc, item) => acc + item.count * item.registration_fee,
     0
   );
@@ -24,24 +26,33 @@ export const StripeForm = () => {
   useEffect(() => {
     async function fetchClientSecret() {
       //   console.log("hello");
-      let secret = await getClientSecret(+billingamount * 100);
-      const options = {
-        clientSecret: getResultFromData(secret),
-        // appearance: {/*...*/},
-        appearance: {
-          theme: "stripe",
-        },
-      };
 
-      setOptions(options);
-    }
+      const billing = +new URLSearchParams(locaton.search).get("billing");
+      if (billing) {
+        let secret = await getClientSecret(+billing * 100);
+        const options = {
+          clientSecret: getResultFromData(secret),
+          // appearance: {/*...*/},
+          appearance: {
+            theme: "stripe",
+          },
+        };
 
-    if (billingamount && typeof billingamount === "number") {
-      fetchClientSecret();
-    } else {
-      toast.error("Please provide a valid billing");
-      navigate("/myeo");
+        setOptions(options);
+      } else {
+        toast.error("Please provide a valid billing");
+
+        navigate("/myeo");
+      }
     }
+    fetchClientSecret();
+
+    // if (billingamount && typeof billingamount === "number") {
+    //   fetchClientSecret();
+    // } else {
+    //   toast.error("Please provide a valid billing");
+    //   navigate("/myeo");
+    // }
   }, []);
   return (
     <>

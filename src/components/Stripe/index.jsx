@@ -33,7 +33,7 @@ const CheckoutForm = ({ bill }) => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: returnUrl(),
+        return_url: `${returnUrl()}/thankyou`,
       },
     });
 
@@ -75,7 +75,7 @@ const CheckoutForm = ({ bill }) => {
 };
 
 const CheckoutSummary = ({ cart, total }) => {
-  console.log(cart);
+  console.log(cart, total);
   return (
     <>
       <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
