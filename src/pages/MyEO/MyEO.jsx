@@ -8,6 +8,7 @@ import { useStore } from "../../store/store";
 // import { getResultFromData } from '../../helper';
 // import { toast } from 'sonner';
 import { useNavigate } from "react-router-dom";
+import { returnUrl } from "../../../decideENV";
 // import Cart from "../../components/Cart/Cart";
 
 // const isBrowser = typeof window !== 'undefined';
@@ -19,7 +20,10 @@ const MyEO = () => {
 
   const handleCheckout = async () => {
     window.open(
-      "https://riekol-ui-git-master-riekol.vercel.app/checkout",
+      `${returnUrl()}/checkout?billing=${cart?.reduce(
+        (acc, item) => acc + item.count * item.registration_fee,
+        0
+      )}`,
       "__blank",
       "noopener,noreferrer"
     );
