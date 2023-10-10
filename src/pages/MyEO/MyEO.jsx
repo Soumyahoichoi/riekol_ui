@@ -18,7 +18,8 @@ const MyEO = () => {
 	const [tab, setTab] = useState('all');
 
 	const handleCheckout = async () => {
-		navigate('/checkout');
+		window.open('https://riekol-ui-git-master-riekol.vercel.app', '__blank', 'noopener,noreferrer');
+		// navigate('/checkout');
 		// if (cart) {
 		//   const session = await createSession(cart);
 		//   const result = getResultFromData(session);
@@ -52,7 +53,6 @@ const MyEO = () => {
 					variant="underlined"
 					aria-label="Tabs variants"
 					size="lg"
-					tabIndex={0}
 				>
 					<Tab key="all" title="All" />
 					<Tab key="Sports" title="Sports" />
