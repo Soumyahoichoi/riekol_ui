@@ -37,8 +37,6 @@ const CheckoutForm = ({ bill }) => {
       },
     });
 
-    console.log(error);
-
     if (error) {
       // This point will only be reached if there is an immediate error when
       // confirming the payment. Show error to your customer (for example, payment
