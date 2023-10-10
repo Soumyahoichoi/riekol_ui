@@ -49,6 +49,7 @@ const MyEO = () => {
 					onSelectionChange={handleTabChange}
 					variant="underlined"
 					aria-label="Tabs variants"
+					size="lg"
 				>
 					<Tab key="all" title="All" />
 					<Tab key="Sports" title="Sports" />

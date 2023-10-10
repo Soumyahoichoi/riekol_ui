@@ -98,21 +98,22 @@ export const EoCard = ({
 
 				{/* {data && (
 					<> */}
+
+				<div className="text-gray-500 flex gap-2 flex">
+					<p className="description">
+						{!data
+							? stringTruncate(description, 160)
+							: stringTruncate(description, description.length)}
+					</p>
+				</div>
+
 				{description?.length >= 160 && (
-					<div className="text-gray-500 flex gap-2 flex">
-						<p className="description">
-							{!data
-								? stringTruncate(description, 160)
-								: stringTruncate(description, description.length)}
+					<div className="text-gray-500 flex gap-2">
+						<p className="font-semibold cursor-pointer" onClick={onClickHandler}>
+							{data ? 'Read Less...' : 'Read More...'}
 						</p>
 					</div>
 				)}
-
-				<div className="text-gray-500 flex gap-2">
-					<p className="font-semibold cursor-pointer" onClick={onClickHandler}>
-						{data ? 'Read Less...' : 'Read More...'}
-					</p>
-				</div>
 
 				<div
 					className="flex items-center w-full justify-center"
@@ -122,25 +123,29 @@ export const EoCard = ({
 						<Button
 							disabled={count === 1}
 							isIconOnly
-							color={count === 1 ? undefined : 'danger'}
-							variant="light"
+							// color={count === 1 ? undefined : 'danger'}
+							variant="shadow"
 							aria-label="Take a photo"
 							size="md"
+							radius="md"
 							onClick={() => setCount((count) => (count < 1 ? count : count - 1))}
 						>
-							<RemoveFromCart />
+							{/* <RemoveFromCart /> */}
+							<span className="text-2xl">{' - '}</span>
 						</Button>
-						{count}
+						<p className="px-2">{count}</p>
 						<Button
 							disabled={count === 2}
 							isIconOnly
-							color={count === 2 ? undefined : 'success'}
-							variant="light"
+							// color={count === 2 ? undefined : 'success'}
+							variant="shadow"
 							aria-label="Take a photo"
 							size="md"
+							radius="md"
 							onClick={() => setCount((count) => (count === 2 ? count : count + 1))}
 						>
-							<AddToCart />
+							{/* <AddToCart /> */}
+							<span className="text-2xl">{' + '}</span>
 						</Button>
 						<Button
 							onClick={onAddToCart}

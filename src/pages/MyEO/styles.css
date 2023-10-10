@@ -44,6 +44,9 @@
 	.card--content {
 		margin-top: 4rem;
 	}
+	.floating-container {
+		position: fixed;
+	}
 }
 
 @media screen and (max-width: 960px) {
@@ -60,11 +63,10 @@
 }
 
 .floating-container {
-	position: fixed;
 	width: 100vw;
 	margin: auto;
 	bottom: 0;
-	/* background: white; */
+	padding-top: 15px;
 	border-radius: 0.5rem;
 }
 
