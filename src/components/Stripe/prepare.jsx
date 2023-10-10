@@ -5,10 +5,15 @@ import { getClientSecret } from "../../api/checkout.js";
 import { getResultFromData } from "../../helper.js";
 import CheckoutForm from "./index.jsx";
 import { useStore } from "../../store/store.js";
+import { Spinner } from "@nextui-org/react";
+import "./styles.css";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export const StripeForm = () => {
   const [options, setOptions] = useState();
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+  const navigate = useNavigate();
 
   const { cart } = useStore((store) => ({ cart: store.cart }));
   const billingamount = cart.reduce(
@@ -18,8 +23,8 @@ export const StripeForm = () => {
 
   useEffect(() => {
     async function fetchClientSecret() {
-      console.log("hello");
-      let secret = await getClientSecret(billingamount);
+      //   console.log("hello");
+      let secret = await getClientSecret(+billingamount * 100);
       const options = {
         clientSecret: getResultFromData(secret),
         // appearance: {/*...*/},
@@ -30,14 +35,24 @@ export const StripeForm = () => {
 
       setOptions(options);
     }
-    fetchClientSecret();
+
+    if (billingamount && typeof billingamount === "number") {
+      fetchClientSecret();
+    } else {
+      toast.error("Please provide a valid billing");
+      navigate("/myeo");
+    }
   }, []);
   return (
     <>
-      {stripePromise && options && (
+      {stripePromise && options ? (
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm bill={billingamount} />
         </Elements>
+      ) : (
+        <section className="checkout">
+          <Spinner size="lg" />
+        </section>
       )}
     </>
   );
