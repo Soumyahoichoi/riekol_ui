@@ -5,5 +5,5 @@ export const createSession = (data) => {
 };
 
 export const getClientSecret = (amount) => {
-  return ServiceInstance.post("/users/getSecet", { amount });
+  return ServiceInstance.post("/users/getSecret", { amount });
 };
