@@ -317,7 +317,7 @@ export const Cards = [
     eoDate: null,
     eoStartDate: "14/1/2024",
     eoEndDate: "14/1/2024",
-    registrationfee: 5,
+    registrationfee: 500,
     startTime: "12:30:00 PM",
     endTime: "3:30:00 PM",
     Image: [
