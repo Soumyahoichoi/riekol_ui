@@ -1,16 +1,16 @@
 import { Button, Tab, Tabs } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.css';
 import { Cards } from '../../constants';
 import { EoCard } from '../../components/EoCard/EoCard';
 import { useStore } from '../../store/store';
-import { createSession } from '../../api/checkout';
-import { getResultFromData } from '../../helper';
-import { toast } from 'sonner';
+// import { createSession } from '../../api/checkout';
+// import { getResultFromData } from '../../helper';
+// import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 // import Cart from "../../components/Cart/Cart";
 
-const isBrowser = typeof window !== 'undefined';
+// const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
 	const cart = useStore((state) => state.cart);
@@ -51,12 +51,12 @@ const MyEO = () => {
 					aria-label="Tabs variants"
 				>
 					<Tab key="all" title="All" />
-					<Tab key="Iconic Kolkata" title="Iconic Kolkata" />
-					<Tab key="Off the beaten path" title="Off the beaten path" />
-					{/* <Tab key="experiential" title="Experiential" />
-					<Tab key="interaction" title="Interaction" />
-					<Tab key="f&b" title="F&B" />
-					<Tab key="health & wellness" title="Health & Wellness" /> */}
+					<Tab key="Sports" title="Sports" />
+					<Tab key="Spirituality" title="Spirituality" />
+					<Tab key="Experiential" title="Experiential" />
+					{/* <Tab key="interaction" title="Interaction" /> */}
+					<Tab key="F&B" title="F&B" />
+					{/* <Tab key="health & wellness" title="Health & Wellness" /> */}
 				</Tabs>
 			</section>
 
