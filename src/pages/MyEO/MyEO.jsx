@@ -36,6 +36,8 @@ const MyEO = () => {
 	const handleTabChange = (value) => {
 		// console.log(value);
 		setTab(value);
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		//Call setTab here
 	};
 
@@ -50,6 +52,7 @@ const MyEO = () => {
 					variant="underlined"
 					aria-label="Tabs variants"
 					size="lg"
+					tabIndex={0}
 				>
 					<Tab key="all" title="All" />
 					<Tab key="Sports" title="Sports" />
