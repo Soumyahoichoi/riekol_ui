@@ -15,7 +15,7 @@
 	/* overflow-y: scroll; */
 	display: flex;
 	gap: 1rem;
-	justify-content: center;
+	justify-content: left;
 	flex-wrap: wrap;
 	margin: 5rem 0rem;
 }
@@ -52,6 +52,7 @@
 	}
 	.card--content {
 		margin: 4rem 0rem;
+		justify-content: center;
 	}
 }
 
