@@ -38,7 +38,7 @@ export const Cards = [
 		eoStartDate: '1/10/2024',
 		eoEndDate: '1/10/2024',
 		registrationfee: '9,000',
-		startTime: '14:00:00',
+		startTime: '14:00 PM',
 		endTime: '12:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695727526452.jpeg',
@@ -76,8 +76,8 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '3,000',
-		startTime: '15:30:00',
-		endTime: '6:30:00 PM',
+		startTime: '3:30 PM',
+		endTime: '6:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982948579.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982950497.jpeg',
@@ -107,8 +107,8 @@ export const Cards = [
 		eoStartDate: '1/10/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '1,500',
-		startTime: '12:30:00',
-		endTime: '3:30:00 PM',
+		startTime: '12:30 PM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982948579.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695982950497.jpeg',
@@ -138,8 +138,8 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '3,000',
-		startTime: '15:30:00',
-		endTime: '6:00:00 PM',
+		startTime: '15:30 PM',
+		endTime: '6:00 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695973930465.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1695973931379.jpeg'
@@ -167,8 +167,8 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '7,000',
-		startTime: '15:00:00',
-		endTime: '6:00:00 PM',
+		startTime: '15:00 AM',
+		endTime: '6:00 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696235397984.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696235398071.jpeg',
@@ -197,8 +197,8 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '5,000',
-		startTime: '19:15:00',
-		endTime: '23:30:00 AM',
+		startTime: '19:15 AM',
+		endTime: '23:30 AM',
 		Image: ['https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696243214026.jpeg'],
 		thumb_image:
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696243214770.jpeg',
@@ -223,8 +223,8 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '5,000',
-		startTime: '19:00:00',
-		endTime: '10:30:00 PM',
+		startTime: '19:00 AM',
+		endTime: '10:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696314704145.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696314704864.jpeg',
@@ -253,7 +253,7 @@ export const Cards = [
 		eoStartDate: '1/11/2024',
 		eoEndDate: '1/11/2024',
 		registrationfee: '3,000',
-		startTime: '15:00:00',
+		startTime: '15:00 PM',
 		endTime: '6:00:00 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696315731931.jpeg',
@@ -284,8 +284,8 @@ export const Cards = [
 		eoStartDate: '1/14/2024',
 		eoEndDate: '1/14/2024',
 		registrationfee: '3,000',
-		startTime: '12:30:00 PM',
-		endTime: '3:30:00 PM',
+		startTime: '12:30 PM',
+		endTime: '3:30 PM',
 		Image: [
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316153687.jpeg',
 			'https://riekolstorageaccount.blob.core.windows.net/eocontainer/1696316156876.jpeg',
