@@ -7,6 +7,7 @@ import {
 import { Button } from "@nextui-org/react";
 import { useStore } from "../../store/store";
 import "./styles.css";
+import { returnUrl } from "../../../decideENV";
 
 const CheckoutForm = ({ bill }) => {
   const stripe = useStripe();
@@ -32,7 +33,7 @@ const CheckoutForm = ({ bill }) => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: "http://localhost:5173/thankyou",
+        return_url: returnUrl(),
       },
     });
 
