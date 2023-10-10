@@ -18,7 +18,11 @@ const MyEO = () => {
   const [tab, setTab] = useState("all");
 
   const handleCheckout = async () => {
-    window.open("https://www.google.com/");
+    window.open(
+      "https://riekol-ui-git-master-riekol.vercel.app",
+      "__blank",
+      "noopener,noreferrer"
+    );
     // navigate('/checkout');
     // if (cart) {
     //   const session = await createSession(cart);
