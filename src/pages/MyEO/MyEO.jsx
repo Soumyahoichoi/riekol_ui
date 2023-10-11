@@ -102,7 +102,7 @@ const MyEO = () => {
             {cart.length > 0 && (
                 <div className="floating-container">
                     <Button onClick={handleCheckout} size="lg" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" isLoading={loading}>
-                        Checkout
+                        Checkout {`(${cart.length} My EOs added)`}
                     </Button>
                     {/* <button class="button">Floating Button</button> */}
                 </div>
