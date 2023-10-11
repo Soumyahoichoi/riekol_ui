@@ -1,13 +1,13 @@
 .tabs-container {
-	border-color: rgb(203 213 225);
-	padding: 2rem;
-	border-radius: 10px;
+    border-color: rgb(203 213 225);
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 .dimension {
-	width: 50rem;
-	width: 100%;
-	margin-top: 2rem;
+    width: 50rem;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .card--content {
@@ -21,23 +21,23 @@
 }
 
 .container-box {
-	padding: 0px;
+    padding: 0px;
 }
 .primaryBox {
-	--tw-border-opacity: 1;
-	border-color: rgb(203 213 225 / var(--tw-border-opacity));
-	border-width: 1px;
-	border-radius: 0.375rem;
-	width: 100vw;
-	/* margin-top: 2rem; */
-	padding: 8px;
-	z-index: 2;
-	overflow-x: auto;
-	position: fixed;
-	top: 0;
-	right: 0;
-	margin: 0px;
-	background-color: #fff;
+    --tw-border-opacity: 1;
+    border-color: rgb(203 213 225 / var(--tw-border-opacity));
+    border-width: 1px;
+    border-radius: 0.375rem;
+    width: 100vw;
+    /* margin-top: 2rem; */
+    padding: 8px;
+    z-index: 2;
+    overflow-x: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0px;
+    background-color: #fff;
 }
 
 /* @media screen and (max-width: 1152px) {
@@ -47,33 +47,33 @@
 } */
 
 @media screen and (max-width: 597px) {
-	.floating-container {
-		position: fixed;
-	}
-	.card--content {
-		margin: 4rem 0rem;
-		justify-content: center;
-	}
+    .floating-container {
+        position: fixed;
+    }
+    .card--content {
+        margin: 4rem 0rem;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 960px) {
-	.primaryBox {
-		border: none;
-		z-index: 2;
-	}
+    .primaryBox {
+        border: none;
+        z-index: 2;
+    }
 }
 
 .floating-container {
-	width: 100vw;
-	margin: auto;
-	bottom: 0;
-	right: 0;
-	position: fixed;
-	padding-top: 15px;
-	border-radius: 0.5rem;
+    width: 100vw;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    padding-top: 15px;
+    border-radius: 0.5rem;
 }
 
 .floating-container > button {
-	margin: 0.5rem;
-	width: 20rem;
+    margin: 0.5rem;
+    width: 20rem;
 }
