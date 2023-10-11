@@ -1,7 +1,7 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 const Home = () => {
-  return <Navigate to="/myeo" />;
+    return <Navigate to="/myeo" />;
 };
 
 export default Home;
