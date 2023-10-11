@@ -18,7 +18,7 @@ const MyEO = () => {
   const navigate = useNavigate();
   const [tab, setTab] = useState("all");
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     // const billingAmount = cart?.reduce((acc, item) => {
     //   if (typeof item.registration_fee === "string") {
     //     return acc + item.count * +item.registration_fee.split(",").join("");
@@ -34,22 +34,22 @@ const MyEO = () => {
     // window.open(url, "__blank", "noopener,noreferrer");
     // navigate('/checkout');
     if (cart) {
-      // const session = await createSession(cart);
-      // const result = getResultFromData(session);
+      const session = await createSession(cart);
+      const result = getResultFromData(session);
 
-      // if (isBrowser && result) {
-      //   window.open(result, "_blank", "noopener,noreferrer");
-      // } else {
-      //   toast.error("Something went wrong!");
-      // }
-      createSession(cart).then((res) => {
-        const result = getResultFromData(res);
-        if (isBrowser && result) {
-          window.open(result, "_blank", "noopener,noreferrer");
-        } else {
-          toast.error("Something went wrong!");
-        }
-      });
+      if (isBrowser && result) {
+        window.location.assign(result);
+      } else {
+        toast.error("Something went wrong!");
+      }
+      // createSession(cart).then((res) => {
+      //   const result = getResultFromData(res);
+      //   if (isBrowser && result) {
+      //     window.location.assign(result);
+      //   } else {
+      //     toast.error("Something went wrong!");
+      //   }
+      // });
     } else {
       toast.error("Please add something to the cart");
     }
