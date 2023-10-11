@@ -1,73 +1,73 @@
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  //   Link,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
-  Button,
-} from "@nextui-org/react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useStore } from "../../store/store";
-import { createSession } from "../../api/checkout";
-import { getResultFromData } from "../../helper";
-import { toast } from "sonner";
+    Navbar,
+    NavbarBrand,
+    NavbarContent,
+    NavbarItem,
+    //   Link,
+    DropdownItem,
+    DropdownTrigger,
+    Dropdown,
+    DropdownMenu,
+    Avatar,
+    Button
+} from '@nextui-org/react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useStore } from '../../store/store';
+import { createSession } from '../../api/checkout';
+import { getResultFromData } from '../../helper';
+import { toast } from 'sonner';
 
 const NavBar = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const cart = useStore((state) => state.cart);
+    const [activeTab, setActiveTab] = useState(0);
+    const cart = useStore((state) => state.cart);
 
-  const handleCheckout = async () => {
-    if (cart) {
-      const session = await createSession(cart);
-      const result = getResultFromData(session);
+    const handleCheckout = async () => {
+        if (cart) {
+            const session = await createSession(cart);
+            const result = getResultFromData(session);
 
-      if (isBrowser && result) {
-        window.open(result, "_parent", "noopener,noreferrer");
-      } else {
-        toast.error("Something went wrong!");
-      }
-    } else {
-      toast.error("Please add something to the cart");
-    }
-  };
-  return (
-    <div>
-      {" "}
-      <Navbar>
-        <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">EO Kol</p>
-        </NavbarBrand>
+            if (isBrowser && result) {
+                window.open(result, '_parent', 'noopener,noreferrer');
+            } else {
+                toast.error('Something went wrong!');
+            }
+        } else {
+            toast.error('Please add something to the cart');
+        }
+    };
+    return (
+        <div>
+            {' '}
+            <Navbar>
+                <NavbarBrand>
+                    {/* <AcmeLogo /> */}
+                    <p className="font-bold text-inherit">EO Kol</p>
+                </NavbarBrand>
 
-        <NavbarContent className="sm:flex gap-4" justify="center">
-          <NavbarItem isActive={activeTab === 0}>
-            <Link to="/myeo" onClick={() => setActiveTab(0)}>
-              My EO
-            </Link>
-          </NavbarItem>
-          {/* <NavbarItem isActive>
+                <NavbarContent className="sm:flex gap-4" justify="center">
+                    <NavbarItem isActive={activeTab === 0}>
+                        <Link to="/myeo" onClick={() => setActiveTab(0)}>
+                            My EO
+                        </Link>
+                    </NavbarItem>
+                    {/* <NavbarItem isActive>
             <Link href="#" aria-current="page" color="secondary">
               Customers
             </Link>
           </NavbarItem> */}
-          <NavbarItem isActive={activeTab === 1}>
-            <Link to="/deepdive" onClick={() => setActiveTab(1)}>
-              Deep Dive
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
+                    <NavbarItem isActive={activeTab === 1}>
+                        <Link to="/deepdive" onClick={() => setActiveTab(1)}>
+                            Deep Dive
+                        </Link>
+                    </NavbarItem>
+                </NavbarContent>
 
-        <NavbarContent as="div" justify="end">
-          <Button color="danger" onClick={handleCheckout}>
-            Checkout
-          </Button>
-          {/* <Dropdown placement="bottom-end">
+                <NavbarContent as="div" justify="end">
+                    <Button color="danger" onClick={handleCheckout}>
+                        Checkout
+                    </Button>
+                    {/* <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
                 isBordered
@@ -97,10 +97,10 @@ const NavBar = () => {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown> */}
-        </NavbarContent>
-      </Navbar>
-    </div>
-  );
+                </NavbarContent>
+            </Navbar>
+        </div>
+    );
 };
 
 export default NavBar;

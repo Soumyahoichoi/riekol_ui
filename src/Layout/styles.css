@@ -1,12 +1,12 @@
 .layout {
-	height: 100vh;
-	background-size: cover;
+    height: 100vh;
+    background-size: cover;
 }
 
 @media screen and (min-width: 597px) {
-	.outletContainer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+    .outletContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

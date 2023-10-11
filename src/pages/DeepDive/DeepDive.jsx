@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const DeepDive = () => {
-  return <div>DeepDive</div>;
+    return <div>DeepDive</div>;
 };
 
 export default DeepDive;

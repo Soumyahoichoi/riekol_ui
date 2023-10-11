@@ -41,7 +41,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
             date: date,
             registration_fee: regFee,
             price_id: priceId,
-            count: count,
+            count: count
         });
 
         setCart(newCart);
