@@ -38,10 +38,18 @@ const MyEO = () => {
       const result = getResultFromData(session);
 
       if (isBrowser && result) {
-        window.open(result, "_blank", "noopener,noreferrer");
+        window.location.assign(result);
       } else {
         toast.error("Something went wrong!");
       }
+      // createSession(cart).then((res) => {
+      //   const result = getResultFromData(res);
+      //   if (isBrowser && result) {
+      //     window.location.assign(result);
+      //   } else {
+      //     toast.error("Something went wrong!");
+      //   }
+      // });
     } else {
       toast.error("Please add something to the cart");
     }
