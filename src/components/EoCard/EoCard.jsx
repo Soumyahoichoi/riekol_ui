@@ -102,8 +102,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
                 <div className="text-gray-500 flex gap-2 flex">
                     <p className="description">
-                        {!data ? stringTruncate(description, 160) : stringTruncate(description, description.length)}
-                        {description?.length >= 160 && (
+                        {!data ? stringTruncate(description, 140) : stringTruncate(description, description.length)}
+                        {description?.length >= 140 && (
                             <span className="font-semibold cursor-pointer" onClick={onClickHandler}>
                                 {data ? '  Read Less...' : '  Read More...'}
                             </span>
@@ -154,22 +154,24 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                             {/* <AddToCart /> */}
                             <span className="text-2xl px-2">{' + '}</span>
                         </Button>
-                        <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainer">
+                        <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
                             <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
                         </Button>
-                        <Button
-                            isIconOnly
-                            // color={count === 1 ? undefined : 'danger'}
-                            variant="light"
-                            // aria-label="Take a photo"
-                            size="sm"
-                            radius="md"
-                            className="ml-12"
-                            onClick={removeFromCart}
-                            disabled={cart.length === 0}
-                        >
-                            <Dustbin />
-                        </Button>
+                        {cart.find((item) => item.name === name) && (
+                            <Button
+                                isIconOnly
+                                // color={count === 1 ? undefined : 'danger'}
+                                variant="light"
+                                // aria-label="Take a photo"
+                                size="sm"
+                                radius="md"
+                                className="ml-12 cursor-pointer"
+                                onClick={removeFromCart}
+                                // disabled={cart.length === 0}
+                            >
+                                <Dustbin />
+                            </Button>
+                        )}
                     </span>
                 </div>
             </section>
