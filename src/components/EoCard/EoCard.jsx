@@ -117,9 +117,9 @@ export const EoCard = ({
 				<div className="text-gray-500 flex gap-2 flex">
 					<p className="description">
 						{!data
-							? stringTruncate(description, 160)
+							? stringTruncate(description, 140)
 							: stringTruncate(description, description.length)}
-						{description?.length >= 160 && (
+						{description?.length >= 140 && (
 							<span className="font-semibold cursor-pointer" onClick={onClickHandler}>
 								{data ? '  Read Less...' : '  Read More...'}
 							</span>
