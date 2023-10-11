@@ -40,7 +40,7 @@ export const StripeForm = () => {
       } else {
         toast.error("Please provide a valid billing");
 
-        navigate("/myeo");
+        // navigate("/myeo");
       }
     }
     fetchClientSecret();

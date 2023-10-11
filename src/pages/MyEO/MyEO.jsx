@@ -4,14 +4,14 @@ import "./styles.css";
 import { Cards } from "../../constants";
 import { EoCard } from "../../components/EoCard/EoCard";
 import { useStore } from "../../store/store";
-// import { createSession } from '../../api/checkout';
-// import { getResultFromData } from '../../helper';
-// import { toast } from 'sonner';
+import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { returnUrl } from "../../../decideENV";
+import { createSession } from "../../api/checkout";
+import { getResultFromData } from "../../helper";
 // import Cart from "../../components/Cart/Cart";
 
-// const isBrowser = typeof window !== 'undefined';
+const isBrowser = typeof window !== "undefined";
 
 const MyEO = () => {
   const cart = useStore((state) => state.cart);
@@ -19,38 +19,40 @@ const MyEO = () => {
   const [tab, setTab] = useState("all");
 
   const handleCheckout = async () => {
-    window.open(
-      `${returnUrl()}/checkout?billing=${cart?.reduce(
-        (acc, item) => acc + item.count * item.registration_fee,
-        0
-      )}`,
-      "__blank",
-      "noopener,noreferrer"
-    );
-    // navigate('/checkout');
-    // if (cart) {
-    //   const session = await createSession(cart);
-    //   const result = getResultFromData(session);
-
-    //   if (isBrowser && result) {
-    //     window.open(result, "_self", "noopener,noreferrer");
-    //   } else {
-    //     toast.error("Something went wrong!");
+    // const billingAmount = cart?.reduce((acc, item) => {
+    //   if (typeof item.registration_fee === "string") {
+    //     return acc + item.count * +item.registration_fee.split(",").join("");
     //   }
-    // } else {
-    //   toast.error("Please add something to the cart");
-    // }
+
+    //   return acc + item.count * item.registration_fee;
+    // }, 0);
+
+    // // console.log(cart, billingAmount);
+
+    // // return;
+    // const url = `${returnUrl()}/checkout?billing=${billingAmount}`;
+    // window.open(url, "__blank", "noopener,noreferrer");
+    // navigate('/checkout');
+    if (cart) {
+      const session = await createSession(cart);
+      const result = getResultFromData(session);
+
+      if (isBrowser && result) {
+        window.open(result, "_blank", "noopener,noreferrer");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } else {
+      toast.error("Please add something to the cart");
+    }
   };
 
   const handleTabChange = (value) => {
-    // console.log(value);
     setTab(value);
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     //Call setTab here
   };
-
-  // console.log(cart.length, 'data', cart);
 
   return (
     <div className="flex justify-center flex-col container-box">
