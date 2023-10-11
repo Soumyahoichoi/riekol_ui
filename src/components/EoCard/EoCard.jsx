@@ -8,6 +8,7 @@ import Dustbin from '../../assets/dustbin';
 import { Button } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
+import { toast } from 'sonner';
 
 dayjs.extend(LocalizedFormat);
 
@@ -46,12 +47,17 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
         setCart(newCart);
         setButtonDisplay(true);
+
+        toast.success('Added to cart');
     };
 
     const removeFromCart = () => {
         const newCart = cart.filter((item) => item.name !== name);
         setCart(newCart);
         setButtonDisplay(false);
+        setCount(1);
+
+        toast.success('Removed to cart');
     };
 
     return (
@@ -94,7 +100,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                 {/* {data && (
 					<> */}
 
-                <div className="text-gray-500 flex gap-2 flex">
+                <div className="text-gray-500 flex gap-2 flex" style={{ height: '5rem' }}>
                     <p className="description">
                         {!data ? stringTruncate(description, 160) : stringTruncate(description, description.length)}
                         {description?.length >= 160 && (
@@ -114,7 +120,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                     className="flex items-center w-full justify-left"
                     //   style={{ zIndex: "-1" }}
                 >
-                    <span className="flex items-center text-lg">
+                    <span className="flex items-center text-lg w-full">
                         <Button
                             disabled={count === 1}
                             isIconOnly
@@ -123,7 +129,10 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                             aria-label="Take a photo"
                             size="md"
                             radius="md"
-                            onClick={() => setCount((count) => (count < 1 ? count : count - 1))}
+                            onClick={() => {
+                                setCount((count) => (count < 1 ? count : count - 1));
+                                setButtonDisplay(false);
+                            }}
                         >
                             {/* <RemoveFromCart /> */}
                             <span className="text-2xl px-2">{' - '}</span>
@@ -137,7 +146,10 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                             aria-label="Take a photo"
                             size="md"
                             radius="md"
-                            onClick={() => setCount((count) => (count === 2 ? count : count + 1))}
+                            onClick={() => {
+                                setCount((count) => (count === 2 ? count : count + 1));
+                                setButtonDisplay(false);
+                            }}
                         >
                             {/* <AddToCart /> */}
                             <span className="text-2xl px-2">{' + '}</span>
