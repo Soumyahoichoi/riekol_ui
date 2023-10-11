@@ -16,8 +16,8 @@
 .description {
     text-align: left;
 }
-.buttonContainer {
-    width: 100%;
+.buttonContainers {
+    /* width: 100%; */
     margin-left: 15px;
 }
 .divContainer {
