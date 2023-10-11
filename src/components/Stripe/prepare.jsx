@@ -20,46 +20,46 @@ export const StripeForm = () => {
 
     const billingamount = cart?.reduce((acc, item) => acc + item.count * item.registration_fee, 0);
 
-    useEffect(() => {
-        async function fetchClientSecret() {
-            const billing = +new URLSearchParams(locaton.search).get('billing');
-            if (billing) {
-                let secret = await getClientSecret(+billing * 100);
-                const options = {
-                    clientSecret: getResultFromData(secret),
-                    // appearance: {/*...*/},
-                    appearance: {
-                        theme: 'stripe'
-                    }
-                };
+    // useEffect(() => {
+    //     async function fetchClientSecret() {
+    //         const billing = +new URLSearchParams(locaton.search).get('billing');
+    //         if (billing) {
+    //             let secret = await getClientSecret(+billing * 100);
+    //             const options = {
+    //                 clientSecret: getResultFromData(secret),
+    //                 // appearance: {/*...*/},
+    //                 appearance: {
+    //                     theme: 'stripe'
+    //                 }
+    //             };
 
-                setOptions(options);
-            } else {
-                toast.error('Please provide a valid billing');
+    //             setOptions(options);
+    //         } else {
+    //             toast.error('Please provide a valid billing');
 
-                // navigate("/myeo");
-            }
-        }
-        fetchClientSecret();
+    //             // navigate("/myeo");
+    //         }
+    //     }
+    //     fetchClientSecret();
 
-        // if (billingamount && typeof billingamount === "number") {
-        //   fetchClientSecret();
-        // } else {
-        //   toast.error("Please provide a valid billing");
-        //   navigate("/myeo");
-        // }
-    }, []);
+    //     // if (billingamount && typeof billingamount === "number") {
+    //     //   fetchClientSecret();
+    //     // } else {
+    //     //   toast.error("Please provide a valid billing");
+    //     //   navigate("/myeo");
+    //     // }
+    // }, []);
     return (
         <>
-            {stripePromise && options ? (
-                <Elements stripe={stripePromise} options={options}>
-                    <CheckoutForm bill={billingamount} />
-                </Elements>
+            {/* {stripePromise && options ? (
+                <Elements stripe={stripePromise} options={options}> */}
+            <CheckoutForm bill={billingamount} />
+            {/* </Elements>
             ) : (
                 <section className="checkout">
                     <Spinner size="lg" />
                 </section>
-            )}
+            )} */}
         </>
     );
 };
