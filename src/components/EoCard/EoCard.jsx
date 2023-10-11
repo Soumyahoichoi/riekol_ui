@@ -100,7 +100,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                 {/* {data && (
 					<> */}
 
-                <div className="text-gray-500 flex gap-2 flex" style={{ height: '5rem' }}>
+                <div className="text-gray-500 flex gap-2 flex">
                     <p className="description">
                         {!data ? stringTruncate(description, 160) : stringTruncate(description, description.length)}
                         {description?.length >= 160 && (
