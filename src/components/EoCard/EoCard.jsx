@@ -166,6 +166,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                             radius="md"
                             className="ml-12"
                             onClick={removeFromCart}
+                            disabled={cart.length === 0}
                         >
                             <Dustbin />
                         </Button>
