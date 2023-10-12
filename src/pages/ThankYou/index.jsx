@@ -71,7 +71,8 @@ const PaymentStatus = () => {
 
     return (
         <>
-            <div className="after-payment-container">{status === 'succeeded' ? <ThankYou /> : status === 'processing' ? <Processing /> : <Wrong />}</div>
+            {/* <div className="after-payment-container">{status === 'succeeded' ? <ThankYou /> : status === 'processing' ? <Processing /> : <Wrong />}</div> */}
+            <ThankYou />
         </>
     );
 };

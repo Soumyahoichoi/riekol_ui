@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
-import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { Button } from '@nextui-org/react';
+import React, { useEffect, useState } from 'react';
+import { useStripe, useElements, PaymentElement, CustomCheckoutProvider } from '@stripe/react-stripe-js';
+import { Button, Input } from '@nextui-org/react';
 import { useStore } from '../../store/store';
 import './styles.css';
 import { returnUrl } from '../../../decideENV';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { MailIcon } from '../../assets/MailIcon';
+import { registerUser } from '../../api/register';
+import { toast } from 'sonner';
 
 const CheckoutForm = ({ bill }) => {
     const stripe = useStripe();
@@ -13,24 +17,33 @@ const CheckoutForm = ({ bill }) => {
     const [isLoading, setisLoading] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
 
     const handleSubmit = async (event) => {
         // We don't want to let default form submission happen here,
         // which would refresh the page.
         event.preventDefault();
 
-        if (!stripe || !elements) {
+        if (!stripe || !elements || !email) {
             // Stripe.js hasn't yet loaded.
             // Make sure to disable form submission until Stripe.js has loaded.
+
+            toast.error('Please fill all fields or make sure that stripe is loaded');
             return;
         }
         setisLoading(true);
-        const { error } = await stripe.confirmPayment({
+
+        //Check if email exists
+
+        const { paymentIntent, error } = await stripe.confirmPayment({
             //`Elements` instance that was used to create the Payment Element
             elements,
             confirmParams: {
-                return_url: `${returnUrl()}/thankyou`
-            }
+                // return_url: `${returnUrl()}/thankyou`
+                receipt_email: email
+            },
+            redirect: 'if_required'
         });
 
         if (error) {
@@ -38,20 +51,45 @@ const CheckoutForm = ({ bill }) => {
             // confirming the payment. Show error to your customer (for example, payment
             // details incomplete)
             setisLoading(false);
-            setErrorMessage(error.message);
-        } else {
-            setisLoading(false);
+            // navigate('/wrong');
 
-            // Your customer will be redirected to your `return_url`. For some payment
-            // methods like iDEAL, your customer will be redirected to an intermediate
-            // site first to authorize the payment, then redirected to the `return_url`.
+            setErrorMessage(error.message);
+        } else if (paymentIntent?.status === 'succeeded') {
+            //create mixed payload with payment intent
+            // save payload
+            const payLoad = {
+                email,
+                ticketDetails: cart,
+                paymentIntent
+            };
+
+            console.log(payLoad);
+
+            // const register = await registerUser(payLoad);
+
+            // console.log(register);
         }
     };
+
+    useEffect(() => {
+        if (cart.length === 0) {
+            navigate('/myeo');
+        }
+    }, [cart]);
     return (
         <div className="checkout">
             <CheckoutSummary cart={cart} total={bill} />
 
             <form>
+                <Input
+                    type="email"
+                    label="Email"
+                    placeholder="you@example.com"
+                    labelPlacement="outside"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    endContent={<MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
+                />
                 <PaymentElement />
                 <Button type="submit" disabled={!stripe} color="success" className="mt-2" onClick={handleSubmit} isLoading={isLoading}>
                     Submit

@@ -21,40 +21,42 @@ const MyEO = () => {
 
     const handleCheckout = async () => {
         setIsLoading(true);
-        // const billingAmount = cart?.reduce((acc, item) => {
-        //   if (typeof item.registration_fee === "string") {
-        //     return acc + item.count * +item.registration_fee.split(",").join("");
-        //   }
+        const billingAmount = cart?.reduce((acc, item) => {
+            if (typeof item.registration_fee === 'string') {
+                return acc + item.count * +item.registration_fee.split(',').join('');
+            }
 
-        //   return acc + item.count * item.registration_fee;
-        // }, 0);
+            return acc + item.count * item.registration_fee;
+        }, 0);
 
-        // // console.log(cart, billingAmount);
+        // console.log(cart, billingAmount);
 
-        // // return;
+        // return;
         // const url = `${returnUrl()}/checkout?billing=${billingAmount}`;
+        navigate(`/checkout?billing=${billingAmount}`);
+
         // window.open(url, "__blank", "noopener,noreferrer");
         // navigate('/checkout');
-        if (cart) {
-            const session = await createSession(cart);
-            const result = getResultFromData(session);
+        // if (cart) {
+        //     const session = await createSession(cart);
+        //     const result = getResultFromData(session);
 
-            if (isBrowser && result) {
-                window.location.assign(result);
-            } else {
-                toast.error('Something went wrong!');
-            }
-            // createSession(cart).then((res) => {
-            //   const result = getResultFromData(res);
-            //   if (isBrowser && result) {
-            //     window.location.assign(result);
-            //   } else {
-            //     toast.error("Something went wrong!");
-            //   }
-            // });
-        } else {
-            toast.error('Please add something to the cart');
-        }
+        //     if (isBrowser && result) {
+        //         window.location.assign(result);
+        //     } else {
+        //         toast.error('Something went wrong!');
+        //     }
+        //     // createSession(cart).then((res) => {
+        //     //   const result = getResultFromData(res);
+        //     //   if (isBrowser && result) {
+        //     //     window.location.assign(result);
+        //     //   } else {
+        //     //     toast.error("Something went wrong!");
+        //     //   }
+        //     // });
+        // } else {
+        //     toast.error('Please add something to the cart');
+        // }
     };
 
     const handleTabChange = (value) => {

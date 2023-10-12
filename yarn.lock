@@ -2124,6 +2124,11 @@
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.4.tgz"
   integrity sha512-2L9ifAGl7wmXwP4v3pN4p2FLhD0O1qsJpvKmNin5VA8+UvNVb447UDaAEV6UdrkA+m/Xs58U1RFps44x6TFsVQ==
 
+"@uidotdev/usehooks@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@uidotdev/usehooks/-/usehooks-2.4.0.tgz#f49df1d8ab159efb7cc7ea14236eb65cf1b48dc9"
+  integrity sha512-NrpTsZUGsawYxFbEXrd8+FPpfziC4M01GSQgYWOnGa84UiavqVCzCL5bSRe6rfQc4QsHS2rGAA0h63ya/j+p6A==
+
 "@vitejs/plugin-react@^4.0.3":
   version "4.1.0"
   resolved "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-4.1.0.tgz"

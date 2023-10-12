@@ -24,9 +24,10 @@ export const StripeForm = () => {
         async function fetchClientSecret() {
             const billing = +new URLSearchParams(locaton.search).get('billing');
             if (billing) {
-                let secret = await getClientSecret(+billing * 100);
+                let secret = await getClientSecret(+billing /** 100*/);
                 const options = {
                     clientSecret: getResultFromData(secret),
+
                     // appearance: {/*...*/},
                     appearance: {
                         theme: 'stripe'
