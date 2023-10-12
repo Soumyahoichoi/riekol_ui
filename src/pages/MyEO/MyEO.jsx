@@ -58,7 +58,6 @@ const MyEO = () => {
         id: index + 1, // Adding 1 to make IDs start from 1
         value: `Value ${index + 1}` // You can replace this with your desired value
     }));
-
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
@@ -76,26 +75,25 @@ const MyEO = () => {
             <section className="card--content">
                 {/* loading */}
                 {loading && arrayWithIdsAndValues.map((item) => <CardSkeleton key={item.id} />)}
-                {cards &&
-                    cards.map((item) => (
-                        <EoCard
-                            key={item.id}
-                            image={item.thumb_image}
-                            startTime={item.start_hour}
-                            endTime={item.end_hour}
-                            // date={item.eoDate}
-                            startDate={item.start_date}
-                            endDate={item.end_date}
-                            name={item.name}
-                            id={item.name}
-                            description={item.event_description}
-                            // champion={item.eventChampion}
-                            regFee={item.registartion_charges}
-                            priceId={item.registartion_charges}
-                            slots={item.slots_to_open}
-                            display={item.category === tab || tab === 'all' ? 'block' : 'none'}
-                        />
-                    ))}
+                {cards?.data?.map((item) => (
+                    <EoCard
+                        key={item.id}
+                        image={item.thumb_image}
+                        startTime={item.start_hour}
+                        endTime={item.end_hour}
+                        // date={item.eoDate}
+                        startDate={item.start_date}
+                        endDate={item.end_date}
+                        name={item.name}
+                        id={item.name}
+                        description={item.event_description}
+                        // champion={item.eventChampion}
+                        regFee={item.registartion_charges}
+                        priceId={item.registartion_charges}
+                        slots={item.slots_to_open}
+                        display={item.category === tab || tab === 'all' ? 'block' : 'none'}
+                    />
+                ))}
             </section>
             {cart.length > 0 && (
                 <div className="floating-container">
