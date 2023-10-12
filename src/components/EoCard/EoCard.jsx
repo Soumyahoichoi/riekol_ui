@@ -48,7 +48,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
         setCart(newCart);
         setButtonDisplay(true);
 
-        toast.success('Added to cart');
+        // toast.success('Added to cart');
     };
 
     const removeFromCart = () => {
@@ -57,7 +57,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
         setButtonDisplay(false);
         setCount(1);
 
-        toast.success('Removed to cart');
+        // toast.success('Removed to cart');
     };
 
     const desc = description ? JSON.stringify(description) : ' ';
