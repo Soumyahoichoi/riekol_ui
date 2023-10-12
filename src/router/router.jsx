@@ -20,7 +20,7 @@ const Router = () => {
                     <Route path=":id" element={<EoDetails />} />
                 </Route>
                 <Route path="/deepdive" element={<DeepDive />} />
-                <Route path="/checkout" element={<CheckoutForm />} />
+                <Route path="/checkout" element={<StripeForm />} />
                 <Route path="/thankyou" element={<ThankYou />} />
             </Route>
             <Route path="/login" element={<Login />} />
