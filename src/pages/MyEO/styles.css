@@ -11,13 +11,13 @@
 }
 
 .card--content {
-    /* height: 47rem; */
-    /* overflow-y: scroll; */
-    display: flex;
-    gap: 1rem;
-    justify-content: left;
-    flex-wrap: wrap;
-    margin: 5rem 0rem;
+	/* height: 47rem; */
+	/* overflow-y: scroll; */
+	display: flex;
+	gap: 1rem;
+	justify-content: left;
+	flex-wrap: wrap;
+	margin: 5rem;
 }
 
 .container-box {

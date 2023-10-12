@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { returnUrl } from '../../../decideENV';
 import { createSession } from '../../api/checkout';
 import { getResultFromData } from '../../helper';
-// import Cart from "../../components/Cart/Cart";
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -29,34 +28,7 @@ const MyEO = () => {
             return acc + item.count * item.registration_fee;
         }, 0);
 
-        // console.log(cart, billingAmount);
-
-        // return;
-        // const url = `${returnUrl()}/checkout?billing=${billingAmount}`;
         navigate(`/checkout?billing=${billingAmount}`);
-
-        // window.open(url, "__blank", "noopener,noreferrer");
-        // navigate('/checkout');
-        // if (cart) {
-        //     const session = await createSession(cart);
-        //     const result = getResultFromData(session);
-
-        //     if (isBrowser && result) {
-        //         window.location.assign(result);
-        //     } else {
-        //         toast.error('Something went wrong!');
-        //     }
-        //     // createSession(cart).then((res) => {
-        //     //   const result = getResultFromData(res);
-        //     //   if (isBrowser && result) {
-        //     //     window.location.assign(result);
-        //     //   } else {
-        //     //     toast.error("Something went wrong!");
-        //     //   }
-        //     // });
-        // } else {
-        //     toast.error('Please add something to the cart');
-        // }
     };
 
     const handleTabChange = (value) => {

@@ -52,15 +52,15 @@ export const StripeForm = () => {
     }, []);
     return (
         <>
-            {stripePromise && options ? (
-                <Elements stripe={stripePromise} options={options}>
-                    <CheckoutForm bill={billingamount} />
-                </Elements>
+            {/* {stripePromise && options ? (
+                <Elements stripe={stripePromise} options={options}> */}
+            <CheckoutForm bill={billingamount} />
+            {/* </Elements>
             ) : (
                 <section className="checkout">
                     <Spinner size="lg" />
                 </section>
-            )}
+            )} */}
         </>
     );
 };

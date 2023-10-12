@@ -9,9 +9,9 @@ import { MailIcon } from '../../assets/MailIcon';
 import { registerUser } from '../../api/register';
 import { toast } from 'sonner';
 
-const CheckoutForm = ({ bill }) => {
-    const stripe = useStripe();
-    const elements = useElements();
+const CheckoutForm = () => {
+    // const stripe = useStripe();
+    // const elements = useElements();
     const { cart } = useStore((store) => ({ cart: store.cart }));
 
     const [isLoading, setisLoading] = useState(false);
@@ -68,6 +68,8 @@ const CheckoutForm = ({ bill }) => {
             // const register = await registerUser(payLoad);
 
             // console.log(register);
+
+            navigate('/thankyou');
         }
     };
 
@@ -78,7 +80,7 @@ const CheckoutForm = ({ bill }) => {
     }, [cart]);
     return (
         <div className="checkout">
-            <CheckoutSummary cart={cart} total={bill} />
+            <CheckoutSummary cart={cart} total={billingAmount} />
 
             <form>
                 <Input
@@ -94,7 +96,7 @@ const CheckoutForm = ({ bill }) => {
                 <Button type="submit" disabled={!stripe} color="success" className="mt-2" onClick={handleSubmit} isLoading={isLoading}>
                     Submit
                 </Button>
-                {/* Show error message to your customers */}
+
                 {errorMessage && <div>{errorMessage}</div>}
             </form>
         </div>
@@ -115,43 +117,23 @@ const CheckoutSummary = ({ cart, total }) => {
                                     <span class="font-semibold">{item.name}</span>
                                     <section>
                                         <span class="float-right text-gray-400">
-                                            {item.registration_fee}x{item.count}
+                                            {item.registration_fee.split(',').join('')}x{item.count}
                                         </span>
-                                        <p class="text-lg font-bold">{item.registration_fee * item.count}</p>
+                                        <p class="text-lg font-bold">{item.registration_fee.split(',').join('') * item.count}</p>
                                     </section>
                                 </div>
                             </div>
                         ))}
-                        {/* <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-              <div class="flex w-full flex-col px-4 py-4">
-                <span class="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span class="float-right text-gray-400">42EU - 8.5US</span>
-                <p class="text-lg font-bold">$138.99</p>
-              </div>
-            </div>
-            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-              <div class="flex w-full flex-col px-4 py-4">
-                <span class="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span class="float-right text-gray-400">42EU - 8.5US</span>
-                <p class="mt-auto text-lg font-bold">$238.99</p>
-              </div>
-            </div> */}
                     </div>
-                </div>
-                <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-                    <div class="">
-                        <div class="mt-6 flex items-center justify-between">
-                            <p class="text-sm font-medium text-gray-900">Total</p>
-                            <p class="text-2xl font-semibold text-gray-900">INR {total}</p>
+
+                    <div class="mt-10 rounded-lg border bg-gray-50 px-4 pt-8 lg:mt-0">
+                        <div class="">
+                            <div class="mt-6 flex items-center justify-between">
+                                <p class="text-sm font-medium text-gray-900">Total</p>
+                                <p class="text-2xl font-semibold text-gray-900">INR {total}</p>
+                            </div>
                         </div>
                     </div>
-                    {/* <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
-            Place Order
-          </button> */}
                 </div>
             </div>
         </>

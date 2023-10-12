@@ -7,6 +7,7 @@ import MyEO from '../pages/MyEO/MyEO';
 import DeepDive from '../pages/DeepDive/DeepDive';
 import EoDetails from '../pages/EoDetails/EoDetails';
 import StripeForm from '../components/Stripe/prepare';
+import CheckoutForm from '../components/Stripe';
 import ThankYou from '../pages/ThankYou';
 
 const Router = () => {
@@ -19,7 +20,7 @@ const Router = () => {
                     <Route path=":id" element={<EoDetails />} />
                 </Route>
                 <Route path="/deepdive" element={<DeepDive />} />
-                <Route path="/checkout" element={<StripeForm />} />
+                <Route path="/checkout" element={<CheckoutForm />} />
                 <Route path="/thankyou" element={<ThankYou />} />
             </Route>
             <Route path="/login" element={<Login />} />
