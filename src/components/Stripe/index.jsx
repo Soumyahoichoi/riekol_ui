@@ -10,8 +10,8 @@ import { registerUser } from '../../api/register';
 import { toast } from 'sonner';
 
 const CheckoutForm = () => {
-    // const stripe = useStripe();
-    // const elements = useElements();
+    const stripe = useStripe();
+    const elements = useElements();
     const { cart } = useStore((store) => ({ cart: store.cart }));
 
     const [isLoading, setisLoading] = useState(false);
@@ -80,7 +80,7 @@ const CheckoutForm = () => {
     }, [cart]);
     return (
         <div className="checkout">
-            <CheckoutSummary cart={cart} total={billingAmount} />
+            {/* <CheckoutSummary cart={cart} /> */}
 
             <form>
                 <Input
@@ -103,7 +103,7 @@ const CheckoutForm = () => {
     );
 };
 
-const CheckoutSummary = ({ cart, total }) => {
+const CheckoutSummary = ({ cart }) => {
     return (
         <>
             <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
@@ -117,9 +117,9 @@ const CheckoutSummary = ({ cart, total }) => {
                                     <span class="font-semibold">{item.name}</span>
                                     <section>
                                         <span class="float-right text-gray-400">
-                                            {item.registration_fee.split(',').join('')}x{item.count}
+                                            {item?.registration_fee?.split?.(',').join?.('')}x{item?.count}
                                         </span>
-                                        <p class="text-lg font-bold">{item.registration_fee.split(',').join('') * item.count}</p>
+                                        <p class="text-lg font-bold">{item?.registration_fee?.split?.(',').join?.('') * item?.count}</p>
                                     </section>
                                 </div>
                             </div>

@@ -20,15 +20,8 @@ const MyEO = () => {
 
     const handleCheckout = async () => {
         setIsLoading(true);
-        const billingAmount = cart?.reduce((acc, item) => {
-            if (typeof item.registration_fee === 'string') {
-                return acc + item.count * +item.registration_fee.split(',').join('');
-            }
 
-            return acc + item.count * item.registration_fee;
-        }, 0);
-
-        navigate(`/checkout?billing=${billingAmount}`);
+        navigate(`/checkout`);
     };
 
     const handleTabChange = (value) => {
