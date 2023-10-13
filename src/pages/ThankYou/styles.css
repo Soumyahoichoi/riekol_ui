@@ -35,7 +35,7 @@
     padding: 30px;
     text-align: center;
 }
-h1 {
+.h1 {
     font-family: 'Kaushan Script', cursive;
     font-size: 4em;
     letter-spacing: 3px;
@@ -80,7 +80,7 @@ h1 {
 }
 
 @media (min-width: 360px) {
-    h1 {
+    .h1 {
         font-size: 4.5em;
     }
     .go-home {

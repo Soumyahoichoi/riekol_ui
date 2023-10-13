@@ -82,7 +82,7 @@ export default PaymentStatus;
 const ThankYou = () => (
     <div className="wrapper-1">
         <div className="wrapper-2">
-            <h1>Thank you !</h1>
+            <h1 className="h1">Thank you !</h1>
             <p>Thanks for subscribing </p>
             {/* <p>you should receive a confirmation email soon </p> */}
             {/* <button className="go-home">go home</button> */}
@@ -96,38 +96,38 @@ const ThankYou = () => (
     </div>
 );
 
-const Processing = () => (
-    <div className="wrapper-1">
-        <div className="wrapper-2">
-            <h1>Processing...</h1>
-            {/* <p>Thanks f. </p> */}
-            {/* <p>you should receive a confirmation email soon </p> */}
-            {/* <button className="go-home">go home</button> */}
-        </div>
-        <div className="footer-like">
-            {/* <p>
-              Email not received?
-              <a href="#">Click here to send again</a>
-            </p> */}
-        </div>
-    </div>
-);
+// const Processing = () => (
+//     <div className="wrapper-1">
+//         <div className="wrapper-2">
+//             <h1>Processing...</h1>
+//             {/* <p>Thanks f. </p> */}
+//             {/* <p>you should receive a confirmation email soon </p> */}
+//             {/* <button className="go-home">go home</button> */}
+//         </div>
+//         <div className="footer-like">
+//             {/* <p>
+//               Email not received?
+//               <a href="#">Click here to send again</a>
+//             </p> */}
+//         </div>
+//     </div>
+// );
 
-const Wrong = () => {
-    return (
-        <div className="wrapper-1">
-            <div className="wrapper-2">
-                <h1> Uh oh! Something went wrong. ...</h1>
-                {/* <p>Thanks for subscribing to our news letter. </p> */}
-                {/* <p>you should receive a confirmation email soon </p> */}
-                {/* <button className="go-home">go home</button> */}
-            </div>
-            <div className="footer-like">
-                {/* <p>
-              Email not received?
-              <a href="#">Click here to send again</a>
-            </p> */}
-            </div>
-        </div>
-    );
-};
+// const Wrong = () => {
+//     return (
+//         <div className="wrapper-1">
+//             <div className="wrapper-2">
+//                 <h1> Uh oh! Something went wrong. ...</h1>
+//                 {/* <p>Thanks for subscribing to our news letter. </p> */}
+//                 {/* <p>you should receive a confirmation email soon </p> */}
+//                 {/* <button className="go-home">go home</button> */}
+//             </div>
+//             <div className="footer-like">
+//                 {/* <p>
+//               Email not received?
+//               <a href="#">Click here to send again</a>
+//             </p> */}
+//             </div>
+//         </div>
+//     );
+// };

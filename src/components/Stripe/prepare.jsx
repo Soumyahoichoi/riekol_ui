@@ -15,7 +15,7 @@ export const StripeForm = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
     const navigate = useNavigate();
 
-    const { cart } = useStore((store) => ({ cart: store.cart }));
+    const { cart, setTotalBilingAmount } = useStore((store) => ({ cart: store.cart, setTotalBilingAmount: store.setTotalBilingAmount }));
     const locaton = useLocation();
     const billingAmount = cart?.reduce((acc, item) => {
         if (typeof item.registration_fee === 'string') {
@@ -28,7 +28,9 @@ export const StripeForm = () => {
     useEffect(() => {
         async function fetchClientSecret() {
             if (billingAmount) {
-                let secret = await getClientSecret(+billingAmount * 100);
+                const billingAmountWithGST = +billingAmount + 0.18 * billingAmount;
+                setTotalBilingAmount(billingAmountWithGST);
+                let secret = await getClientSecret(billingAmountWithGST * 100);
                 const options = {
                     clientSecret: getResultFromData(secret),
 

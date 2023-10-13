@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useStripe, useElements, PaymentElement, CustomCheckoutProvider } from '@stripe/react-stripe-js';
+import { useStripe, useElements, PaymentElement, CardElement } from '@stripe/react-stripe-js';
 import { Button, Input } from '@nextui-org/react';
 import { useStore } from '../../store/store';
 import './styles.css';
@@ -8,11 +8,12 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { MailIcon } from '../../assets/MailIcon';
 import { registerUser } from '../../api/register';
 import { toast } from 'sonner';
+import { generateUUID } from '../../helper';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    const { cart } = useStore((store) => ({ cart: store.cart }));
+    const { cart, totalBillingAmout } = useStore((store) => ({ cart: store.cart, totalBillingAmout: store.totalBillingAmout }));
 
     const [isLoading, setisLoading] = useState(false);
 
@@ -57,17 +58,14 @@ const CheckoutForm = () => {
         } else if (paymentIntent?.status === 'succeeded') {
             //create mixed payload with payment intent
             // save payload
+            const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
             const payLoad = {
-                email,
-                ticketDetails: cart,
-                paymentIntent
+                ticketDetails: cart?.map((item) => ({ ...item, email, order_id: paymentId }))
             };
 
-            console.log(payLoad);
+            const register = await registerUser(payLoad);
 
-            // const register = await registerUser(payLoad);
-
-            // console.log(register);
+            console.log(register);
 
             navigate('/thankyou');
         }
@@ -78,26 +76,36 @@ const CheckoutForm = () => {
             navigate('/myeo');
         }
     }, [cart]);
+
     return (
         <div className="checkout">
             {/* <CheckoutSummary cart={cart} /> */}
 
             <form>
-                <Input
-                    type="email"
-                    label="Email"
-                    placeholder="you@example.com"
-                    labelPlacement="outside"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    endContent={<MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
-                />
+                <section className="order--summary">
+                    <h1>Total </h1>
+                    <p>₹{totalBillingAmout}</p>
+                </section>
+                <section className="flex justify-end">
+                    <p style={{ color: 'red', fontSize: '12px' }}>*includes 18% GST</p>
+                </section>
+                <div className="mb-2 flex flex-col items-start email--section">
+                    <label htmlFor="email--checkout" className="label--email">
+                        Email
+                    </label>
+                    <input type="email" placeholder="Email" className="input--email" onChange={(e) => setEmail(e.target.value)} />
+                </div>
                 <PaymentElement />
                 <Button type="submit" disabled={!stripe} color="success" className="mt-2" onClick={handleSubmit} isLoading={isLoading}>
                     Submit
                 </Button>
 
                 {errorMessage && <div>{errorMessage}</div>}
+                <div className="disclaimer">
+                    <strong style={{ fontSize: '10px' }}>
+                        <i>*Amount is non-refundable</i>
+                    </strong>
+                </div>
             </form>
         </div>
     );
