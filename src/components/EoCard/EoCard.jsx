@@ -14,11 +14,11 @@ dayjs.extend(LocalizedFormat);
 
 export const EoCard = ({ name, image, startTime, endTime, date, id, description, regFee, priceId, startDate, endDate, display, slots }) => {
     const navigate = useNavigate();
-    const startDateFormatted = dayjs(startDate).format('DD MMM');
-    const endDateFormatted = dayjs(endDate).format('DD MMM');
+    // const startDateFormatted = dayjs(startDate).format('DD MMM');
+    // const endDateFormatted = dayjs(endDate).format('DD MMM');
     const fixDateForAllBrowsers = (dateString) => dateString.replace(/-/g, '/');
-    fixDateForAllBrowsers(startDateFormatted);
-    fixDateForAllBrowsers(endDateFormatted);
+    fixDateForAllBrowsers(startDate);
+    fixDateForAllBrowsers(endDate);
     // const startTimeFormatted = dayjs(startTime).format('LT');
     // const endTimeFormatted = dayjs(endTime).format('LT');
     const [data, setData] = useState(false);
@@ -65,7 +65,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
-
+    console.log(newDescription.length, 'd');
     return (
         <main
             className="divContainer"
@@ -87,13 +87,13 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                     <Time />
                     <p>
                         {/* {dateFormatted} */}
-                        {startDateFormatted === endDateFormatted ? (
+                        {startDate === endDate ? (
                             <>
-                                {startDateFormatted + ' ' + startTime + ' '} - {' ' + endTime}
+                                {startDate + ' ' + startTime + ' '} - {' ' + endTime}
                             </>
                         ) : (
                             <>
-                                {startDateFormatted + ' ' + startTime + ' '} - {' ' + endDateFormatted + ' ' + endTime}
+                                {startDate + ' ' + startTime + ' '} - {' ' + endDate + ' ' + endTime}
                             </>
                         )}
                     </p>
@@ -109,7 +109,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                 <div className="text-gray-500 flex gap-2 flex">
                     <p className="description">
                         {!data ? stringTruncate(newDescription, 140) : stringTruncate(newDescription, newDescription.length)}
-                        {desc?.length >= 140 && (
+                        {newDescription?.length >= 140 && (
                             <span className="font-semibold cursor-pointer" onClick={onClickHandler}>
                                 {data ? '  Read Less...' : '  Read More...'}
                             </span>
