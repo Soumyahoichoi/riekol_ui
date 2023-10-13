@@ -48,7 +48,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
         setCart(newCart);
         setButtonDisplay(true);
 
-        toast.success('Added to cart');
+        // toast.success('Added to cart');
     };
 
     const removeFromCart = () => {
@@ -57,8 +57,10 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
         setButtonDisplay(false);
         setCount(1);
 
-        toast.success('Removed to cart');
+        // toast.success('Removed to cart');
     };
+
+    const desc = description ? JSON.stringify(description) : ' ';
 
     return (
         <main
@@ -102,8 +104,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
                 <div className="text-gray-500 flex gap-2 flex">
                     <p className="description">
-                        {!data ? stringTruncate(description, 140) : stringTruncate(description, description.length)}
-                        {description?.length >= 140 && (
+                        {!data ? stringTruncate(desc, 140) : stringTruncate(desc, desc.length)}
+                        {desc?.length >= 140 && (
                             <span className="font-semibold cursor-pointer" onClick={onClickHandler}>
                                 {data ? '  Read Less...' : '  Read More...'}
                             </span>

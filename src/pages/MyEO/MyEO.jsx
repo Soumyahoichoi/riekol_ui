@@ -1,5 +1,5 @@
 import { Button, Tab, Tabs } from '@nextui-org/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.css';
 import { Cards } from '../../constants';
 import { EoCard } from '../../components/EoCard/EoCard';
@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import { returnUrl } from '../../../decideENV';
 import { createSession } from '../../api/checkout';
 import { getResultFromData } from '../../helper';
+import { getMyItems } from '../../api/data';
+import CardSkeleton from '../../components/Skeleton/index';
+// import Cart from "../../components/Cart/Cart";
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -17,6 +20,7 @@ const MyEO = () => {
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
+    const [cards, setCards] = useState([]);
 
     const handleCheckout = async () => {
         setIsLoading(true);
@@ -24,13 +28,36 @@ const MyEO = () => {
         navigate(`/checkout`);
     };
 
+    useEffect(() => {
+        setIsLoading(true);
+        const fetchMyItems = async () => {
+            try {
+                const res = await getMyItems();
+                if (res) {
+                    setCards(res?.data);
+                    setIsLoading(false);
+                }
+            } catch (err) {
+                console.log(err);
+                setIsLoading(false);
+            }
+        };
+        fetchMyItems();
+    }, []);
+
     const handleTabChange = (value) => {
         setTab(value);
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         //Call setTab here
     };
-
+    // demo data to map the skeleton
+    const arrayOfEmptyObjects = Array.from({ length: 12 }, () => ({}));
+    // Generate unique IDs and add values to the objects
+    const arrayWithIdsAndValues = arrayOfEmptyObjects.map((object, index) => ({
+        id: index + 1, // Adding 1 to make IDs start from 1
+        value: `Value ${index + 1}` // You can replace this with your desired value
+    }));
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
@@ -46,29 +73,31 @@ const MyEO = () => {
             </section>
 
             <section className="card--content">
-                {Cards.map((item) => (
+                {/* loading */}
+                {loading && arrayWithIdsAndValues.map((item) => <CardSkeleton key={item.id} />)}
+                {cards?.data?.map((item) => (
                     <EoCard
-                        key={item._id}
+                        key={item.id}
                         image={item.thumb_image}
-                        startTime={item.startTime.trim()}
-                        endTime={item.endTime.trim()}
-                        date={item.eoDate?.trim()}
-                        startDate={item.eoStartDate.trim()}
-                        endDate={item.eoEndDate.trim()}
-                        name={item.name.trim()}
-                        id={item._id}
-                        description={item.description}
-                        champion={item.eventChampion}
-                        regFee={item.registrationfee}
-                        priceId={item.priceId}
-                        slots={item.totalslot}
+                        startTime={item.start_hour}
+                        endTime={item.end_hour}
+                        // date={item.eoDate}
+                        startDate={item.start_date}
+                        endDate={item.end_date}
+                        name={item.name}
+                        id={item.name}
+                        description={item.event_description}
+                        // champion={item.eventChampion}
+                        regFee={item.registartion_charges}
+                        priceId={item.registartion_charges}
+                        slots={item.slots_to_open}
                         display={item.category === tab || tab === 'all' ? 'block' : 'none'}
                     />
                 ))}
             </section>
             {cart.length > 0 && (
                 <div className="floating-container">
-                    <Button onClick={handleCheckout} size="lg" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" isLoading={loading}>
+                    <Button onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
                         Checkout {`(${cart.length} My EOs added)`}
                     </Button>
                     {/* <button class="button">Floating Button</button> */}

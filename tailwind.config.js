@@ -52,7 +52,16 @@ module.exports = {
         'to-yellow-500',
         'text-white',
         'shadow-lg',
-        'ml-12'
+        'ml-12',
+        'w-[200px]',
+        'space-y-5',
+        'rounded-lg',
+        'bg-default-200',
+        'w-[250px]',
+        'w-[400px]',
+        'h-20',
+        'h-5',
+        'm-10'
     ],
     darkMode: 'class',
     plugins: [nextui()]
