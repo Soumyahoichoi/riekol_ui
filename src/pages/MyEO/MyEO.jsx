@@ -16,12 +16,12 @@ import CardSkeleton from '../../components/Skeleton/index';
 const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
-    const cart = useStore((state) => state.cart);
+    const { cart, isSelected, setIsSelected } = useStore((state) => state);
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
     const [cards, setCards] = useState([]);
-    const [isSelected, setIsSelected] = useState(false);
+    // const [isSelected, setIsSelected] = useState(false);
 
     const handleCheckout = async () => {
         setIsLoading(true);
@@ -63,6 +63,7 @@ const MyEO = () => {
         id: index + 1, // Adding 1 to make IDs start from 1
         value: `Value ${index + 1}` // You can replace this with your desired value
     }));
+
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
@@ -82,7 +83,7 @@ const MyEO = () => {
                         defaultSelected
                         size="lg"
                         color="secondary"
-                        onValueChange={setIsSelected}
+                        onValueChange={() => setIsSelected(!isSelected)}
                         thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
                     >
                         (You can pay using)
@@ -110,7 +111,6 @@ const MyEO = () => {
                         priceInDollar={item.price_in_dollars}
                         priceId={item.registartion_charges}
                         slots={item.slots_to_open}
-                        currency={isSelected}
                         display={item.category === tab || tab === 'all' ? 'block' : 'none'}
                     />
                 ))}

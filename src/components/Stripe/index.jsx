@@ -13,13 +13,15 @@ import { generateUUID } from '../../helper';
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    const { cart, totalBillingAmout } = useStore((store) => ({ cart: store.cart, totalBillingAmout: store.totalBillingAmout }));
+    const { cart, totalBillingAmout, isSelected } = useStore((store) => ({ cart: store.cart, totalBillingAmout: store.totalBillingAmout, isSelected: store.isSelected }));
 
     const [isLoading, setisLoading] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+
+    const currency = isSelected ? '$' : '₹';
 
     const handleSubmit = async (event) => {
         // We don't want to let default form submission happen here,
@@ -84,7 +86,10 @@ const CheckoutForm = () => {
             <form>
                 <section className="order--summary">
                     <h1>Total </h1>
-                    <p>₹{totalBillingAmout}</p>
+                    <p>
+                        {currency}
+                        {totalBillingAmout}
+                    </p>
                 </section>
                 <section className="flex justify-end">
                     <p style={{ color: 'red', fontSize: '12px' }}>*includes 18% GST</p>
