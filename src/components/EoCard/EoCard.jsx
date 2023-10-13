@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.css';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
@@ -63,9 +63,16 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
         // toast.success('Removed to cart');
     };
 
+    useEffect(() => {
+        const item = cart.find((item) => item.name === name);
+        if (item) {
+            setButtonDisplay(true);
+            setCount(item.count);
+        }
+    }, []);
+
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
-    console.log(newDescription.length, 'd');
     return (
         <main
             className="divContainer"
