@@ -2,7 +2,11 @@
     height: 100vh;
     background-size: cover;
 }
-
+.outletContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @media screen and (min-width: 597px) {
     .outletContainer {
         display: flex;
