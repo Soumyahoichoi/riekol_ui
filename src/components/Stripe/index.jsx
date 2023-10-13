@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { MailIcon } from '../../assets/MailIcon';
 import { registerUser } from '../../api/register';
 import { toast } from 'sonner';
+import { generateUUID } from '../../helper';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -57,17 +58,14 @@ const CheckoutForm = () => {
         } else if (paymentIntent?.status === 'succeeded') {
             //create mixed payload with payment intent
             // save payload
+            const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
             const payLoad = {
-                email,
-                ticketDetails: cart,
-                paymentIntent
+                ticketDetails: cart?.map((item) => ({ ...item, email, order_id: paymentId }))
             };
 
-            console.log(payLoad);
+            const register = await registerUser(payLoad);
 
-            // const register = await registerUser(payLoad);
-
-            // console.log(register);
+            console.log(register);
 
             navigate('/thankyou');
         }
