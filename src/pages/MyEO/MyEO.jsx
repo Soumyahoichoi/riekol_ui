@@ -1,4 +1,4 @@
-import { Button, Tab, Tabs } from '@nextui-org/react';
+import { Button, Tab, Tabs, Switch } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 import './styles.css';
 import { Cards } from '../../constants';
@@ -21,6 +21,7 @@ const MyEO = () => {
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
     const [cards, setCards] = useState([]);
+    const [isSelected, setIsSelected] = useState(false);
 
     const handleCheckout = async () => {
         setIsLoading(true);
@@ -45,6 +46,10 @@ const MyEO = () => {
         fetchMyItems();
     }, []);
 
+    const onChangehandler = () => {
+        setCurrency('$');
+    };
+
     const handleTabChange = (value) => {
         setTab(value);
         document.body.scrollTop = 0; // For Safari
@@ -61,15 +66,28 @@ const MyEO = () => {
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
-                <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
-                    <Tab key="all" title="All" />
-                    <Tab key="Sports" title="Sports" />
-                    <Tab key="Spirituality" title="Spirituality" />
-                    <Tab key="Experiential" title="Experiential" />
-                    {/* <Tab key="interaction" title="Interaction" /> */}
-                    <Tab key="F&B" title="F&B" />
-                    {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
-                </Tabs>
+                <div className="tabPrimary">
+                    <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
+                        <Tab key="all" title="All" />
+                        <Tab key="Sports" title="Sports" />
+                        <Tab key="Spirituality" title="Spirituality" />
+                        <Tab key="Experiential" title="Experiential" />
+                        {/* <Tab key="interaction" title="Interaction" /> */}
+                        <Tab key="F&B" title="F&B" />
+                        {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
+                    </Tabs>
+                </div>
+                <div className="switch">
+                    <Switch
+                        defaultSelected
+                        size="lg"
+                        color="secondary"
+                        onValueChange={setIsSelected}
+                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
+                    >
+                        (You can pay using)
+                    </Switch>
+                </div>
             </section>
 
             <section className="card--content">
@@ -89,8 +107,10 @@ const MyEO = () => {
                         description={item.event_description}
                         // champion={item.eventChampion}
                         regFee={item.registartion_charges}
+                        priceInDollar={item.price_in_dollars}
                         priceId={item.registartion_charges}
                         slots={item.slots_to_open}
+                        currency={isSelected}
                         display={item.category === tab || tab === 'all' ? 'block' : 'none'}
                     />
                 ))}

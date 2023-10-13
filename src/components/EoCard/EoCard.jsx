@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 
 dayjs.extend(LocalizedFormat);
 
-export const EoCard = ({ name, image, startTime, endTime, date, id, description, regFee, priceId, startDate, endDate, display, slots }) => {
+export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, description, regFee, priceId, startDate, endDate, display, slots, currency }) => {
     const navigate = useNavigate();
     // const startDateFormatted = dayjs(startDate).format('DD MMM');
     // const endDateFormatted = dayjs(endDate).format('DD MMM');
@@ -107,7 +107,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                 </div>
                 <div className="text-gray-500 flex gap-2">
                     <p className="font-semibold">Registration Fees</p>
-                    <p>₹{regFee}</p>
+                    {currency ? <p>₹{regFee}</p> : <p>${priceInDollar}</p>}
                 </div>
 
                 {/* {data && (
