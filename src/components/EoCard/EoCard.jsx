@@ -16,6 +16,9 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
     const navigate = useNavigate();
     const startDateFormatted = dayjs(startDate).format('DD MMM');
     const endDateFormatted = dayjs(endDate).format('DD MMM');
+    const fixDateForAllBrowsers = (dateString) => dateString.replace(/-/g, '/');
+    fixDateForAllBrowsers(startDateFormatted);
+    fixDateForAllBrowsers(endDateFormatted);
     // const startTimeFormatted = dayjs(startTime).format('LT');
     // const endTimeFormatted = dayjs(endTime).format('LT');
     const [data, setData] = useState(false);
@@ -61,6 +64,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
     };
 
     const desc = description ? JSON.stringify(description) : ' ';
+    const newDescription = desc.replace(/"/g, '');
 
     return (
         <main
@@ -104,7 +108,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
                 <div className="text-gray-500 flex gap-2 flex">
                     <p className="description">
-                        {!data ? stringTruncate(desc, 140) : stringTruncate(desc, desc.length)}
+                        {!data ? stringTruncate(newDescription, 140) : stringTruncate(newDescription, newDescription.length)}
                         {desc?.length >= 140 && (
                             <span className="font-semibold cursor-pointer" onClick={onClickHandler}>
                                 {data ? '  Read Less...' : '  Read More...'}
