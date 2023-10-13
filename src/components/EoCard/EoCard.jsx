@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 
 dayjs.extend(LocalizedFormat);
 
-export const EoCard = ({ name, image, startTime, endTime, date, id, description, regFee, priceId, startDate, endDate, display, slots }) => {
+export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, description, regFee, priceId, startDate, endDate, display, slots }) => {
     const navigate = useNavigate();
     // const startDateFormatted = dayjs(startDate).format('DD MMM');
     // const endDateFormatted = dayjs(endDate).format('DD MMM');
@@ -24,7 +24,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
     const [data, setData] = useState(false);
     const [count, setCount] = useState(1);
     const [buttonDisplay, setButtonDisplay] = useState(false);
-    const { cart, setCart } = useStore((state) => state);
+    const { cart, setCart, isSelected } = useStore((state) => state);
 
     const onClickHandler = () => {
         setData(!data);
@@ -45,7 +45,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
             date: date,
             registration_fee: regFee,
             price_id: priceId,
-            count: count
+            count: count,
+            priceInDollar
         });
 
         setCart(newCart);
@@ -73,6 +74,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
 
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
+
     return (
         <main
             className="divContainer"
@@ -107,7 +109,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, id, description,
                 </div>
                 <div className="text-gray-500 flex gap-2">
                     <p className="font-semibold">Registration Fees</p>
-                    <p>₹{regFee}</p>
+                    {isSelected ? <p>${priceInDollar}</p> : <p>₹{regFee}</p>}
                 </div>
 
                 {/* {data && (

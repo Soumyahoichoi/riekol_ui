@@ -15,14 +15,22 @@ export const StripeForm = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
     const navigate = useNavigate();
 
-    const { cart, setTotalBilingAmount } = useStore((store) => ({ cart: store.cart, setTotalBilingAmount: store.setTotalBilingAmount }));
+    const { cart, setTotalBilingAmount, isSelected } = useStore((store) => ({ cart: store.cart, setTotalBilingAmount: store.setTotalBilingAmount, isSelected: store.isSelected }));
     const locaton = useLocation();
     const billingAmount = cart?.reduce((acc, item) => {
-        if (typeof item.registration_fee === 'string') {
-            return acc + item.count * +item.registration_fee.split(',').join('');
-        }
+        if (!isSelected) {
+            if (typeof item.registration_fee === 'string') {
+                return acc + item.count * +item.registration_fee.split(',').join('');
+            }
 
-        return acc + item.count * item.registration_fee;
+            return acc + item.count * item.registration_fee;
+        } else {
+            if (typeof item.priceInDollar === 'string') {
+                return acc + item.count * +item.priceInDollar.split(',').join('');
+            }
+
+            return acc + item.count * item.priceInDollar;
+        }
     }, 0);
 
     useEffect(() => {
