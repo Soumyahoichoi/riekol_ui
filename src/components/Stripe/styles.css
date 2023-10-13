@@ -4,11 +4,26 @@
     height: 100vh;
     background-size: cover;
     align-items: center;
+    flex-direction: column;
 }
 .stripe_width {
     min-width: 34rem;
 }
+.checkoutContainer {
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    cursor: pointer;
+    /* margin-bottom: 106px; */
+    margin-right: 54rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
 
+.checkoutContainer:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease-in-out;
+}
 .label--email {
     font-size: 0.93rem;
 }
@@ -75,5 +90,8 @@
 
     .stripe_width {
         min-width: 24rem;
+    }
+    .checkoutContainer {
+        margin-right: 20rem;
     }
 }

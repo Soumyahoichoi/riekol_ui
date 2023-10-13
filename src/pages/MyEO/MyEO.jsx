@@ -35,7 +35,9 @@ const MyEO = () => {
             try {
                 const res = await getMyItems();
                 if (res) {
-                    setCards(res?.data);
+                    const response = res?.data?.data;
+                    const sortedData = response.sort((a, b) => a.id - b.id);
+                    setCards(sortedData);
                     setIsLoading(false);
                 }
             } catch (err) {
@@ -45,10 +47,6 @@ const MyEO = () => {
         };
         fetchMyItems();
     }, []);
-
-    const onChangehandler = () => {
-        setCurrency('$');
-    };
 
     const handleTabChange = (value) => {
         setTab(value);
@@ -79,6 +77,7 @@ const MyEO = () => {
                     </Tabs>
                 </div>
                 <div className="switch">
+                    You can pay using &nbsp; &nbsp;
                     <Switch
                         defaultSelected
                         size="lg"
@@ -86,7 +85,7 @@ const MyEO = () => {
                         onValueChange={() => setIsSelected(!isSelected)}
                         thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
                     >
-                        (You can pay using)
+                        {/* (You can pay using) */}
                     </Switch>
                 </div>
             </section>
@@ -94,7 +93,7 @@ const MyEO = () => {
             <section className="card--content">
                 {/* loading */}
                 {loading && arrayWithIdsAndValues.map((item) => <CardSkeleton key={item.id} />)}
-                {cards?.data?.map((item) => (
+                {cards.map((item) => (
                     <EoCard
                         key={item.id}
                         image={item.thumb_image}
