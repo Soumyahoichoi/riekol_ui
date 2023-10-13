@@ -38,7 +38,8 @@ export const StripeForm = () => {
             if (billingAmount) {
                 const billingAmountWithGST = +billingAmount + 0.18 * billingAmount;
                 setTotalBilingAmount(billingAmountWithGST);
-                let secret = await getClientSecret(billingAmountWithGST * 100);
+                const currency = isSelected ? 'usd' : 'inr';
+                let secret = await getClientSecret(billingAmountWithGST * 100, currency);
                 const options = {
                     clientSecret: getResultFromData(secret),
 
