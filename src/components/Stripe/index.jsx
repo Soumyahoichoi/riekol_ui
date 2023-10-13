@@ -100,7 +100,7 @@ const CheckoutForm = () => {
                     </p>
                 </section>
                 <section className="flex justify-end">
-                    <p style={{ color: 'red', fontSize: '12px' }}>*includes 18% GST</p>
+                    <p style={{ color: 'gray', fontSize: '12px' }}>*Inc 18% GST</p>
                 </section>
                 <div className="mb-2 flex flex-col items-start email--section">
                     <label htmlFor="email--checkout" className="label--email">
@@ -115,8 +115,8 @@ const CheckoutForm = () => {
 
                 {errorMessage && <div>{errorMessage}</div>}
                 <div className="disclaimer">
-                    <strong style={{ fontSize: '12px' }}>
-                        <i>*Amount is non-refundable</i>
+                    <strong style={{ fontSize: '12px', color: 'gray' }}>
+                        <i>*MyEO booking amount is non-cancellable and non-refundable</i>
                     </strong>
                 </div>
             </form>

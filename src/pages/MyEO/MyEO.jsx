@@ -65,6 +65,19 @@ const MyEO = () => {
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
+                <div className="switch">
+                    <p style={{ marginTop: '5px' }}>USD &nbsp; &nbsp;</p>
+
+                    <Switch
+                        defaultSelected
+                        size="lg"
+                        color="secondary"
+                        onValueChange={() => setIsSelected(!isSelected)}
+                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
+                    >
+                        INR {/* (You can pay using) */}
+                    </Switch>
+                </div>
                 <div className="tabPrimary">
                     <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
                         <Tab key="all" title="All" />
@@ -75,18 +88,6 @@ const MyEO = () => {
                         <Tab key="F&B" title="F&B" />
                         {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
                     </Tabs>
-                </div>
-                <div className="switch">
-                    You can pay using &nbsp; &nbsp;
-                    <Switch
-                        defaultSelected
-                        size="lg"
-                        color="secondary"
-                        onValueChange={() => setIsSelected(!isSelected)}
-                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
-                    >
-                        {/* (You can pay using) */}
-                    </Switch>
                 </div>
             </section>
 
