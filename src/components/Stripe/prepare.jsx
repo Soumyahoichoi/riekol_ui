@@ -65,7 +65,7 @@ export const StripeForm = () => {
                     <CheckoutForm />
                 </Elements>
             ) : (
-                <section className="checkout">
+                <section className="checkouts">
                     <Spinner size="lg" />
                 </section>
             )}
