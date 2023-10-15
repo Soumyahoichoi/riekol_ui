@@ -72,6 +72,13 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
         }
     }, []);
 
+    useEffect(() => {
+        if (cart.length === 0) {
+            setButtonDisplay(false);
+            setCount(1);
+        }
+    }, [cart]);
+
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
 

@@ -16,7 +16,7 @@ import CardSkeleton from '../../components/Skeleton/index';
 const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
-    const { cart, isSelected, setIsSelected } = useStore((state) => state);
+    const { cart, isSelected, setIsSelected, setCart } = useStore((state) => state);
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
@@ -69,10 +69,13 @@ const MyEO = () => {
                     <p style={{ marginTop: '5px' }}>USD &nbsp; &nbsp;</p>
 
                     <Switch
-                        defaultSelected
+                        defaultSelected={!isSelected}
                         size="lg"
                         color="secondary"
-                        onValueChange={() => setIsSelected(!isSelected)}
+                        onValueChange={() => {
+                            setIsSelected(!isSelected);
+                            setCart([]);
+                        }}
                         thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
                     >
                         INR {/* (You can pay using) */}
