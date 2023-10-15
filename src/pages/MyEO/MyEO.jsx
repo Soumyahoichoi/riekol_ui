@@ -35,7 +35,9 @@ const MyEO = () => {
             try {
                 const res = await getMyItems();
                 if (res) {
-                    setCards(res?.data);
+                    const response = res?.data?.data;
+                    const sortedData = response.sort((a, b) => a.id - b.id);
+                    setCards(sortedData);
                     setIsLoading(false);
                 }
             } catch (err) {
@@ -45,10 +47,6 @@ const MyEO = () => {
         };
         fetchMyItems();
     }, []);
-
-    const onChangehandler = () => {
-        setCurrency('$');
-    };
 
     const handleTabChange = (value) => {
         setTab(value);
@@ -67,6 +65,19 @@ const MyEO = () => {
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
+                <div className="switch">
+                    <p style={{ marginTop: '5px' }}>USD &nbsp; &nbsp;</p>
+
+                    <Switch
+                        defaultSelected
+                        size="lg"
+                        color="secondary"
+                        onValueChange={() => setIsSelected(!isSelected)}
+                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
+                    >
+                        INR {/* (You can pay using) */}
+                    </Switch>
+                </div>
                 <div className="tabPrimary">
                     <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
                         <Tab key="all" title="All" />
@@ -78,23 +89,12 @@ const MyEO = () => {
                         {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
                     </Tabs>
                 </div>
-                <div className="switch">
-                    <Switch
-                        defaultSelected
-                        size="lg"
-                        color="secondary"
-                        onValueChange={() => setIsSelected(!isSelected)}
-                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
-                    >
-                        (You can pay using)
-                    </Switch>
-                </div>
             </section>
 
             <section className="card--content">
                 {/* loading */}
                 {loading && arrayWithIdsAndValues.map((item) => <CardSkeleton key={item.id} />)}
-                {cards?.data?.map((item) => (
+                {cards.map((item) => (
                     <EoCard
                         key={item.id}
                         image={item.thumb_image}

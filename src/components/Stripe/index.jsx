@@ -9,6 +9,7 @@ import { MailIcon } from '../../assets/MailIcon';
 import { registerUser } from '../../api/register';
 import { toast } from 'sonner';
 import { ObjectFrom, generateUUID } from '../../helper';
+import BackButton from '../../assets/backButton';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -69,10 +70,14 @@ const CheckoutForm = () => {
 
             const register = await registerUser(payLoad);
 
-            console.log(register);
+            // console.log(register);
 
             navigate('/thankyou');
         }
+    };
+
+    const onClickHandler = () => {
+        navigate('/myeo');
     };
 
     useEffect(() => {
@@ -84,6 +89,9 @@ const CheckoutForm = () => {
     return (
         <div className="checkout">
             {/* <CheckoutSummary cart={cart} /> */}
+            <div className="checkoutContainer" onClick={onClickHandler}>
+                <BackButton />
+            </div>
 
             <form>
                 <section className="order--summary">
@@ -94,7 +102,7 @@ const CheckoutForm = () => {
                     </p>
                 </section>
                 <section className="flex justify-end">
-                    <p style={{ color: 'red', fontSize: '12px' }}>*includes 18% GST</p>
+                    <p style={{ color: 'gray', fontSize: '12px' }}>*Inc 18% GST</p>
                 </section>
                 <div className="mb-2 flex flex-col items-start email--section">
                     <label htmlFor="email--checkout" className="label--email">
@@ -103,14 +111,14 @@ const CheckoutForm = () => {
                     <input type="email" placeholder="Email" className="input--email" onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <PaymentElement />
-                <Button type="submit" disabled={!stripe} color="success" className="mt-2" onClick={handleSubmit} isLoading={isLoading}>
+                <Button type="submit" disabled={!stripe} color="success" className="mt-2 w-full" onClick={handleSubmit} isLoading={isLoading}>
                     Submit
                 </Button>
 
                 {errorMessage && <div>{errorMessage}</div>}
                 <div className="disclaimer">
-                    <strong style={{ fontSize: '10px' }}>
-                        <i>*Amount is non-refundable</i>
+                    <strong style={{ fontSize: '12px', color: 'gray' }}>
+                        <i>*MyEO booking amount is non-cancellable and non-refundable</i>
                     </strong>
                 </div>
             </form>
