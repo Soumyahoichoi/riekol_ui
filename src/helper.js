@@ -11,3 +11,13 @@ export function generateUUID() {
         return (c === 'x' ? random : (random & 0x3) | 0x8).toString(16);
     });
 }
+
+export function ObjectFrom(cols, object) {
+    let result = {};
+    for (let i of cols) {
+        if (object[i]) {
+            result[i] = object[i];
+        }
+    }
+    return result;
+}
