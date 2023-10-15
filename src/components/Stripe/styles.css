@@ -73,7 +73,8 @@
 .disclaimer {
     position: absolute;
     bottom: 10px;
-    right: 10rem;
+    right: calc(100vw - 100%);
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) {
