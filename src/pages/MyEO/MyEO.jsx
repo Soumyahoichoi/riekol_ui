@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { returnUrl } from '../../../decideENV';
 import { createSession } from '../../api/checkout';
-import { getResultFromData } from '../../helper';
+import { generateUUID, getResultFromData } from '../../helper';
 import { getMyItems } from '../../api/data';
 import CardSkeleton from '../../components/Skeleton/index';
 // import Cart from "../../components/Cart/Cart";
@@ -119,7 +119,7 @@ const MyEO = () => {
                         // champion={item.eventChampion}
                         regFee={item.registartion_charges}
                         priceInDollar={item.price_in_dollars}
-                        priceId={item.registartion_charges}
+                        priceId={crypto?.randomUUID?.() ?? generateUUID?.()}
                         slots={item.slots_to_open}
                         display={item.category === tab || tab === 'all' ? 'block' : 'none'}
                     />
