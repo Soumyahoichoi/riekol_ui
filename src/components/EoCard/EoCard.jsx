@@ -5,10 +5,11 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import SeatsLeft from '../../assets/seats_left.jsx';
 import Time from '../../assets/time';
 import Dustbin from '../../assets/dustbin';
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
 import { toast } from 'sonner';
+import Info from '../../assets/Info';
 
 dayjs.extend(LocalizedFormat);
 
@@ -97,6 +98,19 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 <div className="text-green-700 flex gap-2 items-center">
                     <SeatsLeft />
                     {slots} seats left
+                    {/* <Tooltip
+                        showArrow
+                        placement="right"
+                        content="I am a tooltip"
+                        classNames={{
+                            base: 'py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400',
+                            arrow: 'bg-neutral-400 dark:bg-white'
+                        }}
+                    >
+                        <Button variant="flat" isIconOnly radius="full">
+                            <Info width="15px" height="15px" />
+                        </Button>
+                    </Tooltip> */}
                 </div>
 
                 <div className="text-gray-500 flex gap-2">

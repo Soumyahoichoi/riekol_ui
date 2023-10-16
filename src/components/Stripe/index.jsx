@@ -57,7 +57,7 @@ const CheckoutForm = () => {
             setisLoading(false);
             // navigate('/wrong');
 
-            setErrorMessage(error.message);
+            toast.error(error.message);
         } else if (paymentIntent?.status === 'succeeded') {
             //create mixed payload with payment intent
             // save payload
@@ -115,7 +115,7 @@ const CheckoutForm = () => {
                     Submit
                 </Button>
 
-                {errorMessage && <div>{errorMessage}</div>}
+                {/* {errorMessage && <div>{errorMessage}</div>} */}
                 <div className="disclaimer">
                     <strong style={{ fontSize: '12px', color: 'gray' }}>
                         <i>*MyEO booking amount is non-cancellable and non-refundable</i>
