@@ -62,15 +62,13 @@ const CheckoutForm = () => {
             //create mixed payload with payment intent
             // save payload
             const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
-            const cols = ['price_id', 'order_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email'];
+            const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email'];
             const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email }));
             const payLoad = {
                 ticketDetails
             };
 
-            const register = await registerUser(payLoad);
-
-            // console.log(register);
+            await registerUser(payLoad);
 
             navigate('/thankyou');
         }
