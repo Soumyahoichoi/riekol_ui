@@ -73,11 +73,11 @@ const MyEO = () => {
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
                 <div className="switch">
-                    <p style={{ marginTop: '5px' }}>USD &nbsp; &nbsp;</p>
+                    <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp; &nbsp;</p>
 
                     <Switch
                         defaultSelected={!isSelected}
-                        size="lg"
+                        size="md"
                         color="secondary"
                         onValueChange={() => {
                             setIsSelected(!isSelected);
@@ -85,7 +85,7 @@ const MyEO = () => {
                         }}
                         thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
                     >
-                        INR {/* (You can pay using) */}
+                        <p style={{ marginTop: '5px', fontSize: '15px' }}>INR</p>
                     </Switch>
                 </div>
                 <div className="tabPrimary">
