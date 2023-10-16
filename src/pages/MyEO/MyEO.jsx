@@ -16,7 +16,7 @@ import CardSkeleton from '../../components/Skeleton/index';
 const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
-    const { cart, isSelected, setIsSelected, setCart } = useStore((state) => state);
+    const { cart, isSelected, setIsSelected, setCart, myEo, setMyEo } = useStore((state) => state);
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
@@ -38,6 +38,7 @@ const MyEO = () => {
                     const response = res?.data?.data;
                     const sortedData = response.sort((a, b) => a.id - b.id);
                     setCards(sortedData);
+                    setMyEo(sortedData);
                     setIsLoading(false);
                 }
             } catch (err) {
@@ -45,7 +46,13 @@ const MyEO = () => {
                 setIsLoading(false);
             }
         };
-        fetchMyItems();
+
+        if (myEo.length === 0) {
+            fetchMyItems();
+        } else {
+            setCards(myEo);
+            setIsLoading(false);
+        }
     }, []);
 
     const handleTabChange = (value) => {
