@@ -83,6 +83,10 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
 
+    if (import.meta.env.PROD && name === 'Test') {
+        return null;
+    }
+
     return (
         <main
             className="divContainer"
@@ -91,7 +95,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             style={{ display }}
         >
             <section className="mainContainer">
-                <img src={image} alt="name" className="imageContainer" style={{ width: '100%', height: '12rem' }} />
+                <img src={image} type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '12rem' }} />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg">{name}</p>
