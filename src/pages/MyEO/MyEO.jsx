@@ -73,7 +73,7 @@ const MyEO = () => {
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
                 <div className="switch">
-                    <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp; &nbsp;</p>
+                    <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp;</p>
 
                     <Switch
                         defaultSelected={!isSelected}

@@ -106,7 +106,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
                 <div className="text-green-700 flex gap-2 items-center">
                     <SeatsLeft />
-                    {slots} seats left
+                    {slots <= 0 ? 'Sold Out' : `only ${slots} seats left`}
+
                     {/* <Tooltip
                         showArrow
                         placement="right"
@@ -199,9 +200,11 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                             {/* <AddToCart /> */}
                             <span className="text-2xl px-2">{' + '}</span>
                         </Button>
-                        <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
-                            <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
-                        </Button>
+                        {slots > 0 && (
+                            <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
+                                <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
+                            </Button>
+                        )}
                         {cart.find((item) => item.name === name) && (
                             <Button
                                 isIconOnly
