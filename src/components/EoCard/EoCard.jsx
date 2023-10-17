@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import Info from '../../assets/Info';
+import * as _ from 'lodash';
 
 dayjs.extend(LocalizedFormat);
 
@@ -39,11 +40,13 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const onAddToCart = () => {
         const newCart = cart.filter((item) => item.name !== name);
 
+        // if(itOverLapsWithOtherEvent())
+
         newCart.push({
             name: name,
             start_time: startTime,
             end_time: endTime,
-            date: date,
+            event_date: `${startDate} - ${endDate}`,
             registration_fee: regFee,
             price_id: priceId,
             count: count,
@@ -64,6 +67,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
 
         // toast.success('Removed to cart');
     };
+
+    console.log(cart);
 
     useEffect(() => {
         const item = cart.find((item) => item.name === name);
@@ -98,7 +103,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 <img src={image} type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
-                <p className="font-semibold text-rose-700 text-lg">{name}</p>
+                <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
                 <div className="text-green-700 flex gap-2 items-center">
                     <SeatsLeft />
                     {slots} seats left
