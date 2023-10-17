@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
+import ThankYouSvg from '../../assets/ThankYou';
 // import { useStripe } from "@stripe/react-stripe-js";
 
 const PaymentStatus = () => {
@@ -82,16 +83,8 @@ export default PaymentStatus;
 const ThankYou = () => (
     <div className="wrapper-1">
         <div className="wrapper-2">
-            <h1 className="h1">Thank you !</h1>
-            <p>Thanks for subscribing </p>
-            {/* <p>you should receive a confirmation email soon </p> */}
-            {/* <button className="go-home">go home</button> */}
-        </div>
-        <div className="footer-like">
-            {/* <p>
-              Email not received?
-              <a href="#">Click here to send again</a>
-            </p> */}
+            <ThankYouSvg />
+            <p>Your payment was successful. Thank You! </p>
         </div>
     </div>
 );

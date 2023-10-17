@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import Info from '../../assets/Info';
+import * as _ from 'lodash';
 
 dayjs.extend(LocalizedFormat);
 
@@ -98,7 +99,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 <img src={image} type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
-                <p className="font-semibold text-rose-700 text-lg">{name}</p>
+                <p className="font-semibold text-rose-700 text-lg">{_.startCase(_.toLower(name))}</p>
                 <div className="text-green-700 flex gap-2 items-center">
                     <SeatsLeft />
                     {slots} seats left
