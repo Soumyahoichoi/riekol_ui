@@ -109,7 +109,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                  flex gap-2 items-center`}
                 >
                     <SeatsLeft />
-                    {slots <= 0 ? 'Sold Out' : `only ${slots} seats left`}
+                    {slots <= 0 ? 'Sold Out' : `Only ${slots} seats left`}
 
                     {/* <Tooltip
                         showArrow
