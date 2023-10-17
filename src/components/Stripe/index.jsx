@@ -68,7 +68,7 @@ const CheckoutForm = () => {
                 ticketDetails
             };
 
-            await registerUser(payLoad);
+            registerUser(payLoad);
 
             navigate('/thankyou');
         }
