@@ -104,9 +104,13 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
-                <div className="text-green-700 flex gap-2 items-center">
+                <div
+                    className={`${slots <= 0 ? 'text-red-700' : 'text-green-700'}
+                 flex gap-2 items-center`}
+                >
                     <SeatsLeft />
-                    {slots} seats left
+                    {slots <= 0 ? 'Sold Out' : `only ${slots} seats left`}
+
                     {/* <Tooltip
                         showArrow
                         placement="right"
@@ -161,64 +165,68 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
 					)} */}
                 </div>
 
-                <div
-                    className="flex items-center w-full justify-left"
-                    //   style={{ zIndex: "-1" }}
-                >
-                    <span className="flex items-center text-lg w-full">
-                        <Button
-                            disabled={count === 1}
-                            isIconOnly
-                            // color={count === 1 ? undefined : 'danger'}
-                            variant="shadow"
-                            aria-label="Take a photo"
-                            size="md"
-                            radius="md"
-                            onClick={() => {
-                                setCount((count) => (count < 1 ? count : count - 1));
-                                setButtonDisplay(false);
-                            }}
-                        >
-                            {/* <RemoveFromCart /> */}
-                            <span className="text-2xl px-2">{' - '}</span>
-                        </Button>
-                        <p className="px-2">{count}</p>
-                        <Button
-                            disabled={count === 2}
-                            isIconOnly
-                            // color={count === 2 ? undefined : 'success'}
-                            variant="shadow"
-                            aria-label="Take a photo"
-                            size="md"
-                            radius="md"
-                            onClick={() => {
-                                setCount((count) => (count === 2 ? count : count + 1));
-                                setButtonDisplay(false);
-                            }}
-                        >
-                            {/* <AddToCart /> */}
-                            <span className="text-2xl px-2">{' + '}</span>
-                        </Button>
-                        <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
-                            <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
-                        </Button>
-                        {cart.find((item) => item.name === name) && (
+                {+slots > 0 && (
+                    <div
+                        className="flex items-center w-full justify-left"
+                        //   style={{ zIndex: "-1" }}
+                    >
+                        <span className="flex items-center text-lg w-full">
                             <Button
+                                disabled={count === 1}
                                 isIconOnly
                                 // color={count === 1 ? undefined : 'danger'}
-                                variant="light"
-                                // aria-label="Take a photo"
-                                size="sm"
+                                variant="shadow"
+                                aria-label="Take a photo"
+                                size="md"
                                 radius="md"
-                                className="ml-12 cursor-pointer"
-                                onClick={removeFromCart}
-                                // disabled={cart.length === 0}
+                                onClick={() => {
+                                    setCount((count) => (count < 1 ? count : count - 1));
+                                    setButtonDisplay(false);
+                                }}
                             >
-                                <Dustbin />
+                                {/* <RemoveFromCart /> */}
+                                <span className="text-2xl px-2">{' - '}</span>
                             </Button>
-                        )}
-                    </span>
-                </div>
+                            <p className="px-2">{count}</p>
+                            <Button
+                                disabled={count === 2}
+                                isIconOnly
+                                // color={count === 2 ? undefined : 'success'}
+                                variant="shadow"
+                                aria-label="Take a photo"
+                                size="md"
+                                radius="md"
+                                onClick={() => {
+                                    setCount((count) => (count === 2 ? count : count + 1));
+                                    setButtonDisplay(false);
+                                }}
+                            >
+                                {/* <AddToCart /> */}
+                                <span className="text-2xl px-2">{' + '}</span>
+                            </Button>
+
+                            <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
+                                <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
+                            </Button>
+
+                            {cart.find((item) => item.name === name) && (
+                                <Button
+                                    isIconOnly
+                                    // color={count === 1 ? undefined : 'danger'}
+                                    variant="light"
+                                    // aria-label="Take a photo"
+                                    size="sm"
+                                    radius="md"
+                                    className="ml-12 cursor-pointer"
+                                    onClick={removeFromCart}
+                                    // disabled={cart.length === 0}
+                                >
+                                    <Dustbin />
+                                </Button>
+                            )}
+                        </span>
+                    </div>
+                )}
             </section>
         </main>
     );
