@@ -44,7 +44,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             name: name,
             start_time: startTime,
             end_time: endTime,
-            date: date,
+            event_date: `${startDate} - ${endDate}`,
             registration_fee: regFee,
             price_id: priceId,
             count: count,
@@ -65,6 +65,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
 
         // toast.success('Removed to cart');
     };
+
+    console.log(cart);
 
     useEffect(() => {
         const item = cart.find((item) => item.name === name);
