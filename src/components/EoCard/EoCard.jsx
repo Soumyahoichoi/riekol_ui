@@ -40,6 +40,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const onAddToCart = () => {
         const newCart = cart.filter((item) => item.name !== name);
 
+        // if(itOverLapsWithOtherEvent())
+
         newCart.push({
             name: name,
             start_time: startTime,
@@ -101,7 +103,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 <img src={image} type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
-                <p className="font-semibold text-rose-700 text-lg">{_.startCase(_.toLower(name))}</p>
+                <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
                 <div className="text-green-700 flex gap-2 items-center">
                     <SeatsLeft />
                     {slots} seats left
