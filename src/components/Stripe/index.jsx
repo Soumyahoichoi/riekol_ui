@@ -63,7 +63,7 @@ const CheckoutForm = () => {
             // save payload
             const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
             const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email'];
-            const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email }));
+            const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email, created: new Date()?.toTimeString() }));
             const payLoad = {
                 ticketDetails
             };
