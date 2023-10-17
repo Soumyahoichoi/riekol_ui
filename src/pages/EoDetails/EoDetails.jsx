@@ -30,7 +30,7 @@ const EoDetails = () => {
             name: details.name,
             start_time: details.startTime,
             end_time: details.endTime,
-            date: details.eoDate,
+            event_date: details.eoDate,
             registration_fee: details.registrationfee,
             price_id: details.priceId,
             count: count

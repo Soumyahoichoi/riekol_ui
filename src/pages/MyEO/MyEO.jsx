@@ -110,7 +110,7 @@ const MyEO = () => {
                         image={item.thumb_image}
                         startTime={item.start_hour}
                         endTime={item.end_hour}
-                        // date={item.eoDate}
+                        date={item.eoDate}
                         startDate={item.start_date}
                         endDate={item.end_date}
                         name={item.name}
