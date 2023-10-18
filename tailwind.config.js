@@ -63,6 +63,10 @@ module.exports = {
         'h-5',
         'm-10',
         'justify-end',
+        'justify-center',
+        'mb-4',
+        'mb-8',
+        'mt-8',
         'text-red-700'
     ],
     darkMode: 'class',
