@@ -5,11 +5,11 @@ import Jump from '../../assets/white-logo.png';
 const Schedule = () => {
     return (
         <div className="container">
-            <section className="flex w-full">
+            <section className="flex w-full justify-center">
                 <img src={Jump} />
                 {/* <img src={Jump} /> */}
             </section>
-            <section className="mb-8 mt-8">
+            <section className="mb-8 mt-8 flex justify-center">
                 <h1 className="text-2xl">SCHEDULE </h1>
             </section>
             <div className="overflow">

@@ -1,10 +1,11 @@
 .table {
     max-height: 200px;
     overflow-y: scroll;
+    width: calc(100vw - 10rem);
 }
 
 .container {
-    padding: 10%;
+    padding: 2rem;
     background-color: #4c2ba9;
     color: white;
     height: 100vh;
@@ -32,5 +33,5 @@
 
 td {
     padding: 15px;
-    text-align: left;
+    /* text-align: left; */
 }
