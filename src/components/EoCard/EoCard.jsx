@@ -11,7 +11,6 @@ import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import Info from '../../assets/Info';
 import * as _ from 'lodash';
-import MyEOImage from '../../assets/thumbnails/MyEO_Born_in_a_brothel.webp';
 
 dayjs.extend(LocalizedFormat);
 
