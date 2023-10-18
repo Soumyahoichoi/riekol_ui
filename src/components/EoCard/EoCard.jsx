@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import './styles.css';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
@@ -11,6 +11,7 @@ import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import Info from '../../assets/Info';
 import * as _ from 'lodash';
+import MyEOImage from '../../assets/thumbnails/MyEO_Born_in_a_brothel.webp';
 
 dayjs.extend(LocalizedFormat);
 
@@ -68,8 +69,6 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
         // toast.success('Removed to cart');
     };
 
-    console.log(cart);
-
     useEffect(() => {
         const item = cart.find((item) => item.name === name);
         if (item) {
@@ -92,6 +91,11 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
         return null;
     }
 
+    // console.log(import('../../assets/thumbnails/MyEO_Born_in_a_brothel.webp'));
+    async function getImage(name) {
+        return await import(`../../assets/thumbnails/${name}.webp`);
+    }
+
     return (
         <main
             className="divContainer"
@@ -100,7 +104,14 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             style={{ display }}
         >
             <section className="mainContainer">
-                <img src={image} type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
+                <img
+                    src={`../../src/assets/thumbnails/${name.replaceAll(' ', '_')}.webp`}
+                    loading="lazy"
+                    type="image/webp"
+                    alt="name"
+                    className="imageContainer"
+                    style={{ width: '100%', height: '15rem' }}
+                />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
