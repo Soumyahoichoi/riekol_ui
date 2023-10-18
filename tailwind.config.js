@@ -62,7 +62,10 @@ module.exports = {
         'h-20',
         'h-5',
         'm-10',
-        'justify-end'
+        'justify-end',
+        'mb-4',
+        'mb-8',
+        'mt-8'
     ],
     darkMode: 'class',
     plugins: [nextui()]

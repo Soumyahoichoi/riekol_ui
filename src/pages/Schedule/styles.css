@@ -1,0 +1,36 @@
+.table {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.container {
+    padding: 10%;
+    background-color: #4c2ba9;
+    color: white;
+    height: 100vh;
+}
+
+.outletContainer {
+    background-color: #4c2ba9;
+    overflow: hidden;
+}
+
+.overflow {
+    max-height: 33.5rem;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.row--head {
+    position: sticky;
+    top: 0px;
+    background-color: red;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+}
