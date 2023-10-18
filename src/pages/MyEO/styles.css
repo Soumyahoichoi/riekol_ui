@@ -27,7 +27,7 @@
     --tw-border-opacity: 1;
     width: 100%;
     /* margin-top: 2rem; */
-    padding: 8px;
+    padding: 15px;
     z-index: 2;
     /* overflow-x: auto; */
     position: fixed;
@@ -56,8 +56,14 @@
         position: fixed;
     }
     .card--content {
-        margin: 8rem 0rem 4rem 0rem;
+        margin: 7rem 0rem 4rem 0rem;
         justify-content: center;
+    }
+    .switch {
+        padding: 0.5rem;
+    }
+    .primaryBox {
+        padding: 15px 15px 5px 15px;
     }
 }
 

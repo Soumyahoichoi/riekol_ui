@@ -65,7 +65,8 @@ module.exports = {
         'justify-end',
         'mb-4',
         'mb-8',
-        'mt-8'
+        'mt-8',
+        'text-red-700'
     ],
     darkMode: 'class',
     plugins: [nextui()]
