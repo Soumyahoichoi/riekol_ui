@@ -90,12 +90,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     if (import.meta.env.PROD && name === 'Test') {
         return null;
     }
-
-    // console.log(import('../../assets/thumbnails/MyEO_Born_in_a_brothel.webp'));
-    async function getImage(name) {
-        return await import(`../../assets/thumbnails/${name}.webp`);
-    }
-
+    // `../../src/assets/thumbnails/${name.replaceAll(' ', '_')}.webp`
     return (
         <main
             className="divContainer"
@@ -104,14 +99,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             style={{ display }}
         >
             <section className="mainContainer">
-                <img
-                    src={`../../src/assets/thumbnails/${name.replaceAll(' ', '_')}.webp`}
-                    loading="lazy"
-                    type="image/webp"
-                    alt="name"
-                    className="imageContainer"
-                    style={{ width: '100%', height: '15rem' }}
-                />
+                <img src={`/${name.replaceAll(' ', '_')}.webp`} loading="lazy" type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
