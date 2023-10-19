@@ -1,7 +1,5 @@
 import { useState, useEffect, lazy } from 'react';
 import './styles.css';
-import dayjs from 'dayjs';
-import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import SeatsLeft from '../../assets/seats_left.jsx';
 import Time from '../../assets/time';
 import Dustbin from '../../assets/dustbin';
@@ -11,8 +9,6 @@ import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import Info from '../../assets/Info';
 import * as _ from 'lodash';
-
-dayjs.extend(LocalizedFormat);
 
 export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, description, regFee, priceId, startDate, endDate, display, slots }) => {
     const navigate = useNavigate();
@@ -26,7 +22,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const [data, setData] = useState(false);
     const [count, setCount] = useState(1);
     const [buttonDisplay, setButtonDisplay] = useState(false);
-    const { cart, setCart, isSelected } = useStore((state) => state);
+    const { cart, setCart, isSelected, isOverlapping } = useStore((state) => state);
 
     const onClickHandler = () => {
         setData(!data);
@@ -40,9 +36,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const onAddToCart = () => {
         const newCart = cart.filter((item) => item.name !== name);
 
-        // if(itOverLapsWithOtherEvent())
-
-        newCart.push({
+        const entry = {
             name: name,
             start_time: startTime,
             end_time: endTime,
@@ -51,7 +45,14 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             price_id: priceId,
             count: count,
             priceInDollar
-        });
+        };
+        const isOverLappingWith = isOverlapping(entry);
+        if (isOverLappingWith.length > 0) {
+            toast.error('Overlapping with existing cart items');
+            return;
+        }
+
+        newCart.push(entry);
 
         setCart(newCart);
         setButtonDisplay(true);

@@ -11,12 +11,15 @@ import { createSession } from '../../api/checkout';
 import { generateUUID, getResultFromData } from '../../helper';
 import { getMyItems } from '../../api/data';
 import CardSkeleton from '../../components/Skeleton/index';
-// import Cart from "../../components/Cart/Cart";
+import dayjs from 'dayjs';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+
+dayjs.extend(LocalizedFormat);
 
 const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
-    const { cart, isSelected, setIsSelected, setCart, myEo, setMyEo } = useStore((state) => state);
+    const { cart, isSelected, setIsSelected, setCart, myEo, setMyEo, setSchedule, schedule } = useStore((state) => state);
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
@@ -39,6 +42,13 @@ const MyEO = () => {
                     const sortedData = response.sort((a, b) => a.id - b.id);
                     setCards(sortedData);
                     setMyEo(sortedData);
+
+                    sortedData.forEach((item) => {
+                        setSchedule(item.name, {
+                            start: dayjs(item.start_date + '-2024 ' + item.start_hour).format(),
+                            end: dayjs(item.end_date + '-2024 ' + item.end_hour).format()
+                        });
+                    });
                     setIsLoading(false);
                 }
             } catch (err) {
