@@ -20,8 +20,10 @@ export const useStore = create((set, get) => ({
             const start_cart_compared = dayjs(element.event_date.split(' - ')[0] + '-2024 ' + element.start_time);
             const end_cart_compared = dayjs(element.event_date.split(' - ')[1] + '-2024 ' + element.end_time);
 
-            if (!(end_cart_compared.isBefore(schedule[item.name].start) || start_cart_compared.isAfter(schedule[item.name].end))) {
-                isOverLappingWith.push(element.name);
+            if (element.name !== item.name) {
+                if (!(end_cart_compared.isBefore(schedule[item.name].start) || start_cart_compared.isAfter(schedule[item.name].end))) {
+                    isOverLappingWith.push(element.name);
+                }
             }
         });
 
