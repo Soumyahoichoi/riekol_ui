@@ -94,6 +94,14 @@
 
 .switch {
     display: flex;
-    justify-content: flex-end;
-    padding: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo_container > img {
+    border-radius: 6px;
+}
+.currency {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
