@@ -8,7 +8,7 @@ function App() {
         <BrowserRouter>
             <Toaster richColors />
             <Router />
-            <Analytics mode={'production'} />;
+            <Analytics />;
         </BrowserRouter>
     );
 }
