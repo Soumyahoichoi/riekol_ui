@@ -98,7 +98,14 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             style={{ display }}
         >
             <section className="mainContainer">
-                <img src={`/${name.replaceAll(' ', '_')}.webp`} loading="lazy" type="image/webp" alt="name" className="imageContainer" style={{ width: '100%', height: '15rem' }} />
+                <img
+                    src={`/${name.replaceAll(' ', '_')}.webp`}
+                    loading={name === 'MyEO Golf Tournament' ? 'eager' : 'lazy'}
+                    type="image/webp"
+                    alt="name"
+                    className="imageContainer"
+                    style={{ width: '100%', height: '15rem' }}
+                />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
