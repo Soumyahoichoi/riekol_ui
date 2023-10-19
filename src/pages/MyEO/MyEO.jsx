@@ -90,12 +90,12 @@ const MyEO = () => {
                 </div>
                 <div className="tabPrimary">
                     <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
-                        <Tab key="all" title="All" />
-                        <Tab key="Sports" title="Sports" />
-                        <Tab key="Spirituality" title="Spirituality" />
-                        <Tab key="Experiential" title="Experiential" />
+                        <Tab key="all" title="All" className="tab" />
+                        <Tab key="Sports" title="Sports" className="tab" />
+                        <Tab key="Spirituality" title="Spirituality" className="tab" />
+                        <Tab key="Experiential" title="Experiential" className="tab" />
                         {/* <Tab key="interaction" title="Interaction" /> */}
-                        <Tab key="F&B" title="F&B" />
+                        <Tab key="F&B" title="F&B" className="tab" />
                         {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
                     </Tabs>
                 </div>

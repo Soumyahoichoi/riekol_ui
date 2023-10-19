@@ -65,6 +65,9 @@
     .primaryBox {
         padding: 15px 15px 5px 15px;
     }
+    .tab {
+        padding: 5px;
+    }
 }
 
 @media screen and (max-width: 960px) {
