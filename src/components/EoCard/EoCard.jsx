@@ -210,8 +210,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                                 <span className="text-2xl px-2">{' + '}</span>
                             </Button>
 
-                            <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="lg" variant="solid" className="buttonContainers">
-                                <span className="px-2">{buttonDisplay ? 'Added to Cart' : 'Add to Cart'}</span>
+                            <Button onClick={onAddToCart} color={buttonDisplay ? 'success' : 'danger'} size="md" variant="solid" className="buttonContainers">
+                                <span className="px-2">{buttonDisplay ? 'Added' : 'Add to Cart'}</span>
                             </Button>
 
                             {cart.find((item) => item.name === name) && (
