@@ -83,29 +83,34 @@ const MyEO = () => {
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
                 <div className="switch">
-                    <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp;</p>
+                    <div className="logo_container">
+                        <img src="/logo.webp" alt="logo" width="80px" height="80px" />
+                    </div>
+                    <div className="currency">
+                        <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp;</p>
 
-                    <Switch
-                        defaultSelected={!isSelected}
-                        size="md"
-                        color="secondary"
-                        onValueChange={() => {
-                            setIsSelected(!isSelected);
-                            setCart([]);
-                        }}
-                        thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
-                    >
-                        <p style={{ marginTop: '5px', fontSize: '15px' }}>INR</p>
-                    </Switch>
+                        <Switch
+                            defaultSelected={!isSelected}
+                            size="md"
+                            color="secondary"
+                            onValueChange={() => {
+                                setIsSelected(!isSelected);
+                                setCart([]);
+                            }}
+                            thumbIcon={({ isSelected, className }) => (isSelected ? <div className={className}>₹</div> : <div className={className}>$</div>)}
+                        >
+                            <p style={{ marginTop: '5px', fontSize: '15px' }}>INR</p>
+                        </Switch>
+                    </div>
                 </div>
                 <div className="tabPrimary">
                     <Tabs key="underlined" onSelectionChange={handleTabChange} variant="underlined" aria-label="Tabs variants" size="lg">
-                        <Tab key="all" title="All" />
-                        <Tab key="Sports" title="Sports" />
-                        <Tab key="Spirituality" title="Spirituality" />
-                        <Tab key="Experiential" title="Experiential" />
+                        <Tab key="all" title="All" className="tab" />
+                        <Tab key="Sports" title="Sports" className="tab" />
+                        <Tab key="Spirituality" title="Spirituality" className="tab" />
+                        <Tab key="Experiential" title="Experiential" className="tab" />
                         {/* <Tab key="interaction" title="Interaction" /> */}
-                        <Tab key="F&B" title="F&B" />
+                        <Tab key="F&B" title="F&B" className="tab" />
                         {/* <Tab key="health & wellness" title="Health & Wellness" /> */}
                     </Tabs>
                 </div>
