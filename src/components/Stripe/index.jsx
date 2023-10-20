@@ -109,8 +109,8 @@ const CheckoutForm = () => {
                     <input type="email" placeholder="Email" className="input--email" onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <PaymentElement />
-                <Button type="submit" disabled={!stripe} color="success" className="mt-2 w-full" onClick={handleSubmit} isLoading={isLoading}>
-                    Submit
+                <Button type="submit" disabled={!stripe} color="success" className="mt-6 w-full container_btn" onClick={handleSubmit} isLoading={isLoading}>
+                    SUBMIT
                 </Button>
 
                 {/* {errorMessage && <div>{errorMessage}</div>} */}

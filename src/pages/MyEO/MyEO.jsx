@@ -86,7 +86,7 @@ const MyEO = () => {
             <section className="primaryBox">
                 <div className="switch">
                     <div className="logo_container">
-                        <img src="/logo.png" alt="logo" width="80px" height="80px" />
+                        <img src="/logo.webp" alt="logo" width="80px" height="80px" />
                     </div>
                     <div className="currency">
                         <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp;</p>
