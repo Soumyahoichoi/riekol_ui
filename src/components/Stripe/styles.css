@@ -79,6 +79,9 @@
     width: 100%;
     margin-top: 2rem;
 }
+.container_btn {
+    width: 40%;
+}
 
 @media screen and (max-width: 768px) {
     /* .checkout {
@@ -106,5 +109,8 @@
     }
     .checkoutContainer {
         margin-right: 20rem;
+    }
+    .container_btn {
+        width: 100%;
     }
 }

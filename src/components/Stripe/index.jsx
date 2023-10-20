@@ -119,7 +119,7 @@ const CheckoutForm = () => {
                     <input id="eochap--checkout" type="text" placeholder="EO Chapter" className="input--email" onChange={(e) => setEoChap(e.target.value)} /> */}
                 </div>
                 <PaymentElement />
-                <Button type="submit" disabled={!stripe} color="success" className="mt-8 w-full" onClick={handleSubmit} isLoading={isLoading}>
+                <Button type="submit" disabled={!stripe} color="success" className="mt-6 w-full container_btn" onClick={handleSubmit} isLoading={isLoading}>
                     SUBMIT
                 </Button>
 
