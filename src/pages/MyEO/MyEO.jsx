@@ -11,12 +11,15 @@ import { createSession } from '../../api/checkout';
 import { generateUUID, getResultFromData } from '../../helper';
 import { getMyItems } from '../../api/data';
 import CardSkeleton from '../../components/Skeleton/index';
-// import Cart from "../../components/Cart/Cart";
+import dayjs from 'dayjs';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+
+dayjs.extend(LocalizedFormat);
 
 const isBrowser = typeof window !== 'undefined';
 
 const MyEO = () => {
-    const { cart, isSelected, setIsSelected, setCart, myEo, setMyEo } = useStore((state) => state);
+    const { cart, isSelected, setIsSelected, setCart, myEo, setMyEo, setSchedule, schedule } = useStore((state) => state);
     const navigate = useNavigate();
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
@@ -39,6 +42,13 @@ const MyEO = () => {
                     const sortedData = response.sort((a, b) => a.id - b.id);
                     setCards(sortedData);
                     setMyEo(sortedData);
+
+                    sortedData.forEach((item) => {
+                        setSchedule(item.name, {
+                            start: dayjs(item.start_date + '-2024 ' + item.start_hour).format(),
+                            end: dayjs(item.end_date + '-2024 ' + item.end_hour).format()
+                        });
+                    });
                     setIsLoading(false);
                 }
             } catch (err) {
@@ -69,12 +79,14 @@ const MyEO = () => {
         value: `Value ${index + 1}` // You can replace this with your desired value
     }));
 
+    const totalItems = cart.reduce((acc, item) => acc + item.count, 0);
+
     return (
         <div className="flex justify-center flex-col container-box">
             <section className="primaryBox">
                 <div className="switch">
                     <div className="logo_container">
-                        <img src="/logo.webp" alt="logo" width="80px" height="80px" />
+                        <img src="/logo.png" alt="logo" width="80px" height="80px" />
                     </div>
                     <div className="currency">
                         <p style={{ marginTop: '5px', fontSize: '15px' }}>USD &nbsp;</p>
@@ -133,7 +145,7 @@ const MyEO = () => {
             {cart.length > 0 && (
                 <div className="floating-container">
                     <Button onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
-                        Checkout {`(${cart.length} MyEOs added)`}
+                        Checkout {`(${totalItems} MyEOs added)`}
                     </Button>
                     {/* <button class="button">Floating Button</button> */}
                 </div>
