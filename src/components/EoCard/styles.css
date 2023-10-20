@@ -29,3 +29,15 @@
     border-color: rgb(203 213 225 / var(--tw-border-opacity));
     border-width: 1px;
 }
+
+@media screen and (max-width: 380px) {
+    .divContainer {
+        flex-basis: 22rem;
+    }
+}
+
+@media screen and (max-width: 460px) and (min-width: 381px) {
+    .divContainer {
+        flex-basis: 24rem;
+    }
+}

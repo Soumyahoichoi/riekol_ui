@@ -67,7 +67,8 @@ module.exports = {
         'mb-4',
         'mb-8',
         'mt-8',
-        'text-red-700'
+        'text-red-700',
+        'mt-6'
     ],
     darkMode: 'class',
     plugins: [nextui()]

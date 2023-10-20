@@ -68,6 +68,9 @@
     .tab {
         padding: 5px;
     }
+    .tabPrimary {
+        display: flex;
+    }
 }
 
 @media screen and (max-width: 960px) {

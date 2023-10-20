@@ -5,6 +5,7 @@
     background-size: cover;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
 }
 
 .checkouts {
@@ -52,6 +53,7 @@
         0px 3px 6px rgba(0, 0, 0, 0.02);
 
     width: 100%;
+    outline: none;
 }
 
 .email--section {
@@ -67,14 +69,18 @@
     font-size: xx-large;
     align-items: center;
     /* margin-bottom: 1rem; */
-    width: 45rem;
+    width: inherit;
 }
 
 .disclaimer {
-    position: absolute;
+    /* position: absolute;
     bottom: 10px;
-    right: calc(100vw - 100%);
+    right: calc(100vw - 100%); */
     width: 100%;
+    margin-top: 2rem;
+}
+.container_btn {
+    width: 40%;
 }
 
 @media screen and (max-width: 768px) {
@@ -103,5 +109,8 @@
     }
     .checkoutContainer {
         margin-right: 20rem;
+    }
+    .container_btn {
+        width: 100%;
     }
 }
