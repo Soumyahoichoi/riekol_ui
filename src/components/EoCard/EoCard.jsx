@@ -48,7 +48,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
         };
         const isOverLappingWith = isOverlapping(entry);
         if (isOverLappingWith.length > 0) {
-            toast.error('Overlapping with existing cart items');
+            toast.error('This MyEO event overlaps with another MyEO event that you have already added to your cart. Please select only one of the two.');
             return;
         }
 
@@ -109,7 +109,9 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
                 />
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
-                <p className="font-semibold text-rose-700 text-lg">MyEO {_.startCase(_.toLower(name.slice(5)))}</p>
+                <p className="font-semibold text-rose-700 text-lg" style={{ textAlign: 'left' }}>
+                    MyEO {_.startCase(_.toLower(name.slice(5)))}
+                </p>
                 <div
                     className={`${slots <= 0 ? 'text-red-700' : 'text-green-700'}
                  flex gap-2 items-center`}

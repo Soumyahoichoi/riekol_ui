@@ -21,6 +21,7 @@ const CheckoutForm = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
 
     const currency = isSelected ? '$' : '₹';
 
@@ -29,7 +30,7 @@ const CheckoutForm = () => {
         // which would refresh the page.
         event.preventDefault();
 
-        if (!stripe || !elements || !email) {
+        if (!stripe || !elements || !email || !name) {
             // Stripe.js hasn't yet loaded.
             // Make sure to disable form submission until Stripe.js has loaded.
 
@@ -63,7 +64,7 @@ const CheckoutForm = () => {
             // save payload
             const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
             const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email', 'event_date'];
-            const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email, created: new Date()?.toTimeString() }));
+            const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email, created: new Date()?.toTimeString(), customer_name: name }));
             const payLoad = {
                 ticketDetails
             };
@@ -91,7 +92,7 @@ const CheckoutForm = () => {
                 <BackButton />
             </div>
 
-            <form>
+            <form style={{ maxWidth: '26rem' }}>
                 <section className="order--summary">
                     <h1>Total </h1>
                     <p>
@@ -103,14 +104,23 @@ const CheckoutForm = () => {
                     <p style={{ color: 'gray', fontSize: '12px' }}>*Inc 18% GST</p>
                 </section>
                 <div className="mb-2 flex flex-col items-start email--section">
-                    <label htmlFor="email--checkout" className="label--email">
+                    <label htmlFor="name--checkout" className="label--email">
+                        Name
+                    </label>
+                    <input id="name--checkout" type="text" placeholder="Name" className="input--email" onChange={(e) => setName(e.target.value)} />
+                    <label htmlFor="email--checkout" className="label--email mt-4">
                         Email
                     </label>
-                    <input type="email" placeholder="Email" className="input--email" onChange={(e) => setEmail(e.target.value)} />
+                    <input id="email--checkout" type="email" placeholder="Email" className="input--email" onChange={(e) => setEmail(e.target.value)} />
+
+                    {/* <label htmlFor="eochap--checkout" className="label--email mt-4">
+                        EO Chapter
+                    </label>
+                    <input id="eochap--checkout" type="text" placeholder="EO Chapter" className="input--email" onChange={(e) => setEoChap(e.target.value)} /> */}
                 </div>
                 <PaymentElement />
-                <Button type="submit" disabled={!stripe} color="success" className="mt-2 w-full" onClick={handleSubmit} isLoading={isLoading}>
-                    Submit
+                <Button type="submit" disabled={!stripe} color="success" className="mt-8 w-full" onClick={handleSubmit} isLoading={isLoading}>
+                    SUBMIT
                 </Button>
 
                 {/* {errorMessage && <div>{errorMessage}</div>} */}
