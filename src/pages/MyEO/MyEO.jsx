@@ -1,5 +1,5 @@
-import { Button, Tab, Tabs, Switch } from '@nextui-org/react';
-import { useState, useEffect } from 'react';
+import { Button, Tab, Tabs, Switch, Input } from '@nextui-org/react';
+import { useState, useEffect, useRef } from 'react';
 import './styles.css';
 import { Cards } from '../../constants';
 import { EoCard } from '../../components/EoCard/EoCard';
@@ -7,12 +7,13 @@ import { useStore } from '../../store/store';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { returnUrl } from '../../../decideENV';
-import { createSession } from '../../api/checkout';
+import { createSession, saveDetailsForPaymentLink } from '../../api/checkout';
 import { generateUUID, getResultFromData } from '../../helper';
 import { getMyItems } from '../../api/data';
 import CardSkeleton from '../../components/Skeleton/index';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+import Modal from '../../components/Modal/Modal';
 
 dayjs.extend(LocalizedFormat);
 
@@ -24,12 +25,56 @@ const MyEO = () => {
     const [tab, setTab] = useState('all');
     const [loading, setIsLoading] = useState(false);
     const [cards, setCards] = useState([]);
+    const modalRef = useRef(null);
+    const [modalVal, setModalVal] = useState({
+        name: '',
+        chapter: '',
+        email: '',
+        contact: ''
+    });
     // const [isSelected, setIsSelected] = useState(false);
 
     const handleCheckout = async () => {
-        setIsLoading(true);
+        // setIsLoading(true);
+        setModalVal({
+            name: '',
+            chapter: '',
+            email: '',
+            contact: ''
+        });
+        modalRef.current?.onOpen();
+        // navigate(`/checkout`);
+    };
 
-        navigate(`/checkout`);
+    const submitDetails = async () => {
+        if (!modalVal.name || !modalVal.chapter || !modalVal.email || !modalVal.contact) {
+            toast.error('All fields are mandatory');
+            return;
+        }
+
+        const cartValue = cart?.reduce((acc, item) => {
+            if (!isSelected) {
+                if (typeof item.registration_fee === 'string') {
+                    return acc + item.count * +item.registration_fee.split(',').join('');
+                }
+
+                return acc + item.count * item.registration_fee;
+            } else {
+                if (typeof item.priceInDollar === 'string') {
+                    return acc + item.count * +item.priceInDollar.split(',').join('');
+                }
+
+                return acc + item.count * item.priceInDollar;
+            }
+        }, 0);
+        const billingAmount = +cartValue + 0.18 * cartValue;
+        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount });
+        if (getResultFromData(savedDetails)?.status === 201) {
+            toast.success("Your details are saved successfully. You'll recieve payment link shortly");
+        } else {
+            toast.error('Something went wrong! Please try again');
+        }
+        // modalRef.current?.onClose();
     };
 
     useEffect(() => {
@@ -144,7 +189,15 @@ const MyEO = () => {
             </section>
             {cart.length > 0 && (
                 <div className="floating-container">
-                    <Button onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
+                    <Modal modalRef={modalRef} submitDetails={submitDetails}>
+                        <>
+                            <Input isRequired type="text" label="Name" value={modalVal.name} onChange={(e) => setModalVal((items) => ({ ...items, name: e.target.value }))} />
+                            <Input isRequired type="text" label="Chapter" value={modalVal.chapter} onChange={(e) => setModalVal((items) => ({ ...items, chapter: e.target.value }))} />
+                            <Input isRequired type="email" label="Email" value={modalVal.email} onChange={(e) => setModalVal((items) => ({ ...items, email: e.target.value }))} />
+                            <Input isRequired type="number" label="Contact" value={modalVal.contact} onChange={(e) => setModalVal((items) => ({ ...items, contact: e.target.valueAsNumber }))} />
+                        </>
+                    </Modal>
+                    <Button onPress={handleCheckout} onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
                         Checkout {`(${totalItems} MyEOs added)`}
                     </Button>
                     {/* <button class="button">Floating Button</button> */}
