@@ -74,7 +74,7 @@ const MyEO = () => {
         } else {
             toast.error('Something went wrong! Please try again');
         }
-        // modalRef.current?.onClose();
+        modalRef.current?.onClose();
     };
 
     useEffect(() => {
