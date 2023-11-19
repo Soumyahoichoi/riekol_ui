@@ -34,6 +34,8 @@ const MyEO = () => {
     });
     // const [isSelected, setIsSelected] = useState(false);
 
+    const currency = isSelected ? '$' : '₹';
+
     const handleCheckout = async () => {
         // setIsLoading(true);
         setModalVal({
@@ -68,7 +70,7 @@ const MyEO = () => {
             }
         }, 0);
         const billingAmount = +cartValue + 0.18 * cartValue;
-        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID() });
+        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID(), currency });
         if (getResultFromData(savedDetails)?.status === 201) {
             toast.success("Your details are saved successfully. You'll recieve payment link shortly");
         } else {
