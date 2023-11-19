@@ -68,7 +68,7 @@ const MyEO = () => {
             }
         }, 0);
         const billingAmount = +cartValue + 0.18 * cartValue;
-        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount });
+        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID() });
         if (getResultFromData(savedDetails)?.status === 201) {
             toast.success("Your details are saved successfully. You'll recieve payment link shortly");
         } else {
