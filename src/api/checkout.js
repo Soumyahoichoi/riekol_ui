@@ -15,3 +15,7 @@ export const intiateCCavenuePayment = (data) => {
 export const saveDetailsForPaymentLink = (data) => {
     return ServiceInstance.post('/users/saveTemp', data);
 };
+
+export const getMailingList = () => {
+    return ServiceInstance.get('/users/getMailingList');
+};
