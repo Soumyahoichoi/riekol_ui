@@ -37,47 +37,47 @@ const MyEO = () => {
     const currency = isSelected ? '$' : '₹';
 
     const handleCheckout = async () => {
-        // setIsLoading(true);
-        setModalVal({
-            name: '',
-            chapter: '',
-            email: '',
-            contact: ''
-        });
-        modalRef.current?.onOpen();
-        // navigate(`/checkout`);
+        setIsLoading(true);
+        // setModalVal({
+        //     name: '',
+        //     chapter: '',
+        //     email: '',
+        //     contact: ''
+        // });
+        // modalRef.current?.onOpen();
+        navigate(`/checkout`);
     };
 
-    const submitDetails = async () => {
-        if (!modalVal.name || !modalVal.chapter || !modalVal.email || !modalVal.contact) {
-            toast.error('All fields are mandatory');
-            return;
-        }
+    // const submitDetails = async () => {
+    //     if (!modalVal.name || !modalVal.chapter || !modalVal.email || !modalVal.contact) {
+    //         toast.error('All fields are mandatory');
+    //         return;
+    //     }
 
-        const cartValue = cart?.reduce((acc, item) => {
-            if (!isSelected) {
-                if (typeof item.registration_fee === 'string') {
-                    return acc + item.count * +item.registration_fee.split(',').join('');
-                }
+    //     const cartValue = cart?.reduce((acc, item) => {
+    //         if (!isSelected) {
+    //             if (typeof item.registration_fee === 'string') {
+    //                 return acc + item.count * +item.registration_fee.split(',').join('');
+    //             }
 
-                return acc + item.count * item.registration_fee;
-            } else {
-                if (typeof item.priceInDollar === 'string') {
-                    return acc + item.count * +item.priceInDollar.split(',').join('');
-                }
+    //             return acc + item.count * item.registration_fee;
+    //         } else {
+    //             if (typeof item.priceInDollar === 'string') {
+    //                 return acc + item.count * +item.priceInDollar.split(',').join('');
+    //             }
 
-                return acc + item.count * item.priceInDollar;
-            }
-        }, 0);
-        const billingAmount = +cartValue + 0.18 * cartValue;
-        const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID(), currency });
-        if (getResultFromData(savedDetails)?.status === 201) {
-            toast.success("Your details are saved successfully. You'll recieve payment link shortly");
-        } else {
-            toast.error('Something went wrong! Please try again');
-        }
-        modalRef.current?.onClose();
-    };
+    //             return acc + item.count * item.priceInDollar;
+    //         }
+    //     }, 0);
+    //     const billingAmount = +cartValue + 0.18 * cartValue;
+    //     const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID(), currency });
+    //     if (getResultFromData(savedDetails)?.status === 201) {
+    //         toast.success("Your details are saved successfully. You'll recieve payment link shortly");
+    //     } else {
+    //         toast.error('Something went wrong! Please try again');
+    //     }
+    //     modalRef.current?.onClose();
+    // };
 
     useEffect(() => {
         setIsLoading(true);
@@ -191,14 +191,14 @@ const MyEO = () => {
             </section>
             {cart.length > 0 && (
                 <div className="floating-container">
-                    <Modal modalRef={modalRef} submitDetails={submitDetails}>
+                    {/* <Modal modalRef={modalRef} submitDetails={submitDetails}>
                         <>
                             <Input isRequired type="text" label="Name" value={modalVal.name} onChange={(e) => setModalVal((items) => ({ ...items, name: e.target.value }))} />
                             <Input isRequired type="text" label="Chapter" value={modalVal.chapter} onChange={(e) => setModalVal((items) => ({ ...items, chapter: e.target.value }))} />
                             <Input isRequired type="email" label="Email" value={modalVal.email} onChange={(e) => setModalVal((items) => ({ ...items, email: e.target.value }))} />
                             <Input isRequired type="number" label="Contact" value={modalVal.contact} onChange={(e) => setModalVal((items) => ({ ...items, contact: e.target.valueAsNumber }))} />
                         </>
-                    </Modal>
+                    </Modal> */}
                     <Button onPress={handleCheckout} onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
                         Checkout {`(${totalItems} MyEOs added)`}
                     </Button>

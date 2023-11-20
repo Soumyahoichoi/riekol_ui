@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Visa from '../../assets/visa.svg';
 import BackButton from '../../assets/backButton';
 import { useStore } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import { intiateCCavenuePayment } from '../../api/checkout';
+import { getResultFromData } from '../../helper';
 
 const Checkout = () => {
     const { cart, totalBillingAmout, setTotalBilingAmount, isSelected } = useStore((store) => ({
@@ -14,8 +15,11 @@ const Checkout = () => {
         isSelected: store.isSelected
     }));
     const navigate = useNavigate();
+    const [encReq, setEncReq] = useState(null);
+    const [accessCode, setAccessCode] = useState(null);
+    const formRef = useRef(null);
 
-    const currency = isSelected ? '$' : '₹';
+    const currency = isSelected ? 'USD' : 'INR';
 
     const billingAmount = cart?.reduce((acc, item) => {
         if (!isSelected) {
@@ -34,7 +38,8 @@ const Checkout = () => {
     }, 0);
 
     const handleSubmit = async () => {
-        await intiateCCavenuePayment();
+        // document.getElementById('nonseamless').submit();
+        // console.log(result);
     };
 
     const onClickHandler = () => {
@@ -53,9 +58,28 @@ const Checkout = () => {
             setTotalBilingAmount(billingAmountWithGST);
         }
     }, [totalBillingAmout]);
+
+    useEffect(() => {
+        if (totalBillingAmout) {
+            intiateCCavenuePayment({ currency, amount: totalBillingAmout }).then((val) => {
+                const result = getResultFromData(val);
+                if (result) {
+                    setEncReq(result.encReq);
+                    setAccessCode(result.accessCode);
+                }
+            });
+        }
+    }, [totalBillingAmout]);
+
+    useEffect(() => {
+        if (encReq && accessCode) {
+            document.redirect.submit();
+            // formRef?.current?.redirect?.submit();
+        }
+    }, [encReq, accessCode]);
     return (
         <div className="checkout">
-            <div className="checkoutContainer" onClick={onClickHandler}>
+            {/* <div className="checkoutContainer" onClick={onClickHandler}>
                 <BackButton />
             </div>
             <section className="order--summary">
@@ -116,7 +140,13 @@ const Checkout = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            {encReq && accessCode ? (
+                <form ref={formRef} id="nonseamless" method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+                    <input type="hidden" id="encRequest" name="encRequest" value={encReq} />
+                    <input type="hidden" name="access_code" id="access_code" value={accessCode} />
+                </form>
+            ) : null}
         </div>
     );
 };
