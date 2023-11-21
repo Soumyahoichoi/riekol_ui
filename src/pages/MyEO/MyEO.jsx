@@ -45,7 +45,6 @@ const MyEO = () => {
             contact: ''
         });
         modalRef.current?.onOpen();
-        // navigate(`/checkout`);
     };
 
     const submitDetails = async () => {
@@ -55,28 +54,6 @@ const MyEO = () => {
             return;
         }
 
-        // const cartValue = cart?.reduce((acc, item) => {
-        //     if (!isSelected) {
-        //         if (typeof item.registration_fee === 'string') {
-        //             return acc + item.count * +item.registration_fee.split(',').join('');
-        //         }
-
-        //         return acc + item.count * item.registration_fee;
-        //     } else {
-        //         if (typeof item.priceInDollar === 'string') {
-        //             return acc + item.count * +item.priceInDollar.split(',').join('');
-        //         }
-
-        //         return acc + item.count * item.priceInDollar;
-        //     }
-        // }, 0);
-        // const billingAmount = +cartValue + 0.18 * cartValue;
-        // const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID(), currency });
-        // if (getResultFromData(savedDetails)?.status === 201) {
-        //     toast.success("Your details are saved successfully. You'll recieve payment link shortly");
-        // } else {
-        //     toast.error('Something went wrong! Please try again');
-        // }
         navigate(`/checkout`, { state: modalVal });
 
         modalRef.current?.onClose();
