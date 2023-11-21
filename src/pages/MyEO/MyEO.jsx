@@ -48,7 +48,6 @@ const MyEO = () => {
             contact: ''
         });
         modalRef.current?.onOpen();
-        // navigate(`/checkout`);
     };
 
     const submitDetails = async () => {
@@ -92,6 +91,7 @@ const MyEO = () => {
         // } else {
         //     toast.error('Something went wrong! Please try again');
         // }
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         navigate(`/checkout`, { state: modalVal });
 
         modalRef.current?.onClose();
@@ -105,6 +105,7 @@ const MyEO = () => {
     };
 
     useEffect(() => {
+        sessionStorage.removeItem('cart');
         setIsLoading(true);
         const fetchMyItems = async () => {
             try {
