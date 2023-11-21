@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Visa from '../../assets/visa.svg';
 import BackButton from '../../assets/backButton';
 import { useStore } from '../../store/store';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './styles.css';
 import { intiateCCavenuePayment } from '../../api/checkout';
 import { getResultFromData } from '../../helper';
@@ -18,7 +18,9 @@ const Checkout = () => {
     const [encReq, setEncReq] = useState(null);
     const [accessCode, setAccessCode] = useState(null);
     const formRef = useRef(null);
+    const { state: previousRouteState } = useLocation();
 
+    console.log(previousRouteState);
     const currency = isSelected ? 'USD' : 'INR';
 
     const billingAmount = cart?.reduce((acc, item) => {
@@ -60,8 +62,15 @@ const Checkout = () => {
     }, [totalBillingAmout]);
 
     useEffect(() => {
-        if (totalBillingAmout) {
-            intiateCCavenuePayment({ currency, amount: totalBillingAmout }).then((val) => {
+        if (totalBillingAmout && previousRouteState) {
+            intiateCCavenuePayment({
+                currency,
+                amount: totalBillingAmout,
+                email: previousRouteState.email,
+                name: previousRouteState.name,
+                chapter: previousRouteState.chapter,
+                phone: previousRouteState.contact
+            }).then((val) => {
                 const result = getResultFromData(val);
                 if (result) {
                     setEncReq(result.encReq);
@@ -69,14 +78,14 @@ const Checkout = () => {
                 }
             });
         }
-    }, [totalBillingAmout]);
+    }, [totalBillingAmout, previousRouteState]);
 
     useEffect(() => {
-        if (encReq && accessCode) {
+        if (encReq && accessCode && previousRouteState) {
             document.redirect.submit();
-            // formRef?.current?.redirect?.submit();
+            // formRef?.current?.submit();
         }
-    }, [encReq, accessCode]);
+    }, [encReq, accessCode, previousRouteState]);
     return (
         <div className="checkout">
             {/* <div className="checkoutContainer" onClick={onClickHandler}>

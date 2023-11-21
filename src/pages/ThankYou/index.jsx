@@ -1,126 +1,84 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
 import ThankYouSvg from '../../assets/ThankYou';
-// import { useStripe } from "@stripe/react-stripe-js";
+import FailureSvg from '../../assets/FailureSvg';
+import { useLocation } from 'react-router-dom';
+import { useStore } from '../../store/store';
+import { ObjectFrom } from '../../helper';
+import { registerUser } from '../../api/register';
 
 const PaymentStatus = () => {
-    // const stripe = useStripe();
     const [message, setMessage] = useState(null);
     const [status, setStatus] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [name, setName] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
-        // Retrieve the "payment_intent_client_secret" query parameter appended to
-        // your return_url by Stripe.js
-        const status = new URLSearchParams(window.location.search).get(
-            // "payment_intent_client_secret"
-            'redirect_status'
-        );
-
-        setStatus(status);
-
-        switch (status) {
-            case 'succeeded':
-                setMessage('Success! Payment received.');
-                break;
-
-            case 'processing':
-                setMessage("Payment processing. We'll update you when payment is received.");
-                break;
-
-            case 'requires_payment_method':
-                // Redirect your user back to your payment page to attempt collecting
-                // payment again
-                setMessage('Payment failed. Please try another payment method.');
-                break;
-
-            default:
-                setMessage('Something went wrong.');
-                break;
+        if (location?.search) {
+            const urlParams = new URLSearchParams(location.search);
+            setStatus(urlParams.get('status'));
+            setEmail(urlParams.get('email'));
+            setName(urlParams.get('name'));
         }
-        // // Retrieve the PaymentIntent
-        // stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-        //   // Inspect the PaymentIntent `status` to indicate the status of the payment
-        //   // to your customer.
-        //   //
-        //   // Some payment methods will [immediately succeed or fail][0] upon
-        //   // confirmation, while others will first enter a `processing` state.
-        //   //
-        //   // [0]: https://stripe.com/docs/payments/payment-methods#payment-notification
-        //   switch (paymentIntent.status) {
-        //     case "succeeded":
-        //       setMessage("Success! Payment received.");
-        //       break;
+    }, [location?.search]);
 
-        //     case "processing":
-        //       setMessage(
-        //         "Payment processing. We'll update you when payment is received."
-        //       );
-        //       break;
-
-        //     case "requires_payment_method":
-        //       // Redirect your user back to your payment page to attempt collecting
-        //       // payment again
-        //       setMessage("Payment failed. Please try another payment method.");
-        //       break;
-
-        //     default:
-        //       setMessage("Something went wrong.");
-        //       break;
-        //   }
-        // });
-    }, []);
-
-    return (
-        <>
-            {/* <div className="after-payment-container">{status === 'succeeded' ? <ThankYou /> : status === 'processing' ? <Processing /> : <Wrong />}</div> */}
-            <ThankYou />
-        </>
-    );
+    if (status === 'Aborted' || status === 'Failure') {
+        return <Abort />;
+    } else if (status === 'Success') {
+        return <ThankYou email={email} name={name} />;
+    } else {
+        return <Failure />;
+    }
 };
 
 export default PaymentStatus;
 
-const ThankYou = () => (
+const ThankYou = ({ name, email }) => {
+    const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
+    const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email', 'event_date'];
+    // const { cart } = useStore((store) => ({ cart: store.cart }));
+
+    const cart = JSON.parse(sessionStorage.getItem('cart') || '{}');
+
+    const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email, created: new Date()?.toTimeString(), customer_name: name }));
+    const payLoad = {
+        ticketDetails
+    };
+
+    const registerRef = useRef(null);
+
+    useEffect(() => {
+        if (!registerRef.current) {
+            registerUser(payLoad);
+            registerRef.current = false;
+        }
+    }, []);
+
+    return (
+        <div className="wrapper-1">
+            <div className="wrapper-2">
+                <ThankYouSvg />
+                <p>Your payment was successful. Thank You! </p>
+            </div>
+        </div>
+    );
+};
+
+const Abort = () => (
     <div className="wrapper-1">
         <div className="wrapper-2">
-            <ThankYouSvg />
-            <p>Your payment was successful. Thank You! </p>
+            <FailureSvg />
+            <p>Your payment was aborted.</p>
         </div>
     </div>
 );
 
-// const Processing = () => (
-//     <div className="wrapper-1">
-//         <div className="wrapper-2">
-//             <h1>Processing...</h1>
-//             {/* <p>Thanks f. </p> */}
-//             {/* <p>you should receive a confirmation email soon </p> */}
-//             {/* <button className="go-home">go home</button> */}
-//         </div>
-//         <div className="footer-like">
-//             {/* <p>
-//               Email not received?
-//               <a href="#">Click here to send again</a>
-//             </p> */}
-//         </div>
-//     </div>
-// );
-
-// const Wrong = () => {
-//     return (
-//         <div className="wrapper-1">
-//             <div className="wrapper-2">
-//                 <h1> Uh oh! Something went wrong. ...</h1>
-//                 {/* <p>Thanks for subscribing to our news letter. </p> */}
-//                 {/* <p>you should receive a confirmation email soon </p> */}
-//                 {/* <button className="go-home">go home</button> */}
-//             </div>
-//             <div className="footer-like">
-//                 {/* <p>
-//               Email not received?
-//               <a href="#">Click here to send again</a>
-//             </p> */}
-//             </div>
-//         </div>
-//     );
-// };
+const Failure = () => (
+    <div className="wrapper-1">
+        <div className="wrapper-2">
+            <FailureSvg />
+            <p>Your payment was unsuccessful. Please try after sometime! </p>
+        </div>
+    </div>
+);

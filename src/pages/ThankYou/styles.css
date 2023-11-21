@@ -38,6 +38,10 @@
 .wrapper-2 {
     padding: 30px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .h1 {
     font-family: 'Kaushan Script', cursive;
