@@ -9,7 +9,7 @@ export const getClientSecret = (amount, currency, descriptor) => {
 };
 
 export const intiateCCavenuePayment = (data) => {
-    return ServiceInstance.get(`/users/initiate?currency=${data.currency}&amount=${data.amount}`);
+    return ServiceInstance.get(`/users/initiate?currency=${data.currency}&amount=${data.amount}&email=${data.email}&name=${data.name}&chapter=${data.chapter}&phone=${data.phone}`);
 };
 
 export const saveDetailsForPaymentLink = (data) => {
