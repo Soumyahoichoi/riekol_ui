@@ -53,13 +53,14 @@ const MyEO = () => {
             toast.error('All fields are mandatory');
             return;
         }
-
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         navigate(`/checkout`, { state: modalVal });
 
         modalRef.current?.onClose();
     };
 
     useEffect(() => {
+        sessionStorage.removeItem('cart');
         setIsLoading(true);
         const fetchMyItems = async () => {
             try {
