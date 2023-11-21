@@ -32,6 +32,9 @@ const MyEO = () => {
         email: '',
         contact: ''
     });
+    const [emailError, setEmailError] = useState(false);
+    const [numberError, setNumberError] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
     // const [isSelected, setIsSelected] = useState(false);
 
     const currency = isSelected ? '$' : '₹';
@@ -40,7 +43,7 @@ const MyEO = () => {
         // setIsLoading(true);
         setModalVal({
             name: '',
-            chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
+            chapter: '',
             email: '',
             contact: ''
         });
@@ -48,15 +51,57 @@ const MyEO = () => {
     };
 
     const submitDetails = async () => {
+        // mail validation
         console.log(modalVal);
         if (!modalVal.name || !modalVal.chapter || !modalVal.email || !modalVal.contact) {
             toast.error('All fields are mandatory');
             return;
         }
+
+        if (validEmail) {
+            setEmailError(true);
+            return;
+        }
+
+        // contact number validation
+        if (modalVal.contact.length <= 8) {
+            setNumberError(true);
+            return;
+        }
+
+        // const cartValue = cart?.reduce((acc, item) => {
+        //     if (!isSelected) {
+        //         if (typeof item.registration_fee === 'string') {
+        //             return acc + item.count * +item.registration_fee.split(',').join('');
+        //         }
+
+        //         return acc + item.count * item.registration_fee;
+        //     } else {
+        //         if (typeof item.priceInDollar === 'string') {
+        //             return acc + item.count * +item.priceInDollar.split(',').join('');
+        //         }
+
+        //         return acc + item.count * item.priceInDollar;
+        //     }
+        // }, 0);
+        // const billingAmount = +cartValue + 0.18 * cartValue;
+        // const savedDetails = await saveDetailsForPaymentLink({ modalVal, billingAmount, id: generateUUID(), currency });
+        // if (getResultFromData(savedDetails)?.status === 201) {
+        //     toast.success("Your details are saved successfully. You'll recieve payment link shortly");
+        // } else {
+        //     toast.error('Something went wrong! Please try again');
+        // }
         sessionStorage.setItem('cart', JSON.stringify(cart));
         navigate(`/checkout`, { state: modalVal });
 
         modalRef.current?.onClose();
+    };
+
+    const validateEmail = (email) => {
+        setEmailError(false);
+        setModalVal((items) => ({ ...items, email: email }));
+        const mailformat = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+        setValidEmail(!mailformat.test(email));
     };
 
     useEffect(() => {
@@ -175,17 +220,35 @@ const MyEO = () => {
                 <div className="floating-container">
                     <Modal modalRef={modalRef} submitDetails={submitDetails}>
                         <>
-                            <Input isRequired type="text" label="Name" value={modalVal.name} onChange={(e) => setModalVal((items) => ({ ...items, name: e.target.value }))} />
+                            <Input isRequired type="text" label="Name" value={modalVal.name} variant="bordered" onChange={(e) => setModalVal((items) => ({ ...items, name: e.target.value }))} />
                             <Input
                                 isRequired
                                 type="text"
                                 label="Chapter"
-                                value={cart.reduce((acc, item) => acc + item.name + ', ', '')}
-                                disabled
+                                variant="bordered"
+                                value={modalVal.chapter}
                                 onChange={(e) => setModalVal((items) => ({ ...items, chapter: e.target.value }))}
                             />
-                            <Input isRequired type="email" label="Email" value={modalVal.email} onChange={(e) => setModalVal((items) => ({ ...items, email: e.target.value }))} />
-                            <Input isRequired type="number" label="Contact" value={modalVal.contact} onChange={(e) => setModalVal((items) => ({ ...items, contact: e.target.valueAsNumber }))} />
+                            <Input
+                                isRequired
+                                type="email"
+                                label="Email"
+                                value={modalVal.email}
+                                variant="bordered"
+                                isInvalid={emailError}
+                                errorMessage={emailError && 'Please enter a valid email'}
+                                onChange={(e) => validateEmail(e.target.value)}
+                            />
+                            <Input
+                                isRequired
+                                type="number"
+                                label="Contact Number"
+                                value={modalVal.contact}
+                                variant="bordered"
+                                isInvalid={numberError}
+                                errorMessage={numberError && 'Please enter a valid contact number'}
+                                onChange={(e) => setModalVal((items) => ({ ...items, contact: e.target.value }))}
+                            />
                         </>
                     </Modal>
                     <Button onPress={handleCheckout} onClick={handleCheckout} size="lg" color="secondary" isLoading={loading}>
