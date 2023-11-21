@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import ThankYouSvg from '../../assets/ThankYou';
+import FailureSvg from '../../assets/FailureSvg';
+import { useLocation } from 'react-router-dom';
 // import { useStripe } from "@stripe/react-stripe-js";
 
 const PaymentStatus = () => {
     // const stripe = useStripe();
     const [message, setMessage] = useState(null);
     const [status, setStatus] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         // Retrieve the "payment_intent_client_secret" query parameter appended to
@@ -70,10 +73,12 @@ const PaymentStatus = () => {
         // });
     }, []);
 
+    const data = location.search;
+
     return (
         <>
+            {data === '?status=Aborted' ? <Abort /> : data === '?status=Success' ? <ThankYou /> : <Failure />}
             {/* <div className="after-payment-container">{status === 'succeeded' ? <ThankYou /> : status === 'processing' ? <Processing /> : <Wrong />}</div> */}
-            <ThankYou />
         </>
     );
 };
@@ -85,6 +90,24 @@ const ThankYou = () => (
         <div className="wrapper-2">
             <ThankYouSvg />
             <p>Your payment was successful. Thank You! </p>
+        </div>
+    </div>
+);
+
+const Abort = () => (
+    <div className="wrapper-1">
+        <div className="wrapper-2">
+            <FailureSvg />
+            <p>Your payment was cancelled. Please try after sometime! </p>
+        </div>
+    </div>
+);
+
+const Failure = () => (
+    <div className="wrapper-1">
+        <div className="wrapper-2">
+            <FailureSvg />
+            <p>Your payment was unsuccessful. Please try after sometime! </p>
         </div>
     </div>
 );
