@@ -43,7 +43,7 @@ const MyEO = () => {
         // setIsLoading(true);
         setModalVal({
             name: '',
-            chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
+            chapter: '',
             email: '',
             contact: ''
         });
@@ -226,8 +226,7 @@ const MyEO = () => {
                                 type="text"
                                 label="Chapter"
                                 variant="bordered"
-                                value={cart.reduce((acc, item) => acc + item.name + ', ', '')}
-                                disabled
+                                value={modalVal.chapter}
                                 onChange={(e) => setModalVal((items) => ({ ...items, chapter: e.target.value }))}
                             />
                             <Input
