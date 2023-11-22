@@ -86,6 +86,9 @@ const Checkout = () => {
             // formRef?.current?.submit();
         }
     }, [encReq, accessCode, previousRouteState]);
+    const ccavenueUrl = import.meta.env.PROD
+        ? 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
+        : 'https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction';
     return (
         <div className="checkout">
             {/* <div className="checkoutContainer" onClick={onClickHandler}>
@@ -151,7 +154,7 @@ const Checkout = () => {
                 </div>
             </div> */}
             {encReq && accessCode ? (
-                <form ref={formRef} id="nonseamless" method="post" name="redirect" action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+                <form ref={formRef} id="nonseamless" method="post" name="redirect" action={ccavenueUrl}>
                     <input type="hidden" id="encRequest" name="encRequest" value={encReq} />
                     <input type="hidden" name="access_code" id="access_code" value={accessCode} />
                 </form>
