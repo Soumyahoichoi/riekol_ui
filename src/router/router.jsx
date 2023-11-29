@@ -16,12 +16,13 @@ const Login = lazy(() => import('../pages/Login/Login'));
 const Layout = lazy(() => import('../Layout/Layout'));
 const Home = lazy(() => import('../pages/Home/Home'));
 const MyEO = lazy(() => import('../pages/MyEO/MyEO'));
-const EoDetails = lazy(() => import('../pages/EoDetails/EoDetails'));
+// const EoDetails = lazy(() => import('../pages/EoDetails/EoDetails'));
 // const StripeForm = lazy(() => import('../components/Stripe/prepare'));
 const Checkout = lazy(() => import('../components/Checkout/checkout'));
 const ThankYou = lazy(() => import('../pages/ThankYou'));
 const Schedule = lazy(() => import('../pages/Schedule/Schedule'));
 const MailingList = lazy(() => import('../pages/MailingList/MailingList'));
+const Tour = lazy(() => import('../pages/Tour/Tour'));
 
 const Load = ({ Component }) => {
     return (
@@ -36,15 +37,16 @@ const Router = () => {
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Load Component={Home} />} />
-                <Route path="/myeo">
-                    <Route index element={<Load Component={MyEO} />} />
-                    <Route path=":id" element={<Load Component={EoDetails} />} />
-                </Route>
+                <Route path="/myeo" element={<Load Component={MyEO} />} />
+                    {/* <Route index element={<Load Component={MyEO} />} /> */}
+                    {/* <Route path=":id" element={<Load Component={EoDetails} />} /> */}
+                {/* </Route> */}
                 {/* <Route path="/deepdive" element={<DeepDive />} /> */}
                 <Route path="/checkout" element={<Load Component={Checkout} />} />
                 <Route path="/thankyou" element={<Load Component={ThankYou} />} />
                 <Route path="/schedule" element={<Load Component={Schedule} />} />
-                <Route path="/mailinglist" element={<Load Component={MailingList} />} />
+                {/* <Route path="/mailinglist" element={<Load Component={MailingList} />} /> */}
+                <Route path="/tour" element={<Load Component={Tour} />} />
             </Route>
             <Route path="/login" element={<Login />} />
         </Routes>

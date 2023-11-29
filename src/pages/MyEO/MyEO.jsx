@@ -1,7 +1,6 @@
 import { Button, Tab, Tabs, Switch, Input } from '@nextui-org/react';
 import { useState, useEffect, useRef } from 'react';
 import './styles.css';
-import { Cards } from '../../constants';
 import { EoCard } from '../../components/EoCard/EoCard';
 import { useStore } from '../../store/store';
 import { toast } from 'sonner';
