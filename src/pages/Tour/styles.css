@@ -1,0 +1,19 @@
+ul {
+    margin-left: 2rem;
+    list-style: circle;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-areas:
+        'a b'
+        'c d';
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 783px) {
+    .contact-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
