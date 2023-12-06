@@ -5,7 +5,7 @@ import './styles.css';
 
 export default function Tour() {
     return (
-        <div className="flex flex-col gap-4 m-10">
+        <div className="flex flex-col gap-4" style={{ padding: '2rem' }}>
             {TourCards.map(({ name, desc, icon: Icon, html }) => (
                 <TourCard name={name} desc={desc} Icon={Icon} html={html} />
             ))}
@@ -15,7 +15,7 @@ export default function Tour() {
 
 const TourCard = ({ name, desc, Icon, html }) => {
     return (
-        <Card className="max-w-[400px]">
+        <Card className="max-w-[400px]" style={{ margin: '0 10%' }}>
             <CardHeader className="flex gap-3">
                 <Image alt="nextui logo" height={40} radius="sm" src={Icon} width={40} />
                 <div className="flex flex-col">

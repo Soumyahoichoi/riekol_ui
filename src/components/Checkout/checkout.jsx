@@ -20,7 +20,6 @@ const Checkout = () => {
     const formRef = useRef(null);
     const { state: previousRouteState } = useLocation();
 
-    console.log(previousRouteState);
     const currency = isSelected ? 'USD' : 'INR';
 
     const billingAmount = cart?.reduce((acc, item) => {
@@ -77,6 +76,8 @@ const Checkout = () => {
                     setAccessCode(result.accessCode);
                 }
             });
+        } else if (cart?.[0]?.name === 'MyEO Governor House visit' && cart?.length === 1) {
+            navigate(`/thankyou?status=Success&email=${previousRouteState?.email}&name=${previousRouteState?.name}`);
         }
     }, [totalBillingAmout, previousRouteState]);
 

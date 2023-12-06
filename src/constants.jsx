@@ -596,44 +596,76 @@ import Contact from '../src/assets/contacts.png';
 export const TourCards = [
     {
         name: 'Weather',
-        desc: 'The average temperature is 20-25 Degrees',
+        desc: `Expect average daytime temperatures of 20-25°C (68-77°F) and cooler evenings at 12-15°C
+        (54-59°F) with minimal rainfall in Kolkata during your visit. We recommend packing layered clothing, light
+        jackets, comfortable shoes and scarfs.`,
         icon: Weather
     },
     {
         name: 'Currency',
-        desc: "Oman's official currency is the Oman Rial (OMR). \n The best place to exchange money is at airport and local exchange store in any malls or market. Hotel reception can also help with exchange but it will be expensive",
+        desc: `The Indian Rupee (INR) is the local currency. For your convenience, we
+        recommend exchanging currency at Kolkata Airport upon arrival. ATMs are also widely available.
+        Credit/Debit Cards, such as Visa and MasterCard, are widely accepted. It is recommended to carry cash
+        for small vendor transactions. Digital payment options like BHIM UPI, Paytm, and Google Pay are
+        commonly used as well.`,
         icon: Currency
     },
     {
         name: 'Electricity',
-        desc: 'For Oman the associated, which is the plug that has three rectangular pins in a triangular pattern. Oman operates on a 240V  supply voltage and 50Hz.',
+        desc: (
+            <>
+                <p>Outlets are Type C and D, with a voltage of 230V at 50Hz. It is advised to bring universal adapters.</p>
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
+                    <div>
+                        <h6>Type C</h6>
+                        <img src="/typec.svg" alt="" width={200} height={200} />
+                    </div>
+                    <div>
+                        <h6>Type D</h6>
+
+                        <img src="/typed.svg" alt="" width={200} height={200} />
+                    </div>
+                </div>
+            </>
+        ),
         icon: Electricity
     },
     {
         name: 'Flights',
         desc: (
             <>
-                <h4>
-                    <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-                        Flights for Regional Council members
-                    </a>
-                </h4>
-                <ul>
-                    <li>Arriving Flights: 20 February, latest by 4pm</li>
-                    <li>Departing flights: 24 February, any time</li>
-                </ul>
+                <p>
+                    Netaji Subhas Chandra Bose International Airport (CCU), 15 km from the venue, offers amenities like duty-free shops, dining options and currency exchange. Complimentary Wi-Fi is
+                    also available.
+                </p>
                 <br />
-                <h4>
-                    <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-                        Flights for Presidents and Presidents Elects
-                    </a>
-                </h4>
-                <ul>
-                    <li>Arriving Flights: 21 February, latest by 4pm</li>
-                    <li>Departing flights: 24 February, any time</li>
-                </ul>
+                <p>The JUMP team will set up a dedicated reception booth for guests. Complimentary shared transport from the airport to the venue is available.</p>
             </>
         ),
+        // desc: (
+        //     <>
+        //         <h4>
+        //             <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+        //                 Flights for Regional Council members
+        //             </a>
+        //         </h4>
+        //         <ul>
+        //             <li>Arriving Flights: 20 February, latest by 4pm</li>
+        //             <li>Departing flights: 24 February, any time</li>
+        //         </ul>
+        //         <br />
+        //         <h4>
+        //             <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+        //                 Flights for Presidents and Presidents Elects
+        //             </a>
+        //         </h4>
+        //         <ul>
+        //             <li>Arriving Flights: 21 February, latest by 4pm</li>
+        //             <li>Departing flights: 24 February, any time</li>
+        //         </ul>
+        //     </>
+        // ),
         icon: Flights,
         html: true
     },
@@ -641,18 +673,11 @@ export const TourCards = [
         name: 'India Visa',
         desc: (
             <p>
-                Foreign nationals are required to have a Visa to enter Oman More information here:{' '}
-                <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://evisa.rop.gov.om/">
-                    https://evisa.rop.gov.om/
+                All foreign nationals need a visa to enter India. Please click &nbsp;
+                <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://drive.google.com/file/d/1t-_aN0prTmKVSm1pDSAxVAz68wtJnm8s/view">
+                    here{' '}
                 </a>
-                &nbsp; Please apply for the Visa with the relevant documents, we reccomend Tourist Visa In case of any additional clarifications, please reach out to &nbsp;
-                <a
-                    className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-                    href="mailto:inbound@zaharatours.com
-"
-                >
-                    inbound@zaharatours.com
-                </a>
+                for more details.
             </p>
         ),
         icon: Visa
@@ -661,7 +686,33 @@ export const TourCards = [
         name: 'Hotel bookings and airport transfers',
         desc: (
             <>
-                <h4>
+                <p>
+                    The event is hosted at ITC Royal Bengal Kolkata
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://maps.app.goo.gl/Tix1P12FcgbbUfrSA">
+                        (https://maps.app.goo.gl/Tix1P12FcgbbUfrSA){' '}
+                    </a>
+                    <br />
+                    <br />
+                    The hotel booking links are below and the RIE discounted rates are available from 9th till 15th Jan:
+                    <ul>
+                        <li>
+                            ITC Royal Bengal (host hotel) -
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://bit.ly/ITCRoyal">
+                                ( https://bit.ly/ITCRoyal ){' '}
+                            </a>
+                        </li>
+                        <li>
+                            ITC Sonar Bangla (internally connected hotel) -
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://bit.ly/HotelITCSonar">
+                                ( https://bit.ly/HotelITCSonar ){' '}
+                            </a>{' '}
+                        </li>
+                    </ul>
+                    <br />
+                    <br />
+                    If you choose to extend your stay, you can contact the hotel directly for the booking. Please refer to the hotel website for cancellation policy details.
+                </p>
+                {/* <h4>
                     <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
                         Hotel reservation and Airport transfer for Regional Council members
                     </a>
@@ -681,7 +732,7 @@ export const TourCards = [
                     <li> 20 December is the cut-off date for booking rooms at EO Negotiated rate</li>
                     <li> 100% cancellation applies after 25 December</li>
                     <li> The quickest way to hotel is via taxi costing 20 OMR. only CASH is accepted.</li>
-                </ul>
+                </ul> */}
             </>
         ),
         icon: Hotel
@@ -696,38 +747,27 @@ export const TourCards = [
         desc: (
             <div className="contact-grid">
                 <div>
-                    <h4>Logistics</h4>
-                    <p>LMerin Abraham</p>
-                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:mabraham@eonetwork.org">
-                        mabraham@eonetwork.org
+                    <h4>Police Station</h4>
+                    <p>100/112 Tangra Police Station</p>
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
+                        (Phone: +918100796472)
                     </a>
                 </div>
                 <div>
-                    <h4>Content</h4>
-                    <p>Gareth Van Niekerk</p>
-                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:gvanniekerk@eonetwork.org">
-                        gvanniekerk@eonetwork.org
+                    <h4>Fire Station</h4>
+                    <p>101 Pragati Maidan Fire Station</p>
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+913323457000">
+                        (Phone: +913323457000)
                     </a>
                 </div>
                 <div>
-                    <h4>Hotel room</h4>
-                    <p>Jennifer Galura</p>
-                    <span style={{ display: 'flex' }}>
-                        <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:mjgalura@eonetwork.org">
-                            jgalura@eonetwork.org
-                        </a>{' '}
-                        &nbsp;&nbsp; | &nbsp;&nbsp;
-                        <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:vinamarie.ho@shangri-la.com">
-                            vinamarie.ho@shangri-la.com
-                        </a>
-                    </span>
-                </div>
-                <div>
-                    <h4>Event Registration</h4>
-                    <p>Marlon Legaspi</p>
-                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:mlegaspi@eonetwork.org">
-                        mlegaspi@eonetwork.org{' '}
+                    <h4>For any additional queries</h4>
+                    <p>Email:</p>
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:rie@eokolkata.org">
+                        rie@eokolkata.org{' '}
                     </a>
+                    <p>WhatsApp:</p>
+                    <p className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">+919932181010</p>
                 </div>
             </div>
         ),

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Type C</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="170" height="170" rx="16"></rect>
+        <filter x="-10.3%" y="-7.4%" width="120.6%" height="120.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-3" cx="85" cy="85" r="45"></circle>
+        <filter x="-8.3%" y="-8.3%" width="116.7%" height="116.7%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="5" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M60,91 C56.6862915,91 54,88.3137085 54,85 C54,81.6862915 56.6862915,79 60,79 C63.3137085,79 66,81.6862915 66,85 C66,88.3137085 63.3137085,91 60,91 Z M110,91 C106.686292,91 104,88.3137085 104,85 C104,81.6862915 106.686292,79 110,79 C113.313708,79 116,81.6862915 116,85 C116,88.3137085 113.313708,91 110,91 Z" id="path-5"></path>
+        <filter x="-6.5%" y="-33.3%" width="112.9%" height="166.7%" filterUnits="objectBoundingBox" id="filter-6">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <circle id="path-7" cx="6" cy="6" r="6"></circle>
+    </defs>
+    <g id="Type-C" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#50E6D2" x="0" y="0" width="400" height="400"></rect>
+        <g id="Wall-bit" transform="translate(210.000000, 20.000000)">
+            <g id="Plate">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <rect id="Border" stroke="#E8EBF0" stroke-width="2" x="11" y="11" width="148" height="148" rx="6"></rect>
+            <g id="Socket">
+                <use fill="#F5F6F7" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+            </g>
+            <g id="Holes">
+                <use fill="#2E3033" fill-rule="evenodd" xlink:href="#path-5"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+            </g>
+            <g id="Screw" transform="translate(79.000000, 79.000000)">
+                <mask id="mask-8" fill="white">
+                    <use xlink:href="#path-7"></use>
+                </mask>
+                <use id="Mask" fill="#D2D3D6" xlink:href="#path-7"></use>
+                <rect id="Rectangle-2" fill="#B7B9BD" mask="url(#mask-8)" transform="translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) " x="5" y="0" width="2" height="12"></rect>
+            </g>
+        </g>
+        <g id="Cable" transform="translate(19.000000, 177.000000)">
+            <path d="M95,223 C95,182.232422 117.388672,161.570313 157.96582,145.142578 C198.542969,128.714844 213,109.53125 213,80 C213,50.46875 191.1875,32.2949219 156.201172,32.2949219" stroke="#45484D" stroke-width="12"></path>
+            <circle id="Plasticky" fill="#2E3033" cx="151" cy="31" r="22"></circle>
+            <path d="M142.748007,60.2644922 C154.486816,56.1889648 163,46.4642016 163,33.1099375 C163,15.9283935 149.047852,4.72558594 131.856788,4 L75,1.01590245 L127.669971,65.3912354 L142.748007,60.2644922 Z" id="Plasticky" fill="#393B40"></path>
+            <path d="M61.001805,4.13243406 C66.818961,1.93867594 71.1405273,0.608447031 73.9665036,0.141747344 C78.2054682,-0.558302186 126.727143,7.06732532 130.188702,9.04379956 C133.650261,11.0202738 157.854692,38.1312782 156.976698,44.6223792 C156.098704,51.1134802 130.86323,66.492123 126.428197,67.9252607 C123.471508,68.8806859 119.398509,70.1358439 114.209198,71.6907349 L61.001805,4.13243406 Z" id="Plasticky" fill="#2E3033"></path>
+            <path d="M31.0169128,32.9699701 C31.7064745,27.9399403 57.1815533,5.4587157 60.9665036,4.14174734 C64.751454,2.82477899 113.727143,11.0673253 117.188702,13.0437996 C120.650261,15.0202738 144.854692,42.1312782 143.976698,48.6223792 C143.098704,55.1134802 117.847962,71.0225908 113.428197,71.9252607 C109.008432,72.8279307 57.7700234,65.2913775 54.3520075,63.4747989 C50.9339916,61.6582204 30.3273511,38 31.0169128,32.9699701 Z" id="Plasticky" fill="#45474D"></path>
+            <path d="M110.717743,36.2402585 C114.241639,35.5552826 117.653603,37.8566815 118.338579,41.3805767 C119.023554,44.9044719 116.722156,48.316436 113.19826,49.0014119 L78.7402585,55.7014088 L76.2597415,42.9402554 L110.717743,36.2402585 Z" id="Covered-prong" fill="#2E3033"></path>
+            <path d="M52.8017396,47.4979892 C49.2778444,48.182965 46.9764456,51.5949292 47.6614214,55.1188244 C48.3463972,58.6427196 51.7583614,60.9441184 55.2822566,60.2591426 L78.7402585,55.7014088 C82.2641537,55.016433 84.5655525,51.6044688 83.8805767,48.0805736 C83.1956009,44.5566784 79.7836367,42.2552796 76.2597415,42.9402554 L52.8017396,47.4979892 Z" id="Metal-prong" fill="#EDEEF0"></path>
+            <path d="M63.7177434,28.2402585 C67.2416386,27.5552826 70.6536028,29.8566815 71.3385786,33.3805767 C72.0235544,36.9044719 69.7221556,40.316436 66.1982604,41.0014119 L31.7402585,47.7014088 L29.2597415,34.9402554 L63.7177434,28.2402585 Z" id="Covered-prong" fill="#2E3033"></path>
+            <path d="M5.80173962,39.4979892 C2.27784442,40.182965 -0.0235544429,43.5949292 0.661421396,47.1188244 C1.34639723,50.6427196 4.75836136,52.9441184 8.28225656,52.2591426 L31.7402585,47.7014088 C35.2641537,47.016433 37.5655525,43.6044688 36.8805767,40.0805736 C36.1956009,36.5566784 32.7836367,34.2552796 29.2597415,34.9402554 L5.80173962,39.4979892 Z" id="Metal-prong" fill="#EDEEF0"></path>
+        </g>
+    </g>
+</svg>

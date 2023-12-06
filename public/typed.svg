@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Type D</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="170" height="170" rx="16"></rect>
+        <filter x="-10.3%" y="-7.4%" width="120.6%" height="120.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M58,116 C53.581722,116 50,112.418278 50,108 C50,103.581722 53.581722,100 58,100 C62.418278,100 66,103.581722 66,108 C66,112.418278 62.418278,116 58,116 Z M112,116 C107.581722,116 104,112.418278 104,108 C104,103.581722 107.581722,100 112,100 C116.418278,100 120,103.581722 120,108 C120,112.418278 116.418278,116 112,116 Z M85,71 C78.372583,71 73,65.627417 73,59 C73,52.372583 78.372583,47 85,47 C91.627417,47 97,52.372583 97,59 C97,65.627417 91.627417,71 85,71 Z" id="path-3"></path>
+        <filter x="-5.7%" y="-5.8%" width="111.4%" height="111.6%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Type-D" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#50E6D2" x="0" y="0" width="400" height="400"></rect>
+        <g id="Wall-bit" transform="translate(210.000000, 20.000000)">
+            <g id="Plate">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <rect id="Border" stroke="#E8EBF0" stroke-width="2" x="11" y="11" width="148" height="148" rx="6"></rect>
+            <g id="Holes">
+                <use fill="#2E3033" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+            </g>
+        </g>
+        <g id="Cable" transform="translate(27.000000, 149.000000)">
+            <path d="M87,251 C87,210.232422 109.388672,189.570313 149.96582,173.142578 C190.542969,156.714844 205,137.53125 205,108 C205,78.46875 183.1875,60.2949219 148.201172,60.2949219" stroke="#45484D" stroke-width="12"></path>
+            <circle id="Plasticky" fill="#393B40" cx="126" cy="60" r="37"></circle>
+            <path d="M122.735598,11.8511249 L152.85582,76.984325 C158.651123,89.5163239 153.189951,104.373537 140.657952,110.16884 C137.881636,111.45272 129.453266,113.704592 115.372843,116.924454 L78.7833405,6.11019897 C91.4157207,2.29460646 99.8778321,0.340532116 104.169675,0.247975951 C108.003104,0.165305747 111.901792,1.18207418 115.372843,3.40619821 C118.581541,5.4622159 121.136038,8.39217139 122.735598,11.8511249 Z" id="Triangle" fill="#2E3033"></path>
+            <path d="M102.735598,16.8511249 L132.85582,81.984325 C138.651123,94.5163239 133.189951,109.373537 120.657952,115.16884 C116.493478,117.09466 111.879339,117.837289 107.320913,117.315387 L48.8845842,110.62491 C35.1670797,109.054369 25.3200202,96.6609595 26.8905612,82.9434551 C27.3245534,79.1528567 28.6203932,75.5118793 30.6788186,72.2994239 L67.7430599,14.4555858 C73.7023215,5.15533961 86.0725968,2.44693655 95.3728429,8.40619821 C98.5815408,10.4622159 101.136038,13.3921714 102.735598,16.8511249 Z" id="Triangle" fill="#45474D"></path>
+            <path d="M58.7780762,104.170759 C55.254181,104.855735 51.8422168,102.554336 51.157241,99.0304407 C50.4722652,95.5065455 52.773664,92.0945814 56.2975592,91.4096055 L108.717743,81.2402585 C112.241639,80.5552826 115.653603,82.8566815 116.338579,86.3805767 C117.023554,89.9044719 114.722156,93.316436 111.19826,94.0014119 L58.7780762,104.170759 Z M7.78125,96.2150879 C4.2573548,96.9000637 0.845390676,94.5986649 0.160414838,91.0747697 C-0.524561001,87.5508745 1.77683786,84.1389103 5.30073306,83.4539345 L57.7177434,73.2402585 C61.2416386,72.5552826 64.6536028,74.8566815 65.3385786,78.3805767 C66.0235544,81.9044719 63.7221556,85.316436 60.1982604,86.0014119 L7.78125,96.2150879 Z M33.566974,55.7566116 C29.2350861,56.5986453 25.040794,53.7695596 24.1987603,49.4376717 C23.3567266,45.1057838 26.1858123,40.9114917 30.5177002,40.069458 L80.9427037,30.2679197 C85.2745915,29.425886 89.4688837,32.2549718 90.3109174,36.5868596 C91.1529511,40.9187475 88.3238653,45.1130396 83.9919775,45.9550733 L33.566974,55.7566116 Z" id="Prongs" fill="#EDEEF0"></path>
+        </g>
+    </g>
+</svg>
