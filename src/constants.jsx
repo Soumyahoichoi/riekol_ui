@@ -1,10 +1,10 @@
 import Weather from '../src/assets/weather.svg';
-import Currency from '../src/assets/currency.png';
-import Electricity from '../src/assets/electricity.png';
-import Flights from '../src/assets/flights.png';
-import Visa from '../src/assets/visa.png';
-import Hotel from '../src/assets/hotel.png';
-import Contact from '../src/assets/contacts.png';
+import Currency from '../src/assets/currency.svg';
+import Electricity from '../src/assets/electricity.svg';
+import Flights from '../src/assets/flights.svg';
+import Visa from '../src/assets/visa.svg';
+import Hotel from '../src/assets/hotel.svg';
+import Contact from '../src/assets/contacts.svg';
 
 // export const Cards = [
 //     {
