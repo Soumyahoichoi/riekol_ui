@@ -16,7 +16,7 @@ export default function Tour() {
 const TourCard = ({ name, desc, Icon, html }) => {
     return (
         <Card className="max-w-[400px]" style={{ margin: '0 10%' }}>
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex gap-3" style={{ backgroundColor: '#5900c9', color: 'white' }}>
                 <Image alt="nextui logo" height={40} radius="sm" src={Icon} width={40} />
                 <div className="flex flex-col">
                     <p className="text-md">{name}</p>
