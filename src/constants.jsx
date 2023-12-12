@@ -692,7 +692,6 @@ export const TourCards = [
                         (https://maps.app.goo.gl/Tix1P12FcgbbUfrSA){' '}
                     </a>
                     <br />
-                    <br />
                     The hotel booking links are below and the RIE discounted rates are available from 9th till 15th Jan:
                     <ul>
                         <li>
