@@ -772,35 +772,81 @@ export const TourCards = [
         desc: <p>Tipping isn’t a common practice in India and most people won't expect it. However, anything between 5% - 10% is usual etiquette</p>,
         icon: Hotel
     },
+    /**
+      *  EO Staff:
+○ Preeti Singh | +91 98997 93015, psingh@eonetwork.org
+○ Merin Abraham | +91 99522 46463, mabraham@eonetwork.org
+○ Patitpaban Mukherjee | +91 9932181010, admin@eokolkata.org
+● ITC Royal Bengal:
+○ Nikhil Chhabra | +91 98365 87145, nikhil.chhabra@itchotels.in
+● Police Station: 100/112 | Tangra Police Station | +918100796472
+● Fire Station: 101 | Pragati Maidan Fire Station | +913323457000
+      */
     {
         name: 'Emergency Contacts',
         desc: (
             <div className="contact-grid">
                 <div>
-                    <h4>EO Staff</h4>
-                    <p>100/112 Tangra Police Station</p>
-                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
-                        (Phone: +918100796472)
-                    </a>
+                    <h4 className="font-semibold">EO Staff</h4>
+                    <ul>
+                        <li>
+                            Preeti Singh |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+91989979301">
+                                (Phone: +91989979301)
+                            </a>{' '}
+                            |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:psingh@eonetwork.org">
+                                psingh@eonetwork.org{' '}
+                            </a>
+                        </li>
+                        <li>
+                            Merin Abraham |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+919952246463">
+                                (Phone: +919952246463)
+                            </a>{' '}
+                            |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:mabraham@eonetwork.org">
+                                mabraham@eonetwork.org{' '}
+                            </a>
+                        </li>
+                        <li>
+                            Patitpaban Mukherjee |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+919932181010">
+                                (Phone: +919932181010)
+                            </a>{' '}
+                            |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:admin@eokolkata.org">
+                                admin@eokolkata.org{' '}
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <h4>ITC Royal Bengal</h4>
-                    <p>100/112 Tangra Police Station</p>
-                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
-                        (Phone: +918100796472)
-                    </a>
+                    <h4 className="font-semibold">ITC Royal Bengal</h4>
+                    <ul>
+                        <li>
+                            Nikhil Chhabra |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+919836587145">
+                                (Phone: +919836587145)
+                            </a>{' '}
+                            |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:nikhil.chhabra@itchotels.in">
+                                nikhil.chhabra@itchotels.in{' '}
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>
-                    <h4>Police Station</h4>
+                    <h4 className="font-semibold">Police Station</h4>
                     <p>100/112 Tangra Police Station</p>
                     <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
                         (Phone: +918100796472)
                     </a>
                 </div>
                 <div>
-                    <h4>Fire Station</h4>
+                    <h4 className="font-semibold">Fire Station</h4>
                     <p>101 Pragati Maidan Fire Station</p>
                     <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+913323457000">
                         (Phone: +913323457000)
