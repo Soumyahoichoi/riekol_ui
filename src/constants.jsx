@@ -602,8 +602,67 @@ export const TourCards = [
         icon: Weather
     },
     {
+        name: 'Dress Code',
+        desc: (
+            <div>
+                <p>
+                    For daytime events, business casual attire with comfortable footwear is recommended due to the nature of indoor events for walking around the venue. Evening Socials vary in their
+                    venue types with a mix of indoor and outdoor settings
+                </p>
+                <br />
+                <div className="table">
+                    <table border={10} cellSpacing={10}>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Dress Code</th>
+                            <th>Venue Type</th>
+                        </tr>
+                        <tr>
+                            <td>11th Jan 2024</td>
+                            <td>Daytime</td>
+                            <td>Bussiness Casuals</td>
+                            <td>Indoor</td>
+                        </tr>
+                        <tr>
+                            <td>11th Jan 2024</td>
+                            <td>Evening</td>
+                            <td>Casuals</td>
+                            <td>Indoor/Outdoor</td>
+                        </tr>
+                        <tr>
+                            <td>12th Jan 2024</td>
+                            <td>Daytime</td>
+                            <td>Bussiness Casuals</td>
+                            <td>Indoor</td>
+                        </tr>
+                        <tr>
+                            <td>12th Jan 2024</td>
+                            <td>Evening</td>
+                            <td>Casuals</td>
+                            <td>Indoor</td>
+                        </tr>
+                        <tr>
+                            <td>13th Jan 2024</td>
+                            <td>Daytime</td>
+                            <td>Bussiness Casuals</td>
+                            <td>Indoor</td>
+                        </tr>
+                        <tr>
+                            <td>13th Jan 2024</td>
+                            <td>Evening</td>
+                            <td>TBA</td>
+                            <td>Outdoor</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        ),
+        icon: Currency
+    },
+    {
         name: 'Currency',
-        desc: `The Indian Rupee (INR) is the local currency. For your convenience, we
+        desc: `The Indian Rupee (1 INR = 0.012 USD) is the local currency. For your convenience, we
         recommend exchanging currency at Kolkata Airport upon arrival. ATMs are also widely available.
         Credit/Debit Cards, such as Visa and MasterCard, are widely accepted. It is recommended to carry cash
         for small vendor transactions. Digital payment options like BHIM UPI, Paytm, and Google Pay are
@@ -643,29 +702,6 @@ export const TourCards = [
                 <p>The JUMP team will set up a dedicated reception booth for guests. Complimentary shared transport from the airport to the venue is available.</p>
             </>
         ),
-        // desc: (
-        //     <>
-        //         <h4>
-        //             <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-        //                 Flights for Regional Council members
-        //             </a>
-        //         </h4>
-        //         <ul>
-        //             <li>Arriving Flights: 20 February, latest by 4pm</li>
-        //             <li>Departing flights: 24 February, any time</li>
-        //         </ul>
-        //         <br />
-        //         <h4>
-        //             <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-        //                 Flights for Presidents and Presidents Elects
-        //             </a>
-        //         </h4>
-        //         <ul>
-        //             <li>Arriving Flights: 21 February, latest by 4pm</li>
-        //             <li>Departing flights: 24 February, any time</li>
-        //         </ul>
-        //     </>
-        // ),
         icon: Flights,
         html: true
     },
@@ -708,43 +744,54 @@ export const TourCards = [
                         </li>
                     </ul>
                     <br />
+                    Upon your arrival at the hotel, please proceed to the Residents’ Lounge, where we have arranged for a seamless check-in process and a warm welcome experience.
+                    <br />
                     <br />
                     If you choose to extend your stay, you can contact the hotel directly for the booking. Please refer to the hotel website for cancellation policy details.
                 </p>
-                {/* <h4>
-                    <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-                        Hotel reservation and Airport transfer for Regional Council members
-                    </a>
-                </h4>
-                <ul>
-                    <li>Once you register for the event, rooms will be blocked for you from 20-24 February at Hotel Shangri-la Al Jissah. Please don't book on your own</li>
-                    <li>For airport transfer and clarification on your Visual Studio Code deoking, please reach out to Jennifer Galura via jgalura@eonetwork.org</li>
-                </ul>
-                <br />
-                <h4>
-                    <a href="" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
-                        Hotel reservation and airport transfer for Presidents and President Elects
-                    </a>
-                </h4>
-                <ul>
-                    <li> Rooms can be booked HERE</li>
-                    <li> 20 December is the cut-off date for booking rooms at EO Negotiated rate</li>
-                    <li> 100% cancellation applies after 25 December</li>
-                    <li> The quickest way to hotel is via taxi costing 20 OMR. only CASH is accepted.</li>
-                </ul> */}
             </>
         ),
         icon: Hotel
     },
-    // {
-    //     name: 'Hotel Bookings',
-    //     desc: 'The average temperature is 20-25 Degrees',
-    //     icon: Weather
-    // },
+    {
+        name: 'Communication Guidelines',
+        desc: (
+            <div>
+                <p>
+                    To ensure you stay informed about all our upcoming events and sessions, we kindly invite you to download the JUMP app. You can download it using the following link:
+                    https://link-to.app/jumpapp. Additionally, for enhanced communication and to facilitate smoother interactions with fellow participants and the EO staff, we recommend installing
+                    WhatsApp on your mobile device. It's a valuable tool for staying connected and engaged during the event
+                </p>
+            </div>
+        ),
+
+        icon: Hotel
+    },
+    {
+        name: 'Tipping Etiquette',
+        desc: <p>Tipping isn’t a common practice in India and most people won't expect it. However, anything between 5% - 10% is usual etiquette</p>,
+        icon: Hotel
+    },
     {
         name: 'Emergency Contacts',
         desc: (
             <div className="contact-grid">
+                <div>
+                    <h4>EO Staff</h4>
+                    <p>100/112 Tangra Police Station</p>
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
+                        (Phone: +918100796472)
+                    </a>
+                </div>
+
+                <div>
+                    <h4>ITC Royal Bengal</h4>
+                    <p>100/112 Tangra Police Station</p>
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
+                        (Phone: +918100796472)
+                    </a>
+                </div>
+
                 <div>
                     <h4>Police Station</h4>
                     <p>100/112 Tangra Police Station</p>
