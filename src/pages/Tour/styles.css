@@ -7,18 +7,34 @@ ul {
     display: grid;
     grid-template-areas:
         'a b'
-        'c d';
+        'c d'
+        'e f';
     gap: 2rem;
 }
 
 #google_translate_element {
     transform: scale(1.3);
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    z-index: 15;
+    background-color: white;
 }
 
 #google_translate_element > div > span > a {
     display: flex;
     justify-content: center;
     gap: 1rem;
+}
+
+.table {
+    justify-content: center;
+    overflow-x: scroll;
+    margin: auto;
+}
+
+th {
+    min-width: 10rem;
 }
 
 @media only screen and (max-width: 783px) {
