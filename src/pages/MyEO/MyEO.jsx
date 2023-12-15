@@ -25,21 +25,12 @@ const MyEO = () => {
     const [loading, setIsLoading] = useState(false);
     const [cards, setCards] = useState([]);
     const modalRef = useRef(null);
-    const [modalVal, setModalVal] = useState(
-        import.meta.PROD
-            ? {
-                  name: '',
-                  chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
-                  email: '',
-                  contact: ''
-              }
-            : {
-                  name: 'Shubhankar Mitra',
-                  chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
-                  email: 'shubhankar.mitra2020@gmail.com',
-                  contact: '9123044703'
-              }
-    );
+    const [modalVal, setModalVal] = useState({
+        name: '',
+        chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
+        email: '',
+        contact: ''
+    });
     const [emailError, setEmailError] = useState(false);
     const [numberError, setNumberError] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
@@ -50,21 +41,12 @@ const MyEO = () => {
     const handleCheckout = async () => {
         // setIsLoading(true);
 
-        setModalVal(
-            import.meta.PROD
-                ? {
-                      name: '',
-                      chapter: '',
-                      email: '',
-                      contact: ''
-                  }
-                : {
-                      name: 'Shubhankar Mitra',
-                      chapter: cart.reduce((acc, item) => acc + item.name + ', ', ''),
-                      email: 'shubhankar.mitra2020@gmail.com',
-                      contact: '9123044703'
-                  }
-        );
+        setModalVal({
+            name: '',
+            chapter: '',
+            email: '',
+            contact: ''
+        });
         modalRef.current?.onOpen();
     };
 
