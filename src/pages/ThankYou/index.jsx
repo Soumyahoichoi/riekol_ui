@@ -26,7 +26,7 @@ const PaymentStatus = () => {
     if (status === 'Aborted' || status === 'Failure') {
         return <Abort />;
     } else if (status === 'Success') {
-        return <ThankYou email={email} name={name} />;
+        return <ThankYou />;
     } else {
         return <Failure />;
     }
@@ -34,27 +34,7 @@ const PaymentStatus = () => {
 
 export default PaymentStatus;
 
-const ThankYou = ({ name, email }) => {
-    const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
-    const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email', 'event_date'];
-    // const { cart } = useStore((store) => ({ cart: store.cart }));
-
-    const cart = JSON.parse(sessionStorage.getItem('cart') || '{}');
-
-    const ticketDetails = cart?.map((item) => ObjectFrom(cols, item)).map((item) => ({ ...item, order_id: paymentId, email, created: new Date()?.toTimeString(), customer_name: name }));
-    const payLoad = {
-        ticketDetails
-    };
-
-    const registerRef = useRef(null);
-
-    useEffect(() => {
-        if (!registerRef.current) {
-            registerUser(payLoad);
-            registerRef.current = false;
-        }
-    }, []);
-
+const ThankYou = () => {
     return (
         <div className="wrapper-1">
             <div className="wrapper-2">
