@@ -621,37 +621,37 @@ export const TourCards = [
                         <tr>
                             <td>11th Jan 2024</td>
                             <td>Daytime</td>
-                            <td>Bussiness Casuals</td>
+                            <td>Business Casuals</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
                             <td>11th Jan 2024</td>
-                            <td>Evening</td>
+                            <td>Socials</td>
                             <td>Casuals</td>
                             <td>Indoor/Outdoor</td>
                         </tr>
                         <tr>
                             <td>12th Jan 2024</td>
                             <td>Daytime</td>
-                            <td>Bussiness Casuals</td>
+                            <td>Business Casuals</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
                             <td>12th Jan 2024</td>
-                            <td>Evening</td>
-                            <td>Casuals</td>
+                            <td>Socials</td>
+                            <td>Coachella Couture</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
                             <td>13th Jan 2024</td>
                             <td>Daytime</td>
-                            <td>Bussiness Casuals</td>
+                            <td>Business Casuals</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
                             <td>13th Jan 2024</td>
-                            <td>Evening</td>
-                            <td>TBA</td>
+                            <td>Socials</td>
+                            <td>Eclectic Forms</td>
                             <td>Outdoor</td>
                         </tr>
                     </table>
