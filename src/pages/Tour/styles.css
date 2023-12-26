@@ -28,8 +28,8 @@ ul {
 }
 
 .table {
-    justify-content: center;
-    overflow-x: scroll;
+    overflow-x: auto;
+    display: block;
     margin: auto;
 }
 

@@ -5,6 +5,7 @@ import Flights from '../src/assets/flights.svg';
 import Visa from '../src/assets/visa.svg';
 import Hotel from '../src/assets/hotel.svg';
 import Contact from '../src/assets/contacts.svg';
+import DressCode from '../src/assets/dresscode.svg';
 
 // export const Cards = [
 //     {
@@ -613,52 +614,52 @@ export const TourCards = [
                 <div className="table">
                     <table border={10} cellSpacing={10}>
                         <tr>
-                            <th>Date</th>
-                            <th>Event</th>
+                            <th>Date and Time</th>
+                            {/* <th>Event</th> */}
                             <th>Dress Code</th>
                             <th>Venue Type</th>
                         </tr>
                         <tr>
-                            <td>11th Jan 2024</td>
-                            <td>Daytime</td>
+                            <td>11-Jan Daytime</td>
+                            {/* <td>Daytime</td> */}
                             <td>Business Casuals</td>
-                            <td>Indoor</td>
+                            <td>Outdoor</td>
                         </tr>
                         <tr>
-                            <td>11th Jan 2024</td>
-                            <td>Socials</td>
+                            <td>11-Jan Socials</td>
+                            {/* <td>Socials</td> */}
                             <td>Casuals</td>
                             <td>Indoor/Outdoor</td>
                         </tr>
                         <tr>
-                            <td>12th Jan 2024</td>
-                            <td>Daytime</td>
+                            <td>12-Jan Daytime </td>
+                            {/* <td>Daytime</td> */}
                             <td>Business Casuals</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
-                            <td>12th Jan 2024</td>
-                            <td>Socials</td>
+                            <td>12-Jan Socials</td>
+                            {/* <td>Socials</td> */}
                             <td>Coachella Couture</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
-                            <td>13th Jan 2024</td>
-                            <td>Daytime</td>
+                            <td>13-Jan Daytime</td>
+                            {/* <td>Daytime</td> */}
                             <td>Business Casuals</td>
                             <td>Indoor</td>
                         </tr>
                         <tr>
-                            <td>13th Jan 2024</td>
-                            <td>Socials</td>
-                            <td>Eclectic Forms</td>
+                            <td>13-Jan Socials</td>
+                            {/* <td>Socials</td> */}
+                            <td>Eclectic Formals</td>
                             <td>Outdoor</td>
                         </tr>
                     </table>
                 </div>
             </div>
         ),
-        icon: Currency
+        icon: DressCode
     },
     {
         name: 'Currency',
@@ -709,10 +710,10 @@ export const TourCards = [
         name: 'India Visa',
         desc: (
             <p>
-                All foreign nationals need a visa to enter India. Please click &nbsp;
+                All foreign nationals need a visa to enter India. Please click{' '}
                 <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://drive.google.com/file/d/1t-_aN0prTmKVSm1pDSAxVAz68wtJnm8s/view">
-                    here{' '}
-                </a>
+                    here
+                </a>{' '}
                 for more details.
             </p>
         ),
@@ -731,7 +732,7 @@ export const TourCards = [
                     The hotel booking links are below and the RIE discounted rates are available from 9th till 15th Jan:
                     <ul>
                         <li>
-                            ITC Royal Bengal (host hotel) -
+                            ITC Royal Bengal (host hotel) - <strong>[SOLD OUT]</strong>
                             <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://bit.ly/ITCRoyal">
                                 ( https://bit.ly/ITCRoyal ){' '}
                             </a>
@@ -758,9 +759,12 @@ export const TourCards = [
         desc: (
             <div>
                 <p>
-                    To ensure you stay informed about all our upcoming events and sessions, we kindly invite you to download the JUMP app. You can download it using the following link:
-                    https://link-to.app/jumpapp. Additionally, for enhanced communication and to facilitate smoother interactions with fellow participants and the EO staff, we recommend installing
-                    WhatsApp on your mobile device. It's a valuable tool for staying connected and engaged during the event
+                    To ensure you stay informed about all our upcoming events and sessions, we kindly invite you to download the JUMP app. You can download it using the following link:{' '}
+                    <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="https://link-to.app/jumpapp">
+                        https://link-to.app/jumpapp{' '}
+                    </a>{' '}
+                    Additionally, for enhanced communication and to facilitate smoother interactions with fellow participants and the EO staff, we recommend installing WhatsApp on your mobile device.
+                    It's a valuable tool for staying connected and engaged during the event
                 </p>
             </div>
         ),
@@ -787,16 +791,16 @@ export const TourCards = [
         desc: (
             <div className="contact-grid">
                 <div>
-                    <h4 className="font-semibold">EO Staff</h4>
+                    <h4 className="font-semibold">RIE Team</h4>
                     <ul>
                         <li>
                             Preeti Singh |{' '}
                             <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+91989979301">
-                                (Phone: +91989979301)
+                                (Phone: +919899793015)
                             </a>{' '}
                             |{' '}
                             <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:psingh@eonetwork.org">
-                                psingh@eonetwork.org{' '}
+                                preeti.singh@growthonics.in{' '}
                             </a>
                         </li>
                         <li>
@@ -826,28 +830,44 @@ export const TourCards = [
                     <h4 className="font-semibold">ITC Royal Bengal</h4>
                     <ul>
                         <li>
-                            Nikhil Chhabra |{' '}
+                            Duty Manager |{' '}
                             <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+919836587145">
-                                (Phone: +919836587145)
+                                (Phone: +917596059300)
                             </a>{' '}
-                            |{' '}
+                            {/* |{' '}
                             <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:nikhil.chhabra@itchotels.in">
                                 nikhil.chhabra@itchotels.in{' '}
-                            </a>
+                            </a> */}
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="font-semibold">ITC Sonar Bangla</h4>
+                    <ul>
+                        <li>
+                            Duty Manager |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+919836587145">
+                                (Phone: +919903382652)
+                            </a>{' '}
+                            {/* |{' '}
+                            <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="mailto:nikhil.chhabra@itchotels.in">
+                                nikhil.chhabra@itchotels.in{' '}
+                            </a> */}
                         </li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className="font-semibold">Police Station</h4>
-                    <p>100/112 Tangra Police Station</p>
+                    <p>Pragati Maidan Police Station</p>
                     <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+918100796472">
-                        (Phone: +918100796472)
+                        (Phone: +918100796517)
                     </a>
                 </div>
                 <div>
                     <h4 className="font-semibold">Fire Station</h4>
-                    <p>101 Pragati Maidan Fire Station</p>
+                    <p>Pragati Maidan Fire Station</p>
                     <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="tel:+913323457000">
                         (Phone: +913323457000)
                     </a>

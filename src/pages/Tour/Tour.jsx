@@ -27,7 +27,7 @@ export default function Tour() {
         }
     }, []);
     return (
-        <div className="flex flex-col gap-4" style={{ padding: '2rem', maxWidth: 'calc(100vw - 2rem)' }}>
+        <div className="flex flex-col gap-4" style={{ padding: '1rem', maxWidth: 'calc(100vw - 1rem)' }}>
             <div id="google_translate_element"></div>
 
             {TourCards.map(({ name, desc, icon: Icon, html }) => (
