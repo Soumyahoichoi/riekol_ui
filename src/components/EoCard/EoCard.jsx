@@ -96,7 +96,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             className="divContainer"
             // 	onClick={() => navigate(`/myeo/${id}`)
             // }
-            style={{ display, opacity: slots === 0 ? 0.5 : 1 }}
+            style={{ display, opacity: slots <= 0 ? 0.5 : 1 }}
         >
             <section className="mainContainer">
                 <img

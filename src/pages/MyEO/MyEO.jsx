@@ -112,7 +112,8 @@ const MyEO = () => {
                 const res = await getMyItems();
                 if (res) {
                     const response = res?.data?.data;
-                    const sortedData = response.sort((a, b) => a.id - b.id).toSorted((a, b) => (a.slots_to_open === 0 ? 1 : -1));
+                    const sortedData = response.sort((a, b) => a.id - b.id).toSorted((a, b) => (a.slots_to_open <= 0 ? 1 : -1));
+                    console.log(sortedData);
                     setCards(sortedData);
                     setMyEo(sortedData);
 
