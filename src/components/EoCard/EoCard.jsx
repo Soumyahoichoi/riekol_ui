@@ -110,7 +110,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg" style={{ textAlign: 'left' }}>
-                    MyEO {_.startCase(_.toLower(name.slice(5)))} {name.match(/MyEO Governor House visit/) ? '(Only for Indian Nationals)' : null}
+                    MyEO {_.startCase(_.toLower(name.slice(5)))} {name.match(/MyEO Governor House visit/) ? '(Only for Indian Nationals and EO Members)' : null}
                 </p>
                 <div
                     className={`${slots <= 0 ? 'text-red-700' : 'text-green-700'}
