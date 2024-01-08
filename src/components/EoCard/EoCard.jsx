@@ -99,6 +99,7 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             style={{ display, opacity: slots <= 0 ? 0.5 : 1 }}
         >
             <section className="mainContainer">
+                {console.log(name.replaceAll(' ', '_'))}
                 <img
                     src={`/${name.replaceAll(' ', '_')}.webp`}
                     loading={name === 'MyEO Golf Tournament' ? 'eager' : 'lazy'}
@@ -110,7 +111,8 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
             </section>
             <section className="flex items-start flex-col second text-sm p-2 gap-2">
                 <p className="font-semibold text-rose-700 text-lg" style={{ textAlign: 'left' }}>
-                    MyEO {_.startCase(_.toLower(name.slice(5)))} {name.match(/MyEO Governor House visit/) ? '(Only for Indian Nationals and EO Members)' : null}
+                    MyEO {name.includes('Montek') ? name.slice(5) : _.startCase(_.toLower(name.slice(5)))}{' '}
+                    {name.match(/MyEO Governor House visit/) ? '(Only for Indian Nationals and EO Members)' : null}
                 </p>
                 <div
                     className={`${slots <= 0 ? 'text-red-700' : 'text-green-700'}
