@@ -90,7 +90,10 @@ const Checkout = () => {
                     });
                 });
             }
-        } else if (cart?.[0]?.name === 'MyEO Governor House visit' && cart?.length === 1) {
+        } else if (
+            (cart?.[0]?.name === 'MyEO Governor House visit' || cart?.[0]?.name === "MyEO Montek Singh Ahluwalia with Suhel Seth plus Lunch by Kolkata's famed Bar-B-Q restaurant") &&
+            cart?.length === 1
+        ) {
             navigate(`/thankyou?status=Success&email=${previousRouteState?.email}&name=${previousRouteState?.name}`);
         }
     }, [totalBillingAmout, previousRouteState]);
