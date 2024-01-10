@@ -5,7 +5,8 @@ import { useStore } from '../../store/store';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styles.css';
 import { intiateCCavenuePayment, saveDataInRedis } from '../../api/checkout';
-import { ObjectFrom, getResultFromData } from '../../helper';
+import { ObjectFrom, generateUUID, getResultFromData } from '../../helper';
+import { registerUser } from '../../api/register';
 
 const Checkout = () => {
     const { cart, totalBillingAmout, setTotalBilingAmount, isSelected } = useStore((store) => ({
@@ -94,6 +95,21 @@ const Checkout = () => {
             (cart?.[0]?.name === 'MyEO Governor House visit' || cart?.[0]?.name === "MyEO Montek Singh Ahluwalia with Suhel Seth plus Lunch by Kolkata's famed Bar-B-Q restaurant") &&
             (cart?.length === 1 || cart?.length === 2)
         ) {
+            const paymentId = crypto?.randomUUID?.() ?? generateUUID?.();
+            const cols = ['price_id', 'name', 'start_time', 'end_time', 'registration_fee', 'count', 'email', 'event_date'];
+            // const { cart } = useStore((store) => ({ cart: store.cart }));
+
+            const cart = JSON.parse(sessionStorage.getItem('cart') || '{}');
+
+            const ticketDetails = cart
+                ?.map((item) => ObjectFrom(cols, item))
+                .map((item) => ({ ...item, order_id: paymentId, email: previousRouteState?.email, created: new Date()?.toTimeString(), customer_name: previousRouteState?.name }));
+            const payLoad = {
+                ticketDetails
+            };
+
+            registerUser(payLoad);
+
             navigate(`/thankyou?status=Success&email=${previousRouteState?.email}&name=${previousRouteState?.name}`);
         }
     }, [totalBillingAmout, previousRouteState]);
