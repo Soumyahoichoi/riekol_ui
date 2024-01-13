@@ -87,6 +87,10 @@ export const EoCard = ({ name, image, startTime, endTime, date, priceInDollar, d
     const desc = description ? JSON.stringify(description) : ' ';
     const newDescription = desc.replace(/"/g, '');
 
+    if (slots <= 0) {
+        return null;
+    }
+
     if (import.meta.env.PROD && name === 'Test') {
         return null;
     }
